@@ -1,0 +1,34 @@
+project:
+  type: website
+
+website:
+  title: "aakash_basnet"
+  navbar:
+    title: false
+    logo: "images/profile.jpg"
+    background: primary
+    search: true
+    left: 
+      - text: "Home"
+        href: index.qmd
+      - text: "Blog"
+        href: blog.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "Contact"
+        href: mailto:hssaka7@gmail.com
+    right:
+      - icon: github
+        href: https://github.com/hssaka7
+      - icon: linkedin
+        href: https://www.linkedin.com/in/aakash-basnet-a889a120a/
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+
+

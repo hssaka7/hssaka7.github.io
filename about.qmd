@@ -1,0 +1,41 @@
+---
+title: "Aakash Basnet"
+about:
+  template: trestles
+  image: images/profile.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/hssaka7
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/aakash-basnet-a889a120a/
+---
+
+Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.
+
+## Education
+
+University of New Mexico,
+Bsc. in Computer Science| Dec 2018. 
+
+Cumberland University,
+Msc. in Information Technology | May 2023.
+
+## Skills
+ Python, Flask, Django, 
+
+## Experience
+
+Bank of America | Backend Engineer | April 2018 - present
+
+PennyMac | Backend Engineer | Spet 2012 - April 2018
+
+Vitol | Backend Engineer | Spet 2012 - April 2018
+
+Bank of America | Backend Engineer | Spet 2012 - April 2018
+
+BBER | Full Stack Engineer | Spet 2012 - April 2018
+
+<button type="button" class="btn btn-primary btn-lg">Download CV</button>
+

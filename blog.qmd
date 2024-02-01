@@ -1,0 +1,16 @@
+---
+title: "Blog"
+listing:
+  contents: blogs
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [title, subtitle, author, description, date] 
+page-layout: full
+title-block-banner: true
+---
+
+
+<br>
