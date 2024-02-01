@@ -8,7 +8,7 @@ website:
     logo: "images/profile.jpg"
     background: primary
     search: true
-    left: 
+    right: 
       - text: "Home"
         href: index.qmd
       - text: "Blog"
@@ -17,7 +17,6 @@ website:
         href: about.qmd
       - text: "Contact"
         href: mailto:hssaka7@gmail.com
-    right:
       - icon: github
         href: https://github.com/hssaka7
       - icon: linkedin

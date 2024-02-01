@@ -12,7 +12,23 @@ about:
       href: https://www.linkedin.com/in/aakash-basnet-a889a120a/
 ---
 
-Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.
+Greetings! I'm Aakash Basnet, a Software Engineer with 6 years of hands-on experience. 
+
+My journey involves working closely with clients as a consultant, where I've tackled various projects, from crafting web applications and dashboards to implementing machine learning solutions and web scraping tools. I take pride in simplifying complex tech challenges and creating solutions that align with clients' unique needs. 
+
+Beyond coding, I find joy in hiking, mountain biking, boxing and reading, maintaining a healthy work-life balance. Let's connect and explore how we can create something exceptional together!
+
+
+<!-- Calendly link widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/basnetaakash17/30min'});return false;">Schedule time with Aakash</a>
+<!-- Calendly link widget end -->
+
+<br>
+<button type="button" class="btn btn-primary btn-lg">Download CV</button>
+<br>
+<br>
 
 ## Education
 
@@ -37,5 +53,10 @@ Bank of America | Backend Engineer | Spet 2012 - April 2018
 
 BBER | Full Stack Engineer | Spet 2012 - April 2018
 
-<button type="button" class="btn btn-primary btn-lg">Download CV</button>
 
+
+<!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/basnetaakash17/30min', text: 'Schedule time with Aakash', color: '#0069ff', textColor: '#ffffff', branding: true }); }</script>
+<!-- Calendly badge widget end -->
