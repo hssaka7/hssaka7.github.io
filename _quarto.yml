@@ -17,7 +17,7 @@ website:
       - text: "About"
         href: about.qmd
       - text: "Contact"
-        href: mailto:hssaka7@gmail.com
+        href: contact.qmd
       - icon: github
         href: https://github.com/hssaka7
       - icon: linkedin
@@ -26,7 +26,7 @@ website:
   page-footer:
     background: dark
     border: false
-    left: 
+    center: 
       - text: "Copyright 2024, Aakash Basnet" 
       - icon: github
         href: https://github.com/hssaka7
