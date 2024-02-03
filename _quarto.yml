@@ -3,7 +3,7 @@ project:
 
 website:
   title: "aakash_basnet"
-  reader-mode: true
+  reader-mode: false
   navbar:
     title: false
     logo: "images/profile.jpg"
