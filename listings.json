@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/core/blog.html",
+    "items": [
+      "/core/blogs/image_classification/image_classification.html",
+      "/core/blogs/indeed/indeed-job-scraper.html",
+      "/core/blogs/rotating_proxies/rotating_proxies_example.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/core/solutions/1_Artificial Intelligence/artificial_intelligence.html",
+      "/core/solutions/6_Consulting/consulting.html",
+      "/core/solutions/2_Data Engineering/data-engineering.html",
+      "/core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html",
+      "/core/solutions/4_Web Application/webapplication.html",
+      "/core/solutions/3_Webscraping/webscraping.html",
+      "/core/testimonials/3_Himanshu_Chaudhary/Himanshu_Chaudhary.html",
+      "/core/testimonials/2_Sarun_Luitel/sarun_luitel.html",
+      "/core/testimonials/1_Tyler_Ryan/tyler_ryan.html"
+    ]
+  }
+]
