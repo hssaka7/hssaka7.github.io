@@ -140,9 +140,7 @@
     font-weight: bold;   
   }
   
-  .card-text{
-    color:white;
-  } */
+  */
 
    /* Test */
 
@@ -150,13 +148,19 @@
   
   .card{
     border-radius: 20px;
+    background-color: rgb(23, 37, 56);
 
   }
   
   
   .card-subtitle{
     padding: 20px;
+    color: white;
   }
+
+  .card-text{
+    color:white;
+  } 
 
   /* For card inside service section */
 
@@ -207,6 +211,7 @@
     padding: 0;
     margin: 0;
     margin-bottom: 4px;
+    color: white;
   }
   
   .footer {
