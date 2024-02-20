@@ -1,5 +1,5 @@
 ---
-title: "Welcome"
+title: ""
 pagetitle: "Aakash Basnet"
 page-layout: full
 toc: false

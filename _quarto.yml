@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "aakash_basnet"
+  title: "aakash basnet"
   back-to-top-navigation: true
   reader-mode: false
   navbar:
@@ -38,7 +38,7 @@ format:
   html:
     theme:
       dark: darkly
-      light: flatly
+      light: yeti
       
     css: core/assets/css/style.css
     toc: true
