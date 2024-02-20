@@ -2,9 +2,9 @@
 title: "Artificial Intelligence"
 subtitle: "\"I provide artificial intelligence service to business and client\" "
 description: "Enhance your data capabilities with our specialized web scraping services, tailored for efficient data extraction, smooth automation, and real-time content discovery to elevate your decision-making processes."
-author: "Aakash Basnet"
-date: "01/02/2024"
+
 image: /core/assets/images/solutions/webscraping.jpg
+toc: false
 categories:
   - news
   - code

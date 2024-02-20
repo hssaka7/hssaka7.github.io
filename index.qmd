@@ -9,7 +9,7 @@ listing:
       contents: core/solutions
       type: grid
       sort: title
-      fields: [image,title, subtitle, description, ]
+      fields: [image,title, subtitle, description ]
       image-height: 200px 
       max-description-length: 400
       grid-columns: 3
@@ -17,7 +17,7 @@ listing:
       contents: core/testimonials
       type: grid
       sort: title
-      fields: [image,title, subtitle, description, ]
+      fields: [image,title, subtitle, description]
       image-height: 50px 
       max-description-length: 400
       grid-columns: 3
