@@ -15,35 +15,11 @@
   }
   
   body {
-    background: var(--background);
-    color: var(--foreground);
+    /* background: var(--background); */
+    /* color: var(--foreground); */
     text-align: center;
   }
   
-  #title-block-header {
-    display: none;
-  }
-  
-  .navbar {
-    background: var(--background);
-    text-align: left;
-    font-size: 16px;
-  }
-  
-  .title, .navbar-title {
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 8px;
-    margin-right: 4px;
-  }
-  
-  .navbar-title {
-    background: linear-gradient(240.01deg, #4B555B 15.29%, rgba(67, 78, 84, 0) 138.75%);
-  }
-  
-  .title {
-    background: linear-gradient(240.01deg, #78858C 15.29%, rgba(105, 117, 123, 0) 138.75%);
-  }
   
   .content-block {
     margin-left: 30px;
@@ -93,7 +69,6 @@
   }
   
   .hero-banner h3 {
-    color: var(--foreground);
     font-size: 20px;
     max-width: 90%;
     margin-left: auto;
@@ -105,7 +80,6 @@
   .btn-action-primary {
       width: 200px;
       height: 50px;
-      color: #F9FAFB;
       background: #0069ff;
       padding: auto;
       margin-left: 25px;
@@ -124,23 +98,7 @@
     }
   }
   
-/*    
-  .card{
-    background: #fa9a24ef;
-    border-radius: 50px;
-    box-shadow: 1px 1px 2rem rgba(177, 132, 28, 0.3);
-    position: relative;
-  }
-  .card-image{
-    border-radius:50px;
-  }
-  .card-title{
-    color:  #009AF1;;
-    font-size: 40px;
-    font-weight: bold;   
-  }
-  
-  */
+
 
    /* Test */
 
@@ -148,24 +106,23 @@
   
   .card{
     border-radius: 20px;
-    background-color: rgb(23, 37, 56);
-
+    
   }
   
   
   .card-subtitle{
     padding: 20px;
-    color: white;
+  
   }
 
   .card-text{
-    color:white;
+    
   } 
 
   /* For card inside service section */
 
    .card-grid {
-    background: rgba(51, 55, 63, 0.4);
+    
     border-radius: 12px;
     padding: 30px;
     text-align: left;
@@ -188,7 +145,7 @@
   
   /* for card inside testimonial grid */
   .testimonials-grid {
-    background: rgba(51, 55, 63, 0.4);
+    
     border-radius: 12px;
     padding: 29px;
     text-align: left;
@@ -211,7 +168,7 @@
     padding: 0;
     margin: 0;
     margin-bottom: 4px;
-    color: white;
+   
   }
   
   .footer {
