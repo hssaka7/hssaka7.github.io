@@ -2,8 +2,7 @@
 title: "Sarun Luitel"
 subtitle: "Data Engineer at UNM BBER"
 description: "\"Boost your data capabilities with our streamlined data engineering services, featuring efficient ETL pipeline development, Apache Airflow orchestration, and scalable AWS solutions for actionable insights.\""
-author: "Aakash Basnet"
-date: "02/02/2024"
+toc: false
 image: /core/assets/images/solutions/dataengineering.jpg
 categories:
   - news
