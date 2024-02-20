@@ -3,21 +3,22 @@ project:
 
 website:
   title: "aakash_basnet"
+  back-to-top-navigation: true
   reader-mode: false
   navbar:
     title: false
-    logo: "images/profile.jpg"
+    logo: "core/assets/images/profile.jpg"
     background: primary
     search: true
     right: 
       - text: "Home"
         href: index.qmd
       - text: "Blog"
-        href: blog.qmd
+        href: core//blog.qmd
       - text: "About"
-        href: about.qmd
+        href: core/about.qmd
       - text: "Contact"
-        href: contact.qmd
+        href: core/contact.qmd
       - icon: github
         href: https://github.com/hssaka7
       - icon: linkedin
@@ -36,9 +37,10 @@ website:
 format:
   html:
     theme:
-      light: flatly
       dark: darkly
-    css: styles.css
+      light: flatly
+      
+    css: core/assets/css/style.css
     toc: true
 
 

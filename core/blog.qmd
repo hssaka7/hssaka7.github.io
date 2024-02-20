@@ -7,8 +7,9 @@ listing:
   categories: true
   sort-ui: true
   filter-ui: true
-  fields: [title, subtitle, author, description, date] 
-title-block-banner: true
+  fields: [image,title, subtitle, author, description, date]
+page-layout: full
+
 ---
 
 <!-- Calendly badge widget begin -->

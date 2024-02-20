@@ -2,7 +2,7 @@
 title: "Aakash Basnet"
 about:
   template: jolla
-  image: images/profile.jpg
+  image: assets/images/profile.jpg
   links:
     - icon: github
       text: Github

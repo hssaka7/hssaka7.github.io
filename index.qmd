@@ -1,53 +1,30 @@
 ---
-title: ""
+title: "Welcome"
+pagetitle: "TEST"
 page-layout: full
 toc: false
-
+css: core/assets/css/index.css
 listing:
-  contents: solutions
+  id: services-listing
+  contents: core/solutions
   type: grid
   fields: [title, subtitle, description,] 
+
     
 ---
+::: {.hero-banner}
+# Freelancer , with 6 years of experiences
+### I specialize in Python automation, data engineering, and developing impactful web applications and dashboards. Let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.
+:::
 
-``` {=html}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/livecanvas-team/ninjabootstrap/dist/css/bootstrap.min.css" media="all">
-    
-<div class="container py-6">
-    <div class="row flex-lg-row-reverse align-items-center g-5">
-        <div class="col-10 mx-auto col-sm-8 col-lg-6">
-            <img src="https://images.unsplash.com/photo-1530435460869-d13625c69bbf?crop=entropy&amp;cs=tinysrgb&amp;fit=crop&amp;fm=jpg&amp;ixid=MnwzNzg0fDB8MXxzZWFyY2h8MTB8fHdlYnNpdGV8ZW58MHwwfHx8MTYyMTQ0NjkyNg&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1080&amp;h=768" class="d-block mx-lg-auto img-fluid" alt="" loading="lazy">
-        </div>
-
-        <div class="col-lg-6">
-            <div class="lc-block mb-3">
-                <div editable="rich">
-                    <h2 class="fw-bold display-5">Freelancer , with 6 years of experience</h2>
-                </div>
-            </div>
-
-            <div class="lc-block mb-3">
-                <div editable="rich">
-                    <p class="lead"> I specialize in Python automation, data engineering, and developing impactful web applications and dashboards. Let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.
-                    </p>
-                </div>
-            </div>
-
-            <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><a class="btn btn-primary px-4 me-md-2" href="#" role="button">Click me, I'm a button</a>
-                <a class="btn btn-outline-secondary px-4" href="#" role="button">Click me, I'm a button</a>
-            </div>
-
-        </div>
-    </div>
-</div>
- 
- <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  
-```
+<button class="btn-action-primary"> Contact me </button>
 
 ## Services
 
 Embark on a transformative journey with my freelance services in IT and Finance Solutions. With over 6 years of experience, I specialize in Python automation, data engineering, and crafting impactful web applications and dashboards. As a seasoned freelancer, I bring a holistic approach to addressing complex challenges. My proficiency extends to designing robust ETL pipelines and implementing machine learning and AI tools to keep you at the forefront of technological innovation. Explore my portfolio for successful projects, and let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights. Contact me today to discuss how we can tailor these advanced solutions to meet your unique business needs
+
+::: {#services-listing}
+:::
 
 <!-- Calendly badge widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
