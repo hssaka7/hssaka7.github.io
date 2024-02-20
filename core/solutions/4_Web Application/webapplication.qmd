@@ -3,6 +3,7 @@ title: "Web Application"
 subtitle: "\"I provide Web application service to business and client\" "
 description: "Enhance your data capabilities with our specialized web scraping services, tailored for efficient data extraction, smooth automation, and real-time content discovery to elevate your decision-making processes."
 image: /core/assets/images/solutions/webscraping.jpg
+toc: false
 categories:
   - news
   - code

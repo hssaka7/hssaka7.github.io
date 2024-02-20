@@ -38,7 +38,7 @@ format:
   html:
     theme:
       dark: darkly
-      light: yeti
+      light: flatly
       
     css: core/assets/css/style.css
     toc: true
