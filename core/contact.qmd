@@ -3,7 +3,7 @@ title: "Contact"
 
 # Form extension from: https://github.com/jlgraves-ubc/forms/blob/main/example.qmd
 form:
-  id: MyFormID
+  id: contact-me-form
   submit: "Submit"
   action: "javascript:submit()"
   fields:
@@ -50,14 +50,11 @@ You can use the contact form below to get in touch, or if you prefer,
 
 <script>
     function submit () {
-        $.ajax({
-            url:"send_email.php",    //the page containing php script
-            type: "post",    //request type,
-            dataType: 'json',
-            data: {subject: "test", email: "hssaka7@gmail.com", message: "test success"},
-            success:function(result){
-                console.log(result);
-            }
-        });
+      form = document.querySelector("#form")
+      form_data = new FormData(form)
+      console.log(form_data)
+      console.log("Test contact")
+      // TODO create a datetime today
+      // TODO need to save this on google sheets
     }
 </script>

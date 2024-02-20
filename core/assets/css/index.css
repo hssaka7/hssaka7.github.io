@@ -76,7 +76,7 @@
   }
   
   .hero-banner h1 {
-    color: #009AF1;
+    color: #0069ff;
     font-size: 56px;
     font-weight: bold;
     margin-top: 10px;
@@ -102,6 +102,16 @@
     margin-bottom: 40px;
   }
   
+  .btn-action-primary {
+      width: 200px;
+      height: 50px;
+      color: #F9FAFB;
+      background: #0069ff;
+      padding: auto;
+      margin-left: 25px;
+      border-radius: 30px;
+  }
+    
   @media(min-width: 900px) {
     .hero-banner h3 {
       max-width: 60%;
@@ -114,73 +124,89 @@
     }
   }
   
-  .mid-content {
-    width: 100%;
-    padding: 0;
-    padding-top: 80px !important;
-    padding-bottom: 80px;
-    background: linear-gradient(235.87deg, #656A75 12.29%, #33373F 107.53%);
-    overflow-x: hidden;
+/*    
+  .card{
+    background: #fa9a24ef;
+    border-radius: 50px;
+    box-shadow: 1px 1px 2rem rgba(177, 132, 28, 0.3);
+    position: relative;
+  }
+  .card-image{
+    border-radius:50px;
+  }
+  .card-title{
+    color:  #009AF1;;
+    font-size: 40px;
+    font-weight: bold;   
   }
   
-  .testimonial {
+  .card-text{
+    color:white;
+  } */
+
+   /* Test */
+
+   /* For all the cards in the page */
+  
+  .card{
+    border-radius: 20px;
+
+  }
+  
+  
+  .card-subtitle{
+    padding: 20px;
+  }
+
+  /* For card inside service section */
+
+   .card-grid {
     background: rgba(51, 55, 63, 0.4);
     border-radius: 12px;
     padding: 30px;
     text-align: left;
   }
   
-  .testimonial p {
-    margin: 0;
-    padding: 0;
+  .card-grid  img {
+    padding: 2px;
+    border-radius: 20px;
   }
   
-  .testimonial img {
+  .card-grid  h5 {
+    font-size: 32px;
+    color:#009AF1;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 7px;
+  }
+  
+  
+  /* for card inside testimonial grid */
+  .testimonials-grid {
+    background: rgba(51, 55, 63, 0.4);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: left;
+  }
+  
+  
+  .testimonials-grid img {
     margin: 0;
     padding: 0;
     display: inline;
     float: left;
     width: 50px;
     margin-right: 20px;
-    border-radius: 8px;
+    border-radius: 90px;
   }
   
-  .testimonial h1 {
+  .testimonials-grid h5 {
     font-size: 16px;
     font-weight: bold;
     padding: 0;
     margin: 0;
     margin-bottom: 4px;
-  }
-  
-  .testimonial h2 {
-    border: none;
-    font-size: 16px;
-    padding: 0;
-    margin: 0;
-    color: #A2A8B4;
-  }
-  
-  .testimonial h3 {
-    margin: 0;
-    margin-top: 30px;
-    font-size: 16px;
-  }
-  
-  .feature {
-    font-size: 16px;
-    height: 210px;
-    background: var(--background-2);
-    border-radius: 12px;
-    padding: 30px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .feature img {
-    margin-bottom: 20px;
-    width: 48px;
   }
   
   .footer {
@@ -189,24 +215,6 @@
     margin-top: 40px;
     padding-top: 30px !important;
     border-top: 1px solid var(--foreground-2);
-  }
-  
-  .btn-action-primary {
-    color: #F9FAFB;
-    background: #009AF1;
-    font-weight: 700;
-    line-height: 20px; /* identical to box height */
-  }
-  
-  .btn-action-primary:hover, .btn-action-primary:active, .btn-action-primary:focus {
-    background: #35acf0;
-  }
-  
-  .btn-action {
-    min-width: 165px;
-    border-radius: 8px;
-    padding: 20px 48px;
-    border: none;
   }
   
   /* Below are needed to make .ipynb equivalent to .qmd */
@@ -218,3 +226,4 @@
   .quarto-figure {
     margin: 0;
   }
+

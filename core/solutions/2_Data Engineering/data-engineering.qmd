@@ -1,9 +1,10 @@
 ---
 title: "Data Engineering"
-subtitle: ""
+subtitle: "\"I provide data engineering solution to business and clients.\""
 description: "Boost your data capabilities with our streamlined data engineering services, featuring efficient ETL pipeline development, Apache Airflow orchestration, and scalable AWS solutions for actionable insights."
 author: "Aakash Basnet"
 date: "02/02/2024"
+image: /core/assets/images/solutions/dataengineering.jpg
 categories:
   - news
   - code

@@ -1,0 +1,48 @@
+---
+title: "Sarun Luitel"
+subtitle: "Data Engineer at UNM BBER"
+description: "\"Boost your data capabilities with our streamlined data engineering services, featuring efficient ETL pipeline development, Apache Airflow orchestration, and scalable AWS solutions for actionable insights.\""
+author: "Aakash Basnet"
+date: "02/02/2024"
+image: /core/assets/images/solutions/dataengineering.jpg
+categories:
+  - news
+  - code
+  - analysis
+---
+
+# Unlock Data Potential with Expert Data Engineering Solutions
+
+Discover our versatile data engineering services designed to optimize your data infrastructure and drive actionable insights across your organization.
+
+## Custom Data Engineering Solutions
+We specialize in crafting tailored data engineering solutions to meet your specific business needs, leveraging a variety of tools and technologies.
+
+## Data Engineering Capabilities
+- Efficient ETL (Extract, Transform, Load) pipeline development.
+- Streamlining data workflows for improved efficiency.
+- Data cleansing, transformation, and enrichment processes.
+- Integration of diverse data sources for comprehensive analysis.
+- Implementing scalable and robust data architectures.
+
+## Tools and Technologies
+Our data engineering solutions make use of industry-standard tools and technologies, ensuring reliability and performance in handling your data:
+
+- Apache Airflow for orchestration and scheduling.
+- Apache Spark for distributed data processing.
+- Apache Hadoop for large-scale data storage and processing.
+- SQL-based databases (e.g., PostgreSQL, MySQL).
+- NoSQL databases (e.g., MongoDB, Cassandra).
+- Cloud-based data services, particularly AWS for scalable and secure solutions.
+
+## Recent Data Engineering Projects
+Explore some of our recent successes in the realm of data engineering:
+
+- Development of a scalable ETL pipeline using Apache Airflow for real-time data processing.
+- Implementation of data cleansing and enrichment processes for improved data quality.
+- Integration of various data sources into AWS for unified business intelligence.
+
+## Let's Enhance Your Data Infrastructure
+If you have data engineering requirements or are looking to optimize your data processes, let's connect and explore how our expertise can elevate your data infrastructure.
+
+
