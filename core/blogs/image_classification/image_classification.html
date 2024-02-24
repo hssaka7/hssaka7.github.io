@@ -209,8 +209,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-the-fashin-mnist-dataset" id="toc-import-the-fashin-mnist-dataset" class="nav-link active" data-scroll-target="#import-the-fashin-mnist-dataset">Import the fashin MNIST dataset</a></li>
+  <li><a href="#import-the-fashion-mnist-dataset" id="toc-import-the-fashion-mnist-dataset" class="nav-link active" data-scroll-target="#import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</a></li>
+  <li><a href="#preprocessing-the-data" id="toc-preprocessing-the-data" class="nav-link" data-scroll-target="#preprocessing-the-data">Preprocessing the data</a></li>
   <li><a href="#building-the-model-using-neural-network" id="toc-building-the-model-using-neural-network" class="nav-link" data-scroll-target="#building-the-model-using-neural-network">Building the model using neural network</a></li>
+  <li><a href="#training-the-model" id="toc-training-the-model" class="nav-link" data-scroll-target="#training-the-model">Training the model</a></li>
+  <li><a href="#testing-the-model" id="toc-testing-the-model" class="nav-link" data-scroll-target="#testing-the-model">Testing the model</a></li>
   </ul>
 </nav>
     </div>
@@ -221,9 +224,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="import-the-fashin-mnist-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="import-the-fashin-mnist-dataset">Import the fashin MNIST dataset</h2>
-<div id="cell-2" class="cell" data-execution_count="1">
+<section id="import-the-fashion-mnist-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</h2>
+<div id="cell-2" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
@@ -239,25 +242,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>2.15.0</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+</section>
+<section id="preprocessing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="preprocessing-the-data">Preprocessing the data</h2>
+<div id="cell-4" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>train_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>(60000, 28, 28)</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_label.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(10000,)</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="4">
+<div id="cell-6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
@@ -274,21 +280,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="5">
+<div id="cell-7" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> train_data  <span class="op">/</span> <span class="fl">255.0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> test_data <span class="op">/</span> <span class="fl">255.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-7" class="cell" data-execution_count="6">
+<div id="cell-8" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>class_map <span class="op">=</span> [<span class="st">'T-shirt/top'</span>, <span class="st">'Trouser'</span>, <span class="st">'Pullover'</span>, <span class="st">'Dress'</span>, <span class="st">'Coat'</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>               <span class="st">'Sandal'</span>, <span class="st">'Shirt'</span>, <span class="st">'Sneaker'</span>, <span class="st">'Bag'</span>, <span class="st">'Ankle boot'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-8" class="cell" data-execution_count="7">
+<div id="cell-9" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
@@ -311,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="building-the-model-using-neural-network" class="level2">
 <h2 class="anchored" data-anchor-id="building-the-model-using-neural-network">Building the model using neural network</h2>
-<div id="cell-10" class="cell" data-execution_count="8">
+<div id="cell-11" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>input_layer <span class="op">=</span> tf.keras.layers.Flatten(input_shape<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>))</span>
@@ -325,7 +331,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-11" class="cell" data-execution_count="9">
+</section>
+<section id="training-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-model">Training the model</h2>
+<div id="cell-13" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>optimizer, loss<span class="op">=</span> loss_function, metrics<span class="op">=</span>metrics )</span>
@@ -333,31 +342,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1/10
-1875/1875 [==============================] - 1s 542us/step - loss: 0.5019 - accuracy: 0.8255
+1875/1875 [==============================] - 1s 479us/step - loss: 0.4980 - accuracy: 0.8256
 Epoch 2/10
-1875/1875 [==============================] - 1s 502us/step - loss: 0.3791 - accuracy: 0.8629
+1875/1875 [==============================] - 1s 475us/step - loss: 0.3744 - accuracy: 0.8649
 Epoch 3/10
-1875/1875 [==============================] - 1s 493us/step - loss: 0.3374 - accuracy: 0.8758
+1875/1875 [==============================] - 1s 479us/step - loss: 0.3395 - accuracy: 0.8752
 Epoch 4/10
-1875/1875 [==============================] - 1s 486us/step - loss: 0.3143 - accuracy: 0.8847
+1875/1875 [==============================] - 1s 465us/step - loss: 0.3125 - accuracy: 0.8851
 Epoch 5/10
-1875/1875 [==============================] - 1s 486us/step - loss: 0.2981 - accuracy: 0.8890
+1875/1875 [==============================] - 1s 471us/step - loss: 0.2936 - accuracy: 0.8917
 Epoch 6/10
-1875/1875 [==============================] - 1s 488us/step - loss: 0.2821 - accuracy: 0.8951
+1875/1875 [==============================] - 1s 469us/step - loss: 0.2794 - accuracy: 0.8965
 Epoch 7/10
-1875/1875 [==============================] - 1s 489us/step - loss: 0.2695 - accuracy: 0.8999
+1875/1875 [==============================] - 1s 471us/step - loss: 0.2663 - accuracy: 0.9002
 Epoch 8/10
-1875/1875 [==============================] - 1s 511us/step - loss: 0.2588 - accuracy: 0.9046
+1875/1875 [==============================] - 1s 543us/step - loss: 0.2545 - accuracy: 0.9054
 Epoch 9/10
-1875/1875 [==============================] - 1s 490us/step - loss: 0.2481 - accuracy: 0.9078
+1875/1875 [==============================] - 1s 487us/step - loss: 0.2463 - accuracy: 0.9076
 Epoch 10/10
-1875/1875 [==============================] - 1s 491us/step - loss: 0.2388 - accuracy: 0.9107</code></pre>
+1875/1875 [==============================] - 1s 477us/step - loss: 0.2387 - accuracy: 0.9104</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>&lt;keras.src.callbacks.History at 0x15208f6d0&gt;</code></pre>
+<pre><code>&lt;keras.src.callbacks.History at 0x155576fe0&gt;</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="10">
+</section>
+<section id="testing-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-model">Testing the model</h2>
+<div id="cell-15" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model.evaluate(test_data, test_label)</span>
@@ -365,15 +377,6 @@ Epoch 10/10
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>313/313 [==============================] - 0s 338us/step - loss: 0.3288 - accuracy: 0.8868</code></pre>
-</div>
-</div>
-<div id="cell-13" class="cell" data-execution_count="16">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-error">
-<pre><code>AttributeError: module 'pydot' has no attribute 'InvocationException'</code></pre>
 </div>
 </div>
 

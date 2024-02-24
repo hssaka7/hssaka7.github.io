@@ -67,21 +67,42 @@
     "href": "core/blogs/image_classification/image_classification.html",
     "title": "Image classification",
     "section": "",
-    "text": "Code\nimport tensorflow as tf\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nprint(tf.__version__)\n\nfashion_data = tf.keras.datasets.fashion_mnist\n(train_data, train_label) , (test_data, test_label) = fashion_data.load_data()\n\n\n2.15.0\n\n\n\n\nCode\ntrain_data.shape\n\n\n(60000, 28, 28)\n\n\n\n\nCode\ntest_label.shape\n\n\n(10000,)\n\n\n\n\nCode\nplt.figure()\nplt.imshow(train_data[0])\nplt.colorbar()\nplt.grid(False)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\ntrain_data = train_data  / 255.0\ntest_data = test_data / 255.0\n\n\n\n\nCode\nclass_map = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',\n               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']\n\n\n\n\nCode\nplt.figure(figsize=(10,10))\nfor i in range(25):\n    plt.subplot(5,5, i+1)\n    plt.xticks([])\n    plt.yticks([])\n    plt.xlabel(class_map[train_label[i]])\n    plt.imshow(train_data[i])\nplt.show()"
+    "text": "Code\nimport tensorflow as tf\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nprint(tf.__version__)\n\nfashion_data = tf.keras.datasets.fashion_mnist\n(train_data, train_label) , (test_data, test_label) = fashion_data.load_data()\n\n\n2.15.0"
   },
   {
-    "objectID": "core/blogs/image_classification/image_classification.html#import-the-fashin-mnist-dataset",
-    "href": "core/blogs/image_classification/image_classification.html#import-the-fashin-mnist-dataset",
+    "objectID": "core/blogs/image_classification/image_classification.html#import-the-fashion-mnist-dataset",
+    "href": "core/blogs/image_classification/image_classification.html#import-the-fashion-mnist-dataset",
     "title": "Image classification",
     "section": "",
-    "text": "Code\nimport tensorflow as tf\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nprint(tf.__version__)\n\nfashion_data = tf.keras.datasets.fashion_mnist\n(train_data, train_label) , (test_data, test_label) = fashion_data.load_data()\n\n\n2.15.0\n\n\n\n\nCode\ntrain_data.shape\n\n\n(60000, 28, 28)\n\n\n\n\nCode\ntest_label.shape\n\n\n(10000,)\n\n\n\n\nCode\nplt.figure()\nplt.imshow(train_data[0])\nplt.colorbar()\nplt.grid(False)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\ntrain_data = train_data  / 255.0\ntest_data = test_data / 255.0\n\n\n\n\nCode\nclass_map = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',\n               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']\n\n\n\n\nCode\nplt.figure(figsize=(10,10))\nfor i in range(25):\n    plt.subplot(5,5, i+1)\n    plt.xticks([])\n    plt.yticks([])\n    plt.xlabel(class_map[train_label[i]])\n    plt.imshow(train_data[i])\nplt.show()"
+    "text": "Code\nimport tensorflow as tf\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nprint(tf.__version__)\n\nfashion_data = tf.keras.datasets.fashion_mnist\n(train_data, train_label) , (test_data, test_label) = fashion_data.load_data()\n\n\n2.15.0"
+  },
+  {
+    "objectID": "core/blogs/image_classification/image_classification.html#preprocessing-the-data",
+    "href": "core/blogs/image_classification/image_classification.html#preprocessing-the-data",
+    "title": "Image classification",
+    "section": "Preprocessing the data",
+    "text": "Preprocessing the data\n\n\nCode\ntrain_data.shape\n\n\n(60000, 28, 28)\n\n\n\n\nCode\ntest_label.shape\n\n\n(10000,)\n\n\n\n\nCode\nplt.figure()\nplt.imshow(train_data[0])\nplt.colorbar()\nplt.grid(False)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\ntrain_data = train_data  / 255.0\ntest_data = test_data / 255.0\n\n\n\n\nCode\nclass_map = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',\n               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']\n\n\n\n\nCode\nplt.figure(figsize=(10,10))\nfor i in range(25):\n    plt.subplot(5,5, i+1)\n    plt.xticks([])\n    plt.yticks([])\n    plt.xlabel(class_map[train_label[i]])\n    plt.imshow(train_data[i])\nplt.show()"
   },
   {
     "objectID": "core/blogs/image_classification/image_classification.html#building-the-model-using-neural-network",
     "href": "core/blogs/image_classification/image_classification.html#building-the-model-using-neural-network",
     "title": "Image classification",
     "section": "Building the model using neural network",
-    "text": "Building the model using neural network\n\n\nCode\ninput_layer = tf.keras.layers.Flatten(input_shape=(28,28))\ndense_layer = tf.keras.layers.Dense(128, activation='relu')\noutput_layer = tf.keras.layers.Dense(10)\n\nmodel = tf.keras.Sequential([input_layer,dense_layer,output_layer])\noptimizer = 'adam'\nloss_function = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)\nmetrics = ['accuracy']\n\n\n\n\n\nCode\nmodel.compile(optimizer=optimizer, loss= loss_function, metrics=metrics )\nmodel.fit(train_data,train_label, epochs=10)\n\n\nEpoch 1/10\n1875/1875 [==============================] - 1s 542us/step - loss: 0.5019 - accuracy: 0.8255\nEpoch 2/10\n1875/1875 [==============================] - 1s 502us/step - loss: 0.3791 - accuracy: 0.8629\nEpoch 3/10\n1875/1875 [==============================] - 1s 493us/step - loss: 0.3374 - accuracy: 0.8758\nEpoch 4/10\n1875/1875 [==============================] - 1s 486us/step - loss: 0.3143 - accuracy: 0.8847\nEpoch 5/10\n1875/1875 [==============================] - 1s 486us/step - loss: 0.2981 - accuracy: 0.8890\nEpoch 6/10\n1875/1875 [==============================] - 1s 488us/step - loss: 0.2821 - accuracy: 0.8951\nEpoch 7/10\n1875/1875 [==============================] - 1s 489us/step - loss: 0.2695 - accuracy: 0.8999\nEpoch 8/10\n1875/1875 [==============================] - 1s 511us/step - loss: 0.2588 - accuracy: 0.9046\nEpoch 9/10\n1875/1875 [==============================] - 1s 490us/step - loss: 0.2481 - accuracy: 0.9078\nEpoch 10/10\n1875/1875 [==============================] - 1s 491us/step - loss: 0.2388 - accuracy: 0.9107\n\n\n&lt;keras.src.callbacks.History at 0x15208f6d0&gt;\n\n\n\n\nCode\ntest_loss, test_acc = model.evaluate(test_data, test_label)\n\n\n\n313/313 [==============================] - 0s 338us/step - loss: 0.3288 - accuracy: 0.8868\n\n\n\n\nCode\n\n\n\nAttributeError: module 'pydot' has no attribute 'InvocationException'"
+    "text": "Building the model using neural network\n\n\nCode\ninput_layer = tf.keras.layers.Flatten(input_shape=(28,28))\ndense_layer = tf.keras.layers.Dense(128, activation='relu')\noutput_layer = tf.keras.layers.Dense(10)\n\nmodel = tf.keras.Sequential([input_layer,dense_layer,output_layer])\noptimizer = 'adam'\nloss_function = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)\nmetrics = ['accuracy']"
+  },
+  {
+    "objectID": "core/blogs/image_classification/image_classification.html#training-the-model",
+    "href": "core/blogs/image_classification/image_classification.html#training-the-model",
+    "title": "Image classification",
+    "section": "Training the model",
+    "text": "Training the model\n\n\nCode\nmodel.compile(optimizer=optimizer, loss= loss_function, metrics=metrics )\nmodel.fit(train_data,train_label, epochs=10)\n\n\nEpoch 1/10\n1875/1875 [==============================] - 1s 479us/step - loss: 0.4980 - accuracy: 0.8256\nEpoch 2/10\n1875/1875 [==============================] - 1s 475us/step - loss: 0.3744 - accuracy: 0.8649\nEpoch 3/10\n1875/1875 [==============================] - 1s 479us/step - loss: 0.3395 - accuracy: 0.8752\nEpoch 4/10\n1875/1875 [==============================] - 1s 465us/step - loss: 0.3125 - accuracy: 0.8851\nEpoch 5/10\n1875/1875 [==============================] - 1s 471us/step - loss: 0.2936 - accuracy: 0.8917\nEpoch 6/10\n1875/1875 [==============================] - 1s 469us/step - loss: 0.2794 - accuracy: 0.8965\nEpoch 7/10\n1875/1875 [==============================] - 1s 471us/step - loss: 0.2663 - accuracy: 0.9002\nEpoch 8/10\n1875/1875 [==============================] - 1s 543us/step - loss: 0.2545 - accuracy: 0.9054\nEpoch 9/10\n1875/1875 [==============================] - 1s 487us/step - loss: 0.2463 - accuracy: 0.9076\nEpoch 10/10\n1875/1875 [==============================] - 1s 477us/step - loss: 0.2387 - accuracy: 0.9104\n\n\n&lt;keras.src.callbacks.History at 0x155576fe0&gt;"
+  },
+  {
+    "objectID": "core/blogs/image_classification/image_classification.html#testing-the-model",
+    "href": "core/blogs/image_classification/image_classification.html#testing-the-model",
+    "title": "Image classification",
+    "section": "Testing the model",
+    "text": "Testing the model\n\n\nCode\ntest_loss, test_acc = model.evaluate(test_data, test_label)\n\n\n\n313/313 [==============================] - 0s 338us/step - loss: 0.3288 - accuracy: 0.8868"
   },
   {
     "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html",
