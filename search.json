@@ -249,7 +249,7 @@
     "href": "core/about.html#skills",
     "title": "Aakash Basnet",
     "section": "Skills",
-    "text": "Skills\n\nProgramming language: Python, Javascript, HTML, CSS, Matlab, C, Haskell\nFrameworks: Flask, FastAPI,Django, Scrapy, beautifulsoup, selenium,Quarto, Airflow, Pyspark\nCI/CD : git, Docker\nDatabase: SQL, NoSQL, HDFS\nCloud: AWS( EC2, S3, RDS, Lamba, SQS, Sagemaker)\nTools: Nginx, gUnicorn, guvicorn, cornjob\nData analysis and Machine learning: Keras, Tensorfolw, pyTorch, scikit-learn, pandas, numpy, matplotlib"
+    "text": "Skills\nProgramming language: Python, Javascript, HTML, CSS, Matlab, C, Haskell\nFrameworks: Flask, FastAPI,Django, Scrapy, beautifulsoup, selenium,Quarto, Airflow, Pyspark\nCI/CD : git, Docker\nDatabase: SQL, NoSQL, HDFS\nCloud: AWS( EC2, S3, RDS, Lamba, SQS, Sagemaker)\nTools: Nginx, gUnicorn, guvicorn, cornjob\nData analysis and Machine learning: Keras, Tensorfolw, pyTorch, scikit-learn, pandas, numpy, matplotlib"
   },
   {
     "objectID": "core/about.html#experience",
