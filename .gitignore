@@ -2,5 +2,9 @@
 venv
 .DS_Store
 
+# quarto
 /.quarto/
 _site
+
+# python
+.ipynb_checkpoints
