@@ -1,7 +1,10 @@
 ---
 title: "Aakash Basnet"
+page-layout: full
 about:
   template: jolla
+  image-width: 10em
+  image-shape: round
   image: assets/images/profile.jpg
   links:
     - icon: github
@@ -40,13 +43,20 @@ Msc. in Information Technology | May 2023.
 
 ## Skills
 
-- Programming language: Python, Javascript, HTML, CSS, Matlab, C, Haskell
-- Frameworks: Flask, FastAPI,Django, Scrapy, beautifulsoup, selenium,Quarto, Airflow, Pyspark
-- CI/CD : git, Docker
-- Database: SQL, NoSQL, HDFS
-- Cloud: AWS( EC2, S3, RDS, Lamba, SQS, Sagemaker)
-- Tools: Nginx, gUnicorn, guvicorn, cornjob 
-- Data analysis and Machine learning: Keras, Tensorfolw, pyTorch, scikit-learn, pandas, numpy, matplotlib
+**Programming language**: Python, Javascript, HTML, CSS, Matlab, C, Haskell
+
+**Frameworks**: Flask, FastAPI,Django, Scrapy, beautifulsoup, selenium,Quarto, Airflow, Pyspark
+
+**CI/CD** : git, Docker
+
+**Database**: SQL, NoSQL, HDFS
+
+**Cloud**: AWS( EC2, S3, RDS, Lamba, SQS, Sagemaker)
+
+**Tools**: Nginx, gUnicorn, guvicorn, cornjob 
+
+**Data analysis and Machine learning**: Keras, Tensorfolw, pyTorch, scikit-learn, pandas, numpy, matplotlib
+
 
 ## Experience
 
