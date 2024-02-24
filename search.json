@@ -249,14 +249,14 @@
     "href": "core/about.html#skills",
     "title": "Aakash Basnet",
     "section": "Skills",
-    "text": "Skills\nPython, Flask, Django,"
+    "text": "Skills\n\nProgramming language: Python, Javascript, HTML, CSS, Matlab, C, Haskell\nFrameworks: Flask, FastAPI,Django, Scrapy, beautifulsoup, selenium,Quarto, Airflow, Pyspark\nCI/CD : git, Docker\nDatabase: SQL, NoSQL, HDFS\nCloud: AWS( EC2, S3, RDS, Lamba, SQS, Sagemaker)\nTools: Nginx, gUnicorn, guvicorn, cornjob\nData analysis and Machine learning: Keras, Tensorfolw, pyTorch, scikit-learn, pandas, numpy, matplotlib"
   },
   {
     "objectID": "core/about.html#experience",
     "href": "core/about.html#experience",
     "title": "Aakash Basnet",
     "section": "Experience",
-    "text": "Experience\nBank of America | Backend Engineer | April 2018 - present\nPennyMac | Backend Engineer | Spet 2012 - April 2018\nVitol | Backend Engineer | Spet 2012 - April 2018\nBank of America | Backend Engineer | Spet 2012 - April 2018\nBBER | Full Stack Engineer | Spet 2012 - April 2018"
+    "text": "Experience\nBank of America | Backend Big Data/ Machine learning Engineer | June 2022 - Jan 2024\nPennyMac | Backend/Machine Learning Engineer | August 2021 - May 2022\nVitol | Backend/ Machine Learning Engineer | April 2020 - July 2021\nBank of America | Full Stack Engineer | April 2019 - Dec 2019\nBBER | Full Stack Developer (internship) | May 2018 - Dec 2018\nCAPS| Programming/Math Tutor | Jan 2016 - June 2018"
   },
   {
     "objectID": "index.html",
