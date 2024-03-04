@@ -214,6 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#building-url" id="toc-building-url" class="nav-link active" data-scroll-target="#building-url">Building URL</a></li>
   <li><a href="#scraping-the-indeep-page-with-selenium" id="toc-scraping-the-indeep-page-with-selenium" class="nav-link" data-scroll-target="#scraping-the-indeep-page-with-selenium">Scraping the indeep page with selenium</a></li>
+  <li><a href="#rotating-proxies" id="toc-rotating-proxies" class="nav-link" data-scroll-target="#rotating-proxies">Rotating Proxies</a></li>
   </ul>
 </nav>
     </div>
@@ -757,6 +758,292 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(518, 7)</code></pre>
+</div>
+</div>
+</section>
+<section id="rotating-proxies" class="level2">
+<h2 class="anchored" data-anchor-id="rotating-proxies">Rotating Proxies</h2>
+<p>The proxies needs to be rotated to not be detected by anti scrapping tools used by the servers. For this we will scrape the list of free available ip address and test them using multithreading. This will filter the working proxies. Later on, we will use working proxies to make the request</p>
+<div id="cell-9" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_proxies():</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Extracting proxies..."</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    proxy_url  <span class="op">=</span> <span class="st">"https://www.us-proxy.org/"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(proxy_url)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    dfs  <span class="op">=</span> pd.read_html(r.text)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> dfs[<span class="dv">0</span>]</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df.shape)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>proxies_df <span class="op">=</span> extract_proxies()</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>proxies_df.head(<span class="dv">20</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/22/2rvpv_m90c30mhtk77k1jd440000gn/T/ipykernel_39218/3797928275.py:1: DeprecationWarning: 
+Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
+(to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
+but was not found to be installed on your system.
+If this would cause problems for you,
+please provide us feedback at https://github.com/pandas-dev/pandas/issues/54466
+        
+  import pandas as pd
+/var/folders/22/2rvpv_m90c30mhtk77k1jd440000gn/T/ipykernel_39218/3797928275.py:9: FutureWarning: Passing literal html to 'read_html' is deprecated and will be removed in a future version. To read from a literal string, wrap it in a 'StringIO' object.
+  dfs  = pd.read_html(r.text)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Extracting proxies...
+(200, 8)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">IP Address</th>
+<th data-quarto-table-cell-role="th">Port</th>
+<th data-quarto-table-cell-role="th">Code</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Anonymity</th>
+<th data-quarto-table-cell-role="th">Google</th>
+<th data-quarto-table-cell-role="th">Https</th>
+<th data-quarto-table-cell-role="th">Last Checked</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>104.225.220.233</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>elite proxy</td>
+<td>yes</td>
+<td>no</td>
+<td>3 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>23.254.231.55</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>elite proxy</td>
+<td>yes</td>
+<td>no</td>
+<td>3 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>50.217.226.42</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>50.223.239.185</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>50.174.145.15</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>50.174.214.220</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>50.217.226.46</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>50.200.12.83</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>50.168.72.118</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>50.207.199.85</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>50.174.214.219</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>68.185.57.66</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>50.221.74.130</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>50.174.145.8</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>50.173.140.151</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>50.168.72.115</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>50.170.90.27</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>50.168.163.176</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>50.223.246.226</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>50.207.199.84</td>
+<td>80</td>
+<td>US</td>
+<td>United States</td>
+<td>anonymous</td>
+<td>no</td>
+<td>no</td>
+<td>4 secs ago</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
 </div>
 </div>
 

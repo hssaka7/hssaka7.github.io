@@ -2,9 +2,9 @@
   {
     "listing": "/core/blog.html",
     "items": [
+      "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
       "/core/blogs/image_classification/image_classification.html",
-      "/core/blogs/indeed/indeed-job-scraper.html",
-      "/core/blogs/rotating_proxies/rotating_proxies_example.html"
+      "/core/blogs/indeed/indeed-job-scraper.html"
     ]
   },
   {
