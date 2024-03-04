@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="import-the-fashion-mnist-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</h2>
-<div id="cell-2" class="cell" data-execution_count="10">
+<div id="cell-2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
@@ -245,21 +245,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="preprocessing-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="preprocessing-the-data">Preprocessing the data</h2>
-<div id="cell-4" class="cell" data-execution_count="11">
+<div id="cell-4" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>train_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>(60000, 28, 28)</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="12">
+<div id="cell-5" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_label.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(10000,)</code></pre>
 </div>
 </div>
@@ -317,66 +317,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="building-the-model-using-neural-network" class="level2">
 <h2 class="anchored" data-anchor-id="building-the-model-using-neural-network">Building the model using neural network</h2>
-<div id="cell-11" class="cell" data-execution_count="8">
+<p>Sequential Model is the simplest form of Model that keras library provides. It is composed of a single stack of layer connected sequentially. Also, known as sequential API. The first layer in the model is is Flatten model ,which simply flattens the 2D image array to 1D. Then, the Dense layer with 300 neurons which uses Relu as an activation function is stacked. Then, there is second Dense layer with 100 neurons , with same Relu as activation function. The final layer in the model stack is output layuer, which is also a Dense layer with 10 neurons (one per class) and it uses softmax function for multi-class classification.</p>
+<div id="cell-12" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>input_layer <span class="op">=</span> tf.keras.layers.Flatten(input_shape<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dense_layer <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">10</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([input_layer,dense_layer,output_layer])</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> <span class="st">'adam'</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>loss_function <span class="op">=</span> tf.keras.losses.SparseCategoricalCrossentropy(from_logits<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'accuracy'</span>]</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dense_layer1 <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">300</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dense_layer2 <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">100</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">10</span>, activation <span class="op">=</span> <span class="st">'softmax'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([input_layer,dense_layer1, dense_layer2 ,output_layer])</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> <span class="st">'adam'</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>loss_function <span class="op">=</span> tf.keras.losses.SparseCategoricalCrossentropy()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'accuracy'</span>]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential_4"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ flatten_4 (Flatten)         (None, 784)               0         
+                                                                 
+ dense_11 (Dense)            (None, 300)               235500    
+                                                                 
+ dense_12 (Dense)            (None, 100)               30100     
+                                                                 
+ dense_13 (Dense)            (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 266610 (1.02 MB)
+Trainable params: 266610 (1.02 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
 </div>
 </section>
 <section id="training-the-model" class="level2">
 <h2 class="anchored" data-anchor-id="training-the-model">Training the model</h2>
-<div id="cell-13" class="cell" data-execution_count="9">
+<div id="cell-14" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>optimizer, loss<span class="op">=</span> loss_function, metrics<span class="op">=</span>metrics )</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>model.fit(train_data,train_label, epochs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>optimizer, loss<span class="op">=</span> loss_function, metrics<span class="op">=</span>metrics )</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>model.fit(train_data,train_label, epochs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1/10
-1875/1875 [==============================] - 1s 479us/step - loss: 0.4980 - accuracy: 0.8256
+1875/1875 [==============================] - 2s 766us/step - loss: 0.4738 - accuracy: 0.8293
 Epoch 2/10
-1875/1875 [==============================] - 1s 475us/step - loss: 0.3744 - accuracy: 0.8649
+1875/1875 [==============================] - 1s 788us/step - loss: 0.3574 - accuracy: 0.8681
 Epoch 3/10
-1875/1875 [==============================] - 1s 479us/step - loss: 0.3395 - accuracy: 0.8752
+1875/1875 [==============================] - 1s 717us/step - loss: 0.3216 - accuracy: 0.8809
 Epoch 4/10
-1875/1875 [==============================] - 1s 465us/step - loss: 0.3125 - accuracy: 0.8851
+1875/1875 [==============================] - 1s 736us/step - loss: 0.2986 - accuracy: 0.8887
 Epoch 5/10
-1875/1875 [==============================] - 1s 471us/step - loss: 0.2936 - accuracy: 0.8917
+1875/1875 [==============================] - 1s 730us/step - loss: 0.2797 - accuracy: 0.8951
 Epoch 6/10
-1875/1875 [==============================] - 1s 469us/step - loss: 0.2794 - accuracy: 0.8965
+1875/1875 [==============================] - 1s 740us/step - loss: 0.2676 - accuracy: 0.8993
 Epoch 7/10
-1875/1875 [==============================] - 1s 471us/step - loss: 0.2663 - accuracy: 0.9002
+1875/1875 [==============================] - 1s 716us/step - loss: 0.2550 - accuracy: 0.9047
 Epoch 8/10
-1875/1875 [==============================] - 1s 543us/step - loss: 0.2545 - accuracy: 0.9054
+1875/1875 [==============================] - 1s 726us/step - loss: 0.2463 - accuracy: 0.9075
 Epoch 9/10
-1875/1875 [==============================] - 1s 487us/step - loss: 0.2463 - accuracy: 0.9076
+1875/1875 [==============================] - 1s 784us/step - loss: 0.2326 - accuracy: 0.9118
 Epoch 10/10
-1875/1875 [==============================] - 1s 477us/step - loss: 0.2387 - accuracy: 0.9104</code></pre>
+1875/1875 [==============================] - 1s 762us/step - loss: 0.2234 - accuracy: 0.9151</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>&lt;keras.src.callbacks.History at 0x155576fe0&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>&lt;keras.src.callbacks.History at 0x175d86f20&gt;</code></pre>
 </div>
 </div>
 </section>
 <section id="testing-the-model" class="level2">
 <h2 class="anchored" data-anchor-id="testing-the-model">Testing the model</h2>
-<div id="cell-15" class="cell" data-execution_count="10">
+<div id="cell-16" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model.evaluate(test_data, test_label)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model.evaluate(test_data, test_label)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>313/313 [==============================] - 0s 338us/step - loss: 0.3288 - accuracy: 0.8868</code></pre>
+<pre><code>313/313 [==============================] - 0s 422us/step - loss: 0.3523 - accuracy: 0.8825</code></pre>
 </div>
 </div>
 
