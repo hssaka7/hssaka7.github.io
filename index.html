@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -110,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -217,9 +217,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div><div class="category" data-category="AI">AI <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Cloud">Cloud <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Computer Science">Computer Science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Data engineering">Data engineering <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Software Engineering">Software Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(6)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(6)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(6)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 
@@ -243,7 +244,7 @@ Learn More
 <div class="card-grid">
 <div id="listing-services-listing" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="1" data-listing-word-count-sort="182">
+<div class="g-col-1" data-index="0" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="1" data-listing-word-count-sort="182">
 <a href="./core/solutions/1_Artificial Intelligence/artificial_intelligence.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -263,7 +264,7 @@ Enhance your data capabilities with our specialized web scraping services, tailo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="2" data-listing-word-count-sort="260">
+<div class="g-col-1" data-index="1" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="2" data-listing-word-count-sort="260">
 <a href="./core/solutions/6_Consulting/consulting.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -283,7 +284,7 @@ Enhance your data capabilities with our specialized web scraping services, tailo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="2" data-listing-word-count-sort="220">
+<div class="g-col-1" data-index="2" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="2" data-listing-word-count-sort="220">
 <a href="./core/solutions/2_Data Engineering/data-engineering.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -303,7 +304,7 @@ Boost your data capabilities with our streamlined data engineering services, fea
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
+<div class="g-col-1" data-index="3" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
 <a href="./core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -323,7 +324,7 @@ Enhance your data capabilities with our specialized web scraping services, tailo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
+<div class="g-col-1" data-index="4" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
 <a href="./core/solutions/4_Web Application/webapplication.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -343,7 +344,7 @@ Enhance your data capabilities with our specialized web scraping services, tailo
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
+<div class="g-col-1" data-index="5" data-categories="news,code,analysis" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
 <a href="./core/solutions/3_Webscraping/webscraping.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -378,7 +379,7 @@ No matching items
 <div class="testimonials-grid">
 <div id="listing-testimonial-listing" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Computer Science,python,Software Engineering" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="g-col-1" data-index="0" data-categories="Computer Science,python,Software Engineering" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <a href="./core/testimonials/3_Himanshu_Chaudhary/Himanshu_Chaudhary.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -398,7 +399,7 @@ Full Stack Engineer at Wealthfront
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="AI,Cloud,Data engineering" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="g-col-1" data-index="1" data-categories="AI,Cloud,Data engineering" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <a href="./core/testimonials/2_Sarun_Luitel/sarun_luitel.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -418,7 +419,7 @@ Data Engineer at UNM BBER
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="AI,Python,Data engineering" data-listing-file-modified-sort="1709534622020" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="g-col-1" data-index="2" data-categories="AI,Python,Data engineering" data-listing-file-modified-sort="1709534787669" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <a href="./core/testimonials/1_Tyler_Ryan/tyler_ryan.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
