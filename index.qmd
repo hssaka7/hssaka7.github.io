@@ -12,6 +12,7 @@ listing:
       fields: [image,title, subtitle, description ]
       image-height: 200px 
       max-description-length: 400
+      categories: true
       grid-columns: 3
     - id: testimonial-listing
       contents: core/testimonials
@@ -21,6 +22,7 @@ listing:
       image-height: 50px 
       max-description-length: 400
       grid-columns: 3
+      categories: true
 
     
 ---
