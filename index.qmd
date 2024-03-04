@@ -64,3 +64,4 @@ These are the testimonials from the awesome peoples that i have worked in the pa
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/basnetaakash17/30min', text: 'Schedule time with Aakash', color: '#0069ff', textColor: '#ffffff', branding: false }); }</script>
 <!-- Calendly badge widget end -->
+
