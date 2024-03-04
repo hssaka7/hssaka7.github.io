@@ -2,7 +2,7 @@
 title: "Himanshu Chaudhary"
 subtitle: "Full Stack Engineer at Wealthfront"
 description: "\"Aakash's software expertise is unmatched. His guidance transformed our development process and boosted efficiency. Highly recommended!\""
-author: "Aakash Basnet"
+author: ""
 image: /core/assets/images/solutions/dataengineering.jpg
 toc: false
 categories:
