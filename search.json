@@ -53,7 +53,14 @@
     "href": "core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
     "title": "Linear Regression using DNN",
     "section": "",
-    "text": "Back to top"
+    "text": "Code\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html#linear-regression-of-california-housing-dataset-using-deep-neural-networks",
+    "href": "core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html#linear-regression-of-california-housing-dataset-using-deep-neural-networks",
+    "title": "Linear Regression using DNN",
+    "section": "",
+    "text": "Code\n\nimport pandas as pd"
   },
   {
     "objectID": "core/blogs/image_classification/image_classification.html",
@@ -102,84 +109,84 @@
     "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html",
     "title": "Artificial Intelligence",
     "section": "",
-    "text": "Explore our comprehensive suite of services, offering web scraping, data mining, and data extraction solutions tailored for lead generation, business process automation, research, and marketing initiatives.\n\n\nOur web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML.\n\n\n\n\nExtract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms.\n\n\n\n\nUtilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome.\n\n\n\n\nSystem to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website.\n\n\n\n\nDo you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Uncover the future of business innovation through our cutting-edge Artificial Intelligence services, meticulously designed to transform operations and inspire insightful advancements.\n\n\nExperience the pinnacle of AI solutions tailored precisely to your unique business demands, leveraging a suite of sophisticated tools and technologies.\n\n\n\nEmbark on a journey of comprehensive AI capabilities, including: - Crafting advanced machine learning models. - Elevating communication with natural language processing. - Mastering intricate data analysis through deep learning applications. - Optimizing processes with streamlined, data-driven automation.\n\n\n\nHarness the power of industry-standard tools and technologies within our AI solutions: - TensorFlow and PyTorch for robust machine learning. - NLP prowess with NLTK and spaCy. - Cutting-edge frameworks for deep learning. - Seamless integration through automation platforms.\n\n\n\nWitness the tangible impact of our recent AI endeavors: - Precision in predictive analytics with sophisticated machine learning models. - Elevated communication and understanding through NLP solutions. - Advanced image and pattern recognition with deep learning applications.\n\n\n\nWhether you have specific AI requirements or aspire to innovate, let’s connect and explore how our end-to-end AI expertise can elevate and transform your business operations."
   },
   {
-    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#custom-web-scrapers",
-    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#custom-web-scrapers",
+    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#tailored-ai-excellence",
+    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#tailored-ai-excellence",
     "title": "Artificial Intelligence",
     "section": "",
-    "text": "Our web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML."
+    "text": "Experience the pinnacle of AI solutions tailored precisely to your unique business demands, leveraging a suite of sophisticated tools and technologies."
   },
   {
-    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#web-scraping-features",
-    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#web-scraping-features",
+    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#end-to-end-ai-mastery",
+    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#end-to-end-ai-mastery",
     "title": "Artificial Intelligence",
     "section": "",
-    "text": "Extract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms."
+    "text": "Embark on a journey of comprehensive AI capabilities, including: - Crafting advanced machine learning models. - Elevating communication with natural language processing. - Mastering intricate data analysis through deep learning applications. - Optimizing processes with streamlined, data-driven automation."
   },
   {
-    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#scraping-tools",
-    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#scraping-tools",
+    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#tools-and-technologies",
+    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#tools-and-technologies",
     "title": "Artificial Intelligence",
     "section": "",
-    "text": "Utilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome."
+    "text": "Harness the power of industry-standard tools and technologies within our AI solutions: - TensorFlow and PyTorch for robust machine learning. - NLP prowess with NLTK and spaCy. - Cutting-edge frameworks for deep learning. - Seamless integration through automation platforms."
   },
   {
-    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#recent-projects",
-    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#recent-projects",
+    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#recent-ai-triumphs",
+    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#recent-ai-triumphs",
     "title": "Artificial Intelligence",
     "section": "",
-    "text": "System to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website."
+    "text": "Witness the tangible impact of our recent AI endeavors: - Precision in predictive analytics with sophisticated machine learning models. - Elevated communication and understanding through NLP solutions. - Advanced image and pattern recognition with deep learning applications."
   },
   {
-    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#get-in-touch",
-    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#get-in-touch",
+    "objectID": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#propel-your-operations-forward",
+    "href": "core/solutions/1_Artificial Intelligence/artificial_intelligence.html#propel-your-operations-forward",
     "title": "Artificial Intelligence",
     "section": "",
-    "text": "Do you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Whether you have specific AI requirements or aspire to innovate, let’s connect and explore how our end-to-end AI expertise can elevate and transform your business operations."
   },
   {
     "objectID": "core/solutions/4_Web Application/webapplication.html",
     "href": "core/solutions/4_Web Application/webapplication.html",
     "title": "Web Application",
     "section": "",
-    "text": "Explore our comprehensive suite of services, offering web scraping, data mining, and data extraction solutions tailored for lead generation, business process automation, research, and marketing initiatives.\n\n\nOur web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML.\n\n\n\n\nExtract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms.\n\n\n\n\nUtilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome.\n\n\n\n\nSystem to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website.\n\n\n\n\nDo you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Step into the future of online interaction with our Web Application services. We create user-friendly websites to make your business stand out.\n\n\nGet a website that suits your business perfectly. We use modern technology to build websites that work just right for you.\n\n\n\nWe cover everything your website needs: - Easy-to-use design. - Features that make your website work well. - Designs that look good on phones, tablets, and computers. - Behind-the-scenes technology to manage your data smoothly.\n\n\n\nWe use top-notch tools to make your website awesome: - Modern design tools like React, Angular, or Vue.js. - Strong backend tools like Node.js, Django, or Flask. - Different types of databases to store information. - Cloud services to make sure your website can handle lots of visitors.\n\n\n\nSee how our recent websites have made a difference: - Easy-to-use interfaces that people love. - Features that make websites work better. - Connecting everything behind the scenes to keep information organized.\n\n\n\nWhether you have a specific website idea or want to improve your online presence, let’s talk. We can make your online experience better!"
   },
   {
-    "objectID": "core/solutions/4_Web Application/webapplication.html#custom-web-scrapers",
-    "href": "core/solutions/4_Web Application/webapplication.html#custom-web-scrapers",
+    "objectID": "core/solutions/4_Web Application/webapplication.html#personalized-web-solutions",
+    "href": "core/solutions/4_Web Application/webapplication.html#personalized-web-solutions",
     "title": "Web Application",
     "section": "",
-    "text": "Our web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML."
+    "text": "Get a website that suits your business perfectly. We use modern technology to build websites that work just right for you."
   },
   {
-    "objectID": "core/solutions/4_Web Application/webapplication.html#web-scraping-features",
-    "href": "core/solutions/4_Web Application/webapplication.html#web-scraping-features",
+    "objectID": "core/solutions/4_Web Application/webapplication.html#all-inclusive-website-development",
+    "href": "core/solutions/4_Web Application/webapplication.html#all-inclusive-website-development",
     "title": "Web Application",
     "section": "",
-    "text": "Extract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms."
+    "text": "We cover everything your website needs: - Easy-to-use design. - Features that make your website work well. - Designs that look good on phones, tablets, and computers. - Behind-the-scenes technology to manage your data smoothly."
   },
   {
-    "objectID": "core/solutions/4_Web Application/webapplication.html#scraping-tools",
-    "href": "core/solutions/4_Web Application/webapplication.html#scraping-tools",
+    "objectID": "core/solutions/4_Web Application/webapplication.html#our-tools",
+    "href": "core/solutions/4_Web Application/webapplication.html#our-tools",
     "title": "Web Application",
     "section": "",
-    "text": "Utilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome."
+    "text": "We use top-notch tools to make your website awesome: - Modern design tools like React, Angular, or Vue.js. - Strong backend tools like Node.js, Django, or Flask. - Different types of databases to store information. - Cloud services to make sure your website can handle lots of visitors."
   },
   {
-    "objectID": "core/solutions/4_Web Application/webapplication.html#recent-projects",
-    "href": "core/solutions/4_Web Application/webapplication.html#recent-projects",
+    "objectID": "core/solutions/4_Web Application/webapplication.html#recent-website-successes",
+    "href": "core/solutions/4_Web Application/webapplication.html#recent-website-successes",
     "title": "Web Application",
     "section": "",
-    "text": "System to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website."
+    "text": "See how our recent websites have made a difference: - Easy-to-use interfaces that people love. - Features that make websites work better. - Connecting everything behind the scenes to keep information organized."
   },
   {
-    "objectID": "core/solutions/4_Web Application/webapplication.html#get-in-touch",
-    "href": "core/solutions/4_Web Application/webapplication.html#get-in-touch",
+    "objectID": "core/solutions/4_Web Application/webapplication.html#boost-your-online-presence",
+    "href": "core/solutions/4_Web Application/webapplication.html#boost-your-online-presence",
     "title": "Web Application",
     "section": "",
-    "text": "Do you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Whether you have a specific website idea or want to improve your online presence, let’s talk. We can make your online experience better!"
   },
   {
     "objectID": "core/solutions/3_Webscraping/webscraping.html",
@@ -312,84 +319,112 @@
     "href": "core/solutions/6_Consulting/consulting.html",
     "title": "Consulting",
     "section": "",
-    "text": "Explore our comprehensive suite of services, offering web scraping, data mining, and data extraction solutions tailored for lead generation, business process automation, research, and marketing initiatives.\n\n\nOur web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML.\n\n\n\n\nExtract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms.\n\n\n\n\nUtilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome.\n\n\n\n\nSystem to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website.\n\n\n\n\nDo you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Enhance your business with tailored consulting services covering software engineering, data engineering, data pipeline design, AI solutions, web scraping, and lead generation. Our expertise is here to guide you towards effective solutions.\n\n\nReceive personalized advice and strategies to optimize your software development processes, ensuring efficient and robust solutions.\n\n\n\nUnlock the potential of your data infrastructure with consulting in data engineering, including ETL pipelines, database design, and data architecture.\n\n\n\nGet insights into designing effective data pipelines that streamline the flow of information, ensuring seamless data processing.\n\n\n\nExplore the possibilities of AI for your business with expert consultation, covering machine learning models, natural language processing, and AI integration.\n\n\n\nGain an edge in data extraction and automation with consulting on web scraping techniques, tools, and best practices.\n\n\n\nTransform your business with lead generation strategies, leveraging data-driven approaches for targeted and effective outreach.\n\n\n\nWe provide: - Personalized consultations tailored to your business needs. - Practical strategies to implement efficient solutions. - Expert guidance in navigating complex technological challenges.\n\n\n\nDiscover how our consulting services have made a difference: - Optimizing software development processes. - Enhancing data infrastructure for improved insights. - Designing effective data pipelines for streamlined operations. - Implementing successful AI solutions for various industries. - Crafting web scraping strategies for data-driven decision-making. - Boosting lead generation efforts with targeted approaches.\n\n\n\nWhether you’re seeking advice on software engineering, data solutions, or strategic insights for AI, web scraping, and lead generation, let’s connect. Our consulting services are here to guide you toward effective and impactful solutions."
   },
   {
-    "objectID": "core/solutions/6_Consulting/consulting.html#custom-web-scrapers",
-    "href": "core/solutions/6_Consulting/consulting.html#custom-web-scrapers",
+    "objectID": "core/solutions/6_Consulting/consulting.html#software-engineering-consultation",
+    "href": "core/solutions/6_Consulting/consulting.html#software-engineering-consultation",
     "title": "Consulting",
     "section": "",
-    "text": "Our web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML."
+    "text": "Receive personalized advice and strategies to optimize your software development processes, ensuring efficient and robust solutions."
   },
   {
-    "objectID": "core/solutions/6_Consulting/consulting.html#web-scraping-features",
-    "href": "core/solutions/6_Consulting/consulting.html#web-scraping-features",
+    "objectID": "core/solutions/6_Consulting/consulting.html#data-engineering-expertise",
+    "href": "core/solutions/6_Consulting/consulting.html#data-engineering-expertise",
     "title": "Consulting",
     "section": "",
-    "text": "Extract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms."
+    "text": "Unlock the potential of your data infrastructure with consulting in data engineering, including ETL pipelines, database design, and data architecture."
   },
   {
-    "objectID": "core/solutions/6_Consulting/consulting.html#scraping-tools",
-    "href": "core/solutions/6_Consulting/consulting.html#scraping-tools",
+    "objectID": "core/solutions/6_Consulting/consulting.html#data-pipeline-design",
+    "href": "core/solutions/6_Consulting/consulting.html#data-pipeline-design",
     "title": "Consulting",
     "section": "",
-    "text": "Utilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome."
+    "text": "Get insights into designing effective data pipelines that streamline the flow of information, ensuring seamless data processing."
   },
   {
-    "objectID": "core/solutions/6_Consulting/consulting.html#recent-projects",
-    "href": "core/solutions/6_Consulting/consulting.html#recent-projects",
+    "objectID": "core/solutions/6_Consulting/consulting.html#ai-solutions-consulting",
+    "href": "core/solutions/6_Consulting/consulting.html#ai-solutions-consulting",
     "title": "Consulting",
     "section": "",
-    "text": "System to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website."
+    "text": "Explore the possibilities of AI for your business with expert consultation, covering machine learning models, natural language processing, and AI integration."
   },
   {
-    "objectID": "core/solutions/6_Consulting/consulting.html#get-in-touch",
-    "href": "core/solutions/6_Consulting/consulting.html#get-in-touch",
+    "objectID": "core/solutions/6_Consulting/consulting.html#web-scraping-strategies",
+    "href": "core/solutions/6_Consulting/consulting.html#web-scraping-strategies",
     "title": "Consulting",
     "section": "",
-    "text": "Do you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Gain an edge in data extraction and automation with consulting on web scraping techniques, tools, and best practices."
+  },
+  {
+    "objectID": "core/solutions/6_Consulting/consulting.html#lead-generation-insights",
+    "href": "core/solutions/6_Consulting/consulting.html#lead-generation-insights",
+    "title": "Consulting",
+    "section": "",
+    "text": "Transform your business with lead generation strategies, leveraging data-driven approaches for targeted and effective outreach."
+  },
+  {
+    "objectID": "core/solutions/6_Consulting/consulting.html#our-approach",
+    "href": "core/solutions/6_Consulting/consulting.html#our-approach",
+    "title": "Consulting",
+    "section": "",
+    "text": "We provide: - Personalized consultations tailored to your business needs. - Practical strategies to implement efficient solutions. - Expert guidance in navigating complex technological challenges."
+  },
+  {
+    "objectID": "core/solutions/6_Consulting/consulting.html#recent-success-stories",
+    "href": "core/solutions/6_Consulting/consulting.html#recent-success-stories",
+    "title": "Consulting",
+    "section": "",
+    "text": "Discover how our consulting services have made a difference: - Optimizing software development processes. - Enhancing data infrastructure for improved insights. - Designing effective data pipelines for streamlined operations. - Implementing successful AI solutions for various industries. - Crafting web scraping strategies for data-driven decision-making. - Boosting lead generation efforts with targeted approaches."
+  },
+  {
+    "objectID": "core/solutions/6_Consulting/consulting.html#elevate-your-business-strategies",
+    "href": "core/solutions/6_Consulting/consulting.html#elevate-your-business-strategies",
+    "title": "Consulting",
+    "section": "",
+    "text": "Whether you’re seeking advice on software engineering, data solutions, or strategic insights for AI, web scraping, and lead generation, let’s connect. Our consulting services are here to guide you toward effective and impactful solutions."
   },
   {
     "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html",
     "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html",
     "title": "Tutoring",
     "section": "",
-    "text": "Explore our comprehensive suite of services, offering web scraping, data mining, and data extraction solutions tailored for lead generation, business process automation, research, and marketing initiatives.\n\n\nOur web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML.\n\n\n\n\nExtract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms.\n\n\n\n\nUtilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome.\n\n\n\n\nSystem to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website.\n\n\n\n\nDo you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Enhance your proficiency in Python, programming, software engineering, and AI through our tutoring and mentoring service. We offer tailored guidance to individuals and foster collaborative learning in group sessions, ensuring a well-rounded educational experience.\n\n\nGet a tutoring experience that’s just right for you. We provide one-on-one sessions for personalized attention, focusing on Python, programming, software engineering, and AI to meet your specific learning goals.\n\n\n\nJoin our group sessions for a collaborative learning environment. Engage with peers as we explore a range of topics together, covering Python basics, programming languages like Java or JavaScript, software engineering principles, and the fundamentals of Artificial Intelligence.\n\n\n\nExplore a variety of topics, including: - Python basics and advanced concepts. - Programming languages such as Java, C++, or JavaScript. - Software engineering principles and best practices. - Introduction to Artificial Intelligence and machine learning.\n\n\n\nWe use a friendly and approachable style to teach: - Step-by-step learning for ease of understanding. - Practical examples to apply what you learn. - Guidance in building real-world projects.\n\n\n\nDiscover how our tutor"
   },
   {
-    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#custom-web-scrapers",
-    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#custom-web-scrapers",
+    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#personalized-learning-experience",
+    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#personalized-learning-experience",
     "title": "Tutoring",
     "section": "",
-    "text": "Our web scrapers, written in Python (utilizing BeautifulSoup, Requests, Selenium), ensure precise data extraction, filtration, and packaging in versatile formats, including CSV, JSON, and XML."
+    "text": "Get a tutoring experience that’s just right for you. We provide one-on-one sessions for personalized attention, focusing on Python, programming, software engineering, and AI to meet your specific learning goals."
   },
   {
-    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#web-scraping-features",
-    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#web-scraping-features",
+    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#group-learning-atmosphere",
+    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#group-learning-atmosphere",
     "title": "Tutoring",
     "section": "",
-    "text": "Extract data tables, text, images, and links, among other elements.\nFilter and compile data into various formats: JSON, XML, CSV, and SQL.\nSet up alerts for new content discovery.\nCapture screenshots or download full HTML of websites.\nConduct “real” interactions with websites, including clicking buttons, accessing drop-downs, and entering text into forms."
+    "text": "Join our group sessions for a collaborative learning environment. Engage with peers as we explore a range of topics together, covering Python basics, programming languages like Java or JavaScript, software engineering principles, and the fundamentals of Artificial Intelligence."
   },
   {
-    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#scraping-tools",
-    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#scraping-tools",
+    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#what-we-cover",
+    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#what-we-cover",
     "title": "Tutoring",
     "section": "",
-    "text": "Utilizing Python BeautifulSoup, Requests, Selenium, and Headless Chrome."
+    "text": "Explore a variety of topics, including: - Python basics and advanced concepts. - Programming languages such as Java, C++, or JavaScript. - Software engineering principles and best practices. - Introduction to Artificial Intelligence and machine learning."
   },
   {
-    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#recent-projects",
-    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#recent-projects",
+    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#our-approach",
+    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#our-approach",
     "title": "Tutoring",
     "section": "",
-    "text": "System to rename thousands of images files stored in Dropbox using Python and Dropbox API.\nWeb app to translate Excel documents with Python Flask and Google Cloud Translation API.\nScraped a list of 100,000 funeral homes across the U.S.\nScraped a list of 3,000 martial arts institutes in the UK, identifying site tools, mobile responsiveness, and page load speed.\nAutomated scraping of property listings and publishing to a WordPress site.\nScraped product listings from a home appliances vendor using Selenium.\nDeveloped a system to scrape job listings from Indeed and import into a WordPress-based website."
+    "text": "We use a friendly and approachable style to teach: - Step-by-step learning for ease of understanding. - Practical examples to apply what you learn. - Guidance in building real-world projects."
   },
   {
-    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#get-in-touch",
-    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#get-in-touch",
+    "objectID": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#recent-success-stories",
+    "href": "core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html#recent-success-stories",
     "title": "Tutoring",
     "section": "",
-    "text": "Do you have a web scraping, data extraction, or business process automation requirement? Let’s discuss how we can elevate your operations."
+    "text": "Discover how our tutor"
   },
   {
     "objectID": "core/contact.html",
