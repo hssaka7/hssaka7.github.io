@@ -1,7 +1,7 @@
 ---
 title: "Artificial Intelligence"
 subtitle: "\"I provide artificial intelligence service to business and client\" "
-description: "Enhance your data capabilities with our specialized web scraping services, tailored for efficient data extraction, smooth automation, and real-time content discovery to elevate your decision-making processes."
+description: "Uncover the future of business innovation through our cutting-edge Artificial Intelligence services, meticulously designed to transform operations and inspire insightful advancements."
 
 image: /core/assets/images/solutions/webscraping.jpg
 toc: false
