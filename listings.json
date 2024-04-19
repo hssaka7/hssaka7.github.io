@@ -1,13 +1,5 @@
 [
   {
-    "listing": "/core/blog.html",
-    "items": [
-      "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
-      "/core/blogs/image_classification/image_classification.html",
-      "/core/blogs/indeed/indeed-job-scraper.html"
-    ]
-  },
-  {
     "listing": "/index.html",
     "items": [
       "/core/solutions/1_Artificial Intelligence/artificial_intelligence.html",
@@ -19,6 +11,15 @@
       "/core/testimonials/3_Himanshu_Chaudhary/Himanshu_Chaudhary.html",
       "/core/testimonials/2_Sarun_Luitel/sarun_luitel.html",
       "/core/testimonials/1_Tyler_Ryan/tyler_ryan.html"
+    ]
+  },
+  {
+    "listing": "/core/blog.html",
+    "items": [
+      "/core/blogs/mlops/mlops.html",
+      "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
+      "/core/blogs/image_classification/image_classification.html",
+      "/core/blogs/indeed/indeed-job-scraper.html"
     ]
   }
 ]

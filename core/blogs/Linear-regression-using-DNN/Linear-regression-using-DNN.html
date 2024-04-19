@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -224,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="linear-regression-of-california-housing-dataset-using-deep-neural-networks" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression-of-california-housing-dataset-using-deep-neural-networks">Linear regression of California housing dataset using deep neural networks</h2>
-<div id="cell-2" class="cell" data-execution_count="1">
+<div id="cell-2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_california_housing</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> fetch_california_housing()</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>housing</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>{'data': array([[   8.3252    ,   41.        ,    6.98412698, ...,    2.55555556,
            37.88      , -122.23      ],
         [   8.3014    ,   21.        ,    6.23813708, ...,    2.10984183,
@@ -260,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  'DESCR': '.. _california_housing_dataset:\n\nCalifornia Housing dataset\n--------------------------\n\n**Data Set Characteristics:**\n\n:Number of Instances: 20640\n\n:Number of Attributes: 8 numeric, predictive attributes and the target\n\n:Attribute Information:\n    - MedInc        median income in block group\n    - HouseAge      median house age in block group\n    - AveRooms      average number of rooms per household\n    - AveBedrms     average number of bedrooms per household\n    - Population    block group population\n    - AveOccup      average number of household members\n    - Latitude      block group latitude\n    - Longitude     block group longitude\n\n:Missing Attribute Values: None\n\nThis dataset was obtained from the StatLib repository.\nhttps://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html\n\nThe target variable is the median house value for California districts,\nexpressed in hundreds of thousands of dollars ($100,000).\n\nThis dataset was derived from the 1990 U.S. census, using one row per census\nblock group. A block group is the smallest geographical unit for which the U.S.\nCensus Bureau publishes sample data (a block group typically has a population\nof 600 to 3,000 people).\n\nA household is a group of people residing within a home. Since the average\nnumber of rooms and bedrooms in this dataset are provided per household, these\ncolumns may take surprisingly large values for block groups with few households\nand many empty houses, such as vacation resorts.\n\nIt can be downloaded/loaded using the\n:func:`sklearn.datasets.fetch_california_housing` function.\n\n.. topic:: References\n\n    - Pace, R. Kelley and Ronald Barry, Sparse Spatial Autoregressions,\n      Statistics and Probability Letters, 33 (1997) 291-297\n'}</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x_train_data, x_test, y_train_data, y_test <span class="op">=</span> train_test_split(housing.data, housing.target)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x_train, x_valid, y_train, y_valid <span class="op">=</span> train_test_split(x_train_data, y_train_data)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -272,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="training-the-model-using-sequencital-api" class="level2">
 <h2 class="anchored" data-anchor-id="training-the-model-using-sequencital-api">Training the model using Sequencital API</h2>
-<div id="cell-5" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keras</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -298,7 +298,7 @@ Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> keras.utils <span class="im">import</span> plot_model</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plot_model(</span>
@@ -306,12 +306,13 @@ _________________________________________________________________</code></pre>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    show_shapes<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    show_dtype<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    show_layer_names<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    rankdir<span class="op">=</span><span class="st">"TB"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    rankdir<span class="op">=</span><span class="st">"LR"</span>,</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    expand_nested<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">96</span>,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    show_layer_activations<span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">96</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <figure class="figure">
 <p><img src="Linear-regression-using-DNN_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
@@ -319,55 +320,55 @@ _________________________________________________________________</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(x_train, y_train, epochs<span class="op">=</span><span class="dv">10</span>, validation_data <span class="op">=</span> (x_valid, y_valid)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch 1/10
-363/363 [==============================] - 0s 480us/step - loss: 0.8171 - val_loss: 0.5150
+363/363 [==============================] - 0s 534us/step - loss: 0.7398 - val_loss: 0.4427
 Epoch 2/10
-363/363 [==============================] - 0s 338us/step - loss: 0.4973 - val_loss: 0.6575
+363/363 [==============================] - 0s 496us/step - loss: 0.5281 - val_loss: 0.4122
 Epoch 3/10
-363/363 [==============================] - 0s 331us/step - loss: 0.7744 - val_loss: 0.8212
+363/363 [==============================] - 0s 346us/step - loss: 0.4744 - val_loss: 0.5118
 Epoch 4/10
-363/363 [==============================] - 0s 330us/step - loss: 0.9866 - val_loss: 0.7670
+363/363 [==============================] - 0s 337us/step - loss: 0.4596 - val_loss: 0.4985
 Epoch 5/10
-363/363 [==============================] - 0s 339us/step - loss: 0.4454 - val_loss: 0.6957
+363/363 [==============================] - 0s 345us/step - loss: 0.4481 - val_loss: 0.5587
 Epoch 6/10
-363/363 [==============================] - 0s 351us/step - loss: 0.4060 - val_loss: 0.7302
+363/363 [==============================] - 0s 370us/step - loss: 0.4368 - val_loss: 0.7226
 Epoch 7/10
-363/363 [==============================] - 0s 371us/step - loss: 0.3975 - val_loss: 0.7245
+363/363 [==============================] - 0s 364us/step - loss: 0.4358 - val_loss: 0.7338
 Epoch 8/10
-363/363 [==============================] - 0s 371us/step - loss: 0.3849 - val_loss: 0.6687
+363/363 [==============================] - 0s 356us/step - loss: 0.4266 - val_loss: 0.9216
 Epoch 9/10
-363/363 [==============================] - 0s 368us/step - loss: 0.3924 - val_loss: 0.7610
+363/363 [==============================] - 0s 365us/step - loss: 0.4444 - val_loss: 0.8432
 Epoch 10/10
-363/363 [==============================] - 0s 340us/step - loss: 0.3783 - val_loss: 0.7894</code></pre>
+363/363 [==============================] - 0s 376us/step - loss: 0.4182 - val_loss: 1.0728</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="9">
+<div id="cell-8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model.evaluate(x_test,y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>162/162 [==============================] - 0s 280us/step - loss: 0.4701</code></pre>
+<pre><code>162/162 [==============================] - 0s 241us/step - loss: 0.3810</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>0.4701215326786041</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>0.3810201585292816</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="10">
+<div id="cell-9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x_1 <span class="op">=</span> x_test[:<span class="dv">3</span>]</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(x_1)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1/1 [==============================] - 0s 44ms/step
-[[2.2228634 ]
- [0.82357913]
- [2.5795836 ]]</code></pre>
+<pre><code>1/1 [==============================] - 0s 38ms/step
+[[3.08389  ]
+ [1.2611595]
+ [0.9729465]]</code></pre>
 </div>
 </div>
 </section>
 <section id="building-complex-models-ushing-functional-api-non-sequential" class="level2">
 <h2 class="anchored" data-anchor-id="building-complex-models-ushing-functional-api-non-sequential">Building complex models ushing Functional API (non sequential)</h2>
-<div id="cell-11" class="cell" data-execution_count="11">
+<div id="cell-11" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>input_ <span class="op">=</span> keras.layers.Input(shape <span class="op">=</span> x_train.shape[<span class="dv">1</span>:])</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>hidden_layer_1 <span class="op">=</span> keras.layers.Dense(<span class="dv">30</span>, activation <span class="op">=</span> <span class="st">'relu'</span>)(input_)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>hidden_layer_2 <span class="op">=</span> keras.layers.Dense(<span class="dv">30</span>, activation<span class="op">=</span><span class="st">'relu'</span>) (hidden_layer_1)</span>
@@ -407,8 +408,9 @@ ________________________________________________________________________________
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    show_layer_names<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    rankdir<span class="op">=</span><span class="st">"TB"</span>,</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    expand_nested<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">96</span>,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    show_layer_activations<span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    dpi<span class="op">=</span><span class="dv">96</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 <figure class="figure">
@@ -645,6 +647,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/hssaka7\.github\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -679,7 +699,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

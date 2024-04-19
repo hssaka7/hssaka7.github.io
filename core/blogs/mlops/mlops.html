@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aakash Basnet">
+<meta name="dcterms.date" content="2024-03-04">
+<meta name="description" content="ML ops idea and principles">
 
-<title>Aakash Basnet</title>
+<title>aakash basnet - ML OPS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,107 +71,20 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-services-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-services-listing'] = new List('listing-services-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-testimonial-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-testimonial-listing'] = new List('listing-testimonial-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="core/assets/css/style.css">
-<link rel="stylesheet" href="core/assets/css/index.css">
+<link rel="stylesheet" href="../../../core/assets/css/style.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./core/assets/images/profile.jpg" alt="" class="navbar-logo">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../core/assets/images/profile.jpg" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -180,19 +94,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./core/blog.html"> 
+    <a class="nav-link" href="../../../core/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./core/about.html"> 
+    <a class="nav-link" href="../../../core/about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./core/contact.html"> 
+    <a class="nav-link" href="../../../core/contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
   <li class="nav-item compact">
@@ -214,239 +128,75 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">ML OPS</h1>
+                  <div>
+        <div class="description">
+          ML ops idea and principles
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">keras</div>
+                <div class="quarto-category">teserflow</div>
+                <div class="quarto-category">AI</div>
+                <div class="quarto-category">python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aakash Basnet </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 4, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ml-ops-ideas" id="toc-ml-ops-ideas" class="nav-link active" data-scroll-target="#ml-ops-ideas">ML Ops ideas</a>
+  <ul class="collapse">
+  <li><a href="#data-engineering" id="toc-data-engineering" class="nav-link" data-scroll-target="#data-engineering">Data Engineering</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
-<section id="freelancer-with-6-years-of-experiences" class="level1 hero-banner">
-<h1>Freelancer , with 6 years of experiences</h1>
-<section id="i-specialize-in-python-automation-data-engineering-and-developing-impactful-web-applications-and-dashboards.-lets-collaborate-to-enhance-your-operational-efficiency-and-unlock-the-potential-of-data-driven-insights." class="level3">
-<h3 class="anchored" data-anchor-id="i-specialize-in-python-automation-data-engineering-and-developing-impactful-web-applications-and-dashboards.-lets-collaborate-to-enhance-your-operational-efficiency-and-unlock-the-potential-of-data-driven-insights.">I specialize in Python automation, data engineering, and developing impactful web applications and dashboards. Let’s collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.</h3>
+
+<section id="ml-ops-ideas" class="level1">
+<h1>ML Ops ideas</h1>
+<section id="data-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="data-engineering">Data Engineering</h2>
+<p>The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets.</p>
+
+
 </section>
-</section>
-<p><a href="core/contact.html"> <button class="btn-action-primary"> Contact Me </button> </a> <a href="#services"> <button class="btn-action-primary"> Learn More</button> </a></p>
-<p><br></p>
-<section id="services" class="level1">
-<h1>Services</h1>
-<p>Embark on a transformative journey with my freelance services in IT and Finance Solutions. With over 6 years of experience, I specialize in Python automation, data engineering, and crafting impactful web applications and dashboards. As a seasoned freelancer, I bring a holistic approach to addressing complex challenges. My proficiency extends to designing robust ETL pipelines and implementing machine learning and AI tools to keep you at the forefront of technological innovation. Explore my portfolio for successful projects, and let’s collaborate to enhance your operational efficiency and unlock the potential of data-driven insights. Contact me today to discuss how we can tailor these advanced solutions to meet your unique business needs <br> <br></p>
-<div class="card-grid">
-<div id="listing-services-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="news,code,analysis" data-listing-file-modified-sort="1713501444343" data-listing-reading-time-sort="1" data-listing-word-count-sort="182">
-<a href="./core/solutions/1_Artificial Intelligence/artificial_intelligence.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/webscraping.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title" data-anchor-id="services">
-Artificial Intelligence
-</h5>
-<div class="card-subtitle listing-subtitle">
-“I provide artificial intelligence service to business and client”
-</div>
-<div class="card-text listing-description">
-Uncover the future of business innovation through our cutting-edge Artificial Intelligence services, meticulously designed to transform operations and inspire insightful advancements.
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="news,code,analysis" data-listing-file-modified-sort="1713501444347" data-listing-reading-time-sort="2" data-listing-word-count-sort="260">
-<a href="./core/solutions/6_Consulting/consulting.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/webscraping.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Consulting
-</h5>
-<div class="card-subtitle listing-subtitle">
-“I provide consulting service to business and client”
-</div>
-<div class="card-text listing-description">
-Enhance your business with tailored consulting services covering software engineering, data engineering, data pipeline design, AI solutions, web scraping, and lead generation. Our expertise is here to guide you towards effective solutions.
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="news,code,analysis" data-listing-file-modified-sort="1713501444343" data-listing-reading-time-sort="2" data-listing-word-count-sort="220">
-<a href="./core/solutions/2_Data Engineering/data-engineering.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/dataengineering.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Data Engineering
-</h5>
-<div class="card-subtitle listing-subtitle">
-“I provide data engineering solution to business and clients.”
-</div>
-<div class="card-text listing-description">
-Boost your data capabilities with our streamlined data engineering services, featuring efficient ETL pipeline development, Apache Airflow orchestration, and scalable AWS solutions for actionable insights.
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="news,code,analysis" data-listing-file-modified-sort="1713501444347" data-listing-reading-time-sort="1" data-listing-word-count-sort="174">
-<a href="./core/solutions/5_Tutoring and Mentoring/tutoring_and_mentoring.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/webscraping.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Tutoring
-</h5>
-<div class="card-subtitle listing-subtitle">
-“I provide tutoring / mentoring service to business and client”
-</div>
-<div class="card-text listing-description">
-Enhance your proficiency in Python, programming, software engineering, and AI through our tutoring and mentoring service. We offer tailored guidance to individuals and foster collaborative learning in group sessions, ensuring a well-rounded educational experience.
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="news,code,analysis" data-listing-file-modified-sort="1713501444347" data-listing-reading-time-sort="1" data-listing-word-count-sort="180">
-<a href="./core/solutions/4_Web Application/webapplication.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/webscraping.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Web Application
-</h5>
-<div class="card-subtitle listing-subtitle">
-“I provide Web application service to business and client”
-</div>
-<div class="card-text listing-description">
-Step into the future of online interaction with our Web Application services. We create user-friendly websites to make your business stand out.
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="news,code,analysis" data-listing-file-modified-sort="1713501444343" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
-<a href="./core/solutions/3_Webscraping/webscraping.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/webscraping.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Web Scraping
-</h5>
-<div class="card-subtitle listing-subtitle">
-“I provide Web scraping service to business and client”
-</div>
-<div class="card-text listing-description">
-Enhance your data capabilities with our specialized web scraping services, tailored for efficient data extraction, smooth automation, and real-time content discovery to elevate your decision-making processes.
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</div>
-<p><br></p>
-</section>
-<section id="testimonials" class="level1">
-<h1>Testimonials</h1>
-<p>These are the testimonials from the awesome peoples that i have worked in the past.</p>
-<p><br> <br></p>
-<div class="testimonials-grid">
-<div id="listing-testimonial-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Computer Science,python,Software Engineering" data-listing-file-modified-sort="1713501444347" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="./core/testimonials/3_Himanshu_Chaudhary/Himanshu_Chaudhary.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/dataengineering.jpg" class="thumbnail-image card-img" style="height: 50px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title" data-anchor-id="testimonials">
-Himanshu Chaudhary
-</h5>
-<div class="card-subtitle listing-subtitle">
-Full Stack Engineer at Wealthfront
-</div>
-<div class="card-text listing-description">
-“Aakash’s software expertise is unmatched. His guidance transformed our development process and boosted efficiency. Highly recommended!”
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="AI,Cloud,Data engineering" data-listing-file-modified-sort="1713501444347" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="./core/testimonials/2_Sarun_Luitel/sarun_luitel.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/dataengineering.jpg" class="thumbnail-image card-img" style="height: 50px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Sarun Luitel
-</h5>
-<div class="card-subtitle listing-subtitle">
-Data Engineer at UNM BBER
-</div>
-<div class="card-text listing-description">
-“Aakash’s data insights revolutionized our operations. His ETL pipeline advice was a game-changer for our data infrastructure.”
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="AI,Python,Data engineering" data-listing-file-modified-sort="1713501444347" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="./core/testimonials/1_Tyler_Ryan/tyler_ryan.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./core/assets/images/solutions/webscraping.jpg" class="thumbnail-image card-img" style="height: 50px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Tyler Ryan
-</h5>
-<div class="card-subtitle listing-subtitle">
-CMO at Randstad Technologies
-</div>
-<div class="card-text listing-description">
-“Working with Aakash on AI solutions was incredible. His strategic approach and professionalism made a real impact on our business.”
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</div>
-<!-- C.alendly badge widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async=""></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/basnetaakash17/30min', text: 'Schedule time with Aakash', color: '#0069ff', textColor: '#ffffff', branding: false }); }</script>
-<!-- Calendly badge widget end -->
-
-
-
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
