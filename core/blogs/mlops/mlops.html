@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-03-04">
 <meta name="description" content="ML ops idea and principles">
 
-<title>aakash basnet - ML OPS</title>
+<title>aakash basnet - ML OPS Ideas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">ML OPS</h1>
+      <h1 class="title">ML OPS Ideas</h1>
                   <div>
         <div class="description">
           ML ops idea and principles
@@ -175,10 +175,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ml-ops-ideas" id="toc-ml-ops-ideas" class="nav-link active" data-scroll-target="#ml-ops-ideas">ML Ops ideas</a>
+  <li><a href="#data-engineering-pipelines-data-pipelines" id="toc-data-engineering-pipelines-data-pipelines" class="nav-link active" data-scroll-target="#data-engineering-pipelines-data-pipelines">Data Engineering Pipelines / Data pipelines</a>
   <ul class="collapse">
-  <li><a href="#data-engineering" id="toc-data-engineering" class="nav-link" data-scroll-target="#data-engineering">Data Engineering</a></li>
+  <li><a href="#data-extraction" id="toc-data-extraction" class="nav-link" data-scroll-target="#data-extraction">Data Extraction</a></li>
   </ul></li>
+  <li><a href="#feature-registry" id="toc-feature-registry" class="nav-link" data-scroll-target="#feature-registry">Feature Registry:</a>
+  <ul class="collapse">
+  <li><a href="#level-1" id="toc-level-1" class="nav-link" data-scroll-target="#level-1">Level 1:</a></li>
+  <li><a href="#level-2" id="toc-level-2" class="nav-link" data-scroll-target="#level-2">Level 2:</a></li>
+  <li><a href="#level-3" id="toc-level-3" class="nav-link" data-scroll-target="#level-3">Level 3:</a></li>
+  </ul></li>
+  <li><a href="#machine-learning-ml-pipelines" id="toc-machine-learning-ml-pipelines" class="nav-link" data-scroll-target="#machine-learning-ml-pipelines">Machine Learning (ML) pipelines</a>
+  <ul class="collapse">
+  <li><a href="#feature-extraction" id="toc-feature-extraction" class="nav-link" data-scroll-target="#feature-extraction">Feature Extraction</a></li>
+  <li><a href="#feature-preprocess" id="toc-feature-preprocess" class="nav-link" data-scroll-target="#feature-preprocess">Feature Preprocess</a></li>
+  </ul></li>
+  <li><a href="#model-registry" id="toc-model-registry" class="nav-link" data-scroll-target="#model-registry">Model Registry</a></li>
+  <li><a href="#model-serving" id="toc-model-serving" class="nav-link" data-scroll-target="#model-serving">Model Serving</a>
+  <ul class="collapse">
+  <li><a href="#level1-batch-processig-jobs" id="toc-level1-batch-processig-jobs" class="nav-link" data-scroll-target="#level1-batch-processig-jobs">Level1: Batch processig jobs</a></li>
+  <li><a href="#level2-api" id="toc-level2-api" class="nav-link" data-scroll-target="#level2-api">Level2: API</a>
+  <ul class="collapse">
+  <li><a href="#options" id="toc-options" class="nav-link" data-scroll-target="#options">Options:</a></li>
+  </ul></li>
+  <li><a href="#level-3-adding-message-queueing-system-to-the-api-backed." id="toc-level-3-adding-message-queueing-system-to-the-api-backed." class="nav-link" data-scroll-target="#level-3-adding-message-queueing-system-to-the-api-backed.">Level 3: Adding message queueing system to the API backed.</a>
+  <ul class="collapse">
+  <li><a href="#options-1" id="toc-options-1" class="nav-link" data-scroll-target="#options-1">Options:</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#model-monitoring" id="toc-model-monitoring" class="nav-link" data-scroll-target="#model-monitoring">Model monitoring</a></li>
   </ul>
 </nav>
     </div>
@@ -189,14 +214,78 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="ml-ops-ideas" class="level1">
-<h1>ML Ops ideas</h1>
-<section id="data-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="data-engineering">Data Engineering</h2>
+<section id="data-engineering-pipelines-data-pipelines" class="level1">
+<h1>Data Engineering Pipelines / Data pipelines</h1>
 <p>The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets.</p>
-
-
+<section id="data-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="data-extraction">Data Extraction</h2>
+<p>Extract data from datbases, API, message queuing systems, web or network locations. ## Data Validation Validate data range, data schemas ## Data Preprocessing Clean, transform data, ## Feature Engineering Extract the feature from the datasets.</p>
+<p>It is best practice to version conteo the the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed.</p>
 </section>
+</section>
+<section id="feature-registry" class="level1">
+<h1>Feature Registry:</h1>
+<p>Features registry/store are backend where features are stored along with their timestap tracking every entries creation and uptades.</p>
+<section id="level-1" class="level2">
+<h2 class="anchored" data-anchor-id="level-1">Level 1:</h2>
+<p>A simple feature registry could be maintained using a relational database design by adding the feature to track the time.</p>
+</section>
+<section id="level-2" class="level2">
+<h2 class="anchored" data-anchor-id="level-2">Level 2:</h2>
+<p>As the data moves from stuctured to unstructured, it is good idea to save the data as objecs. Save the snapshot of feautures in backend(AWS S3, shared network locations)</p>
+</section>
+<section id="level-3" class="level2">
+<h2 class="anchored" data-anchor-id="level-3">Level 3:</h2>
+<p>Use data lake data versioning tool like Data Version Control(DVC). Is there existing DVC used in the datalake?</p>
+</section>
+</section>
+<section id="machine-learning-ml-pipelines" class="level1">
+<h1>Machine Learning (ML) pipelines</h1>
+<section id="feature-extraction" class="level2">
+<h2 class="anchored" data-anchor-id="feature-extraction">Feature Extraction</h2>
+</section>
+<section id="feature-preprocess" class="level2">
+<h2 class="anchored" data-anchor-id="feature-preprocess">Feature Preprocess</h2>
+<p>feature transformation, splitting data to training, testing and validation sets. ## Model Training ## Model Testing ## Model Evaluation</p>
+</section>
+</section>
+<section id="model-registry" class="level1">
+<h1>Model Registry</h1>
+<p>We can searilize the model files and use the same concept as feature registry to store and version control the model images and artifacts</p>
+</section>
+<section id="model-serving" class="level1">
+<h1>Model Serving</h1>
+<p>Model serving could be the multiple combination based on the nature of model serving.</p>
+<section id="level1-batch-processig-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="level1-batch-processig-jobs">Level1: Batch processig jobs</h2>
+<p>Batch processing python scripts can be scheduled to checkout the model from model registry and make predictions by feeding the data to the models. For, Tabaleu reporting , the python scripts can be scheduled to connect to Tabaleu server and write predictions. The structure of the batch scripts looks like below: - Extract the data to make predictions - Transform the data using feature engineering pipeline script - Checkout the serving model from model registery - Make predictions - Transform the prediction to make it ready for datbase. - Update the database with pediction value - Provide the feedback and store the new features to feature registry</p>
+</section>
+<section id="level2-api" class="level2">
+<h2 class="anchored" data-anchor-id="level2-api">Level2: API</h2>
+<p>The model can be packaged and served as API(Model as a Service). User can call API for and post their data for prediction. The API end point will trigger the pipeline make predictions. The batch processing job could still call the API to make predictions. API could be integrated to databases, API, microservices, tabaleu, excel. APIs can be served as server side templating(JinJa, HTML, markdowns) or whole fornt end(React, Anguler, Vue)</p>
+<section id="options" class="level3">
+<h3 class="anchored" data-anchor-id="options">Options:</h3>
+<ul>
+<li><p>FAST API: Rapid Development, Asyncronys design, auto documentation and data validation through pydantic data models, server side templating compatible.</p></li>
+<li><p>FLASK: Has more support community and is in market for longer time, server side templating compatible.</p></li>
+</ul>
+</section>
+</section>
+<section id="level-3-adding-message-queueing-system-to-the-api-backed." class="level2">
+<h2 class="anchored" data-anchor-id="level-3-adding-message-queueing-system-to-the-api-backed.">Level 3: Adding message queueing system to the API backed.</h2>
+<section id="options-1" class="level3">
+<h3 class="anchored" data-anchor-id="options-1">Options:</h3>
+<ul>
+<li><p>Kakfa:</p></li>
+<li><p>Amazon SQS:</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="model-monitoring" class="level1">
+<h1>Model monitoring</h1>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->

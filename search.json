@@ -254,16 +254,72 @@
   {
     "objectID": "core/blogs/mlops/mlops.html",
     "href": "core/blogs/mlops/mlops.html",
-    "title": "ML OPS",
+    "title": "ML OPS Ideas",
     "section": "",
-    "text": "The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets."
+    "text": "The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets.\n\n\nExtract data from datbases, API, message queuing systems, web or network locations. ## Data Validation Validate data range, data schemas ## Data Preprocessing Clean, transform data, ## Feature Engineering Extract the feature from the datasets.\nIt is best practice to version conteo the the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed."
   },
   {
-    "objectID": "core/blogs/mlops/mlops.html#data-engineering",
-    "href": "core/blogs/mlops/mlops.html#data-engineering",
-    "title": "ML OPS",
+    "objectID": "core/blogs/mlops/mlops.html#data-extraction",
+    "href": "core/blogs/mlops/mlops.html#data-extraction",
+    "title": "ML OPS Ideas",
     "section": "",
-    "text": "The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets."
+    "text": "Extract data from datbases, API, message queuing systems, web or network locations. ## Data Validation Validate data range, data schemas ## Data Preprocessing Clean, transform data, ## Feature Engineering Extract the feature from the datasets.\nIt is best practice to version conteo the the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed."
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#level-1",
+    "href": "core/blogs/mlops/mlops.html#level-1",
+    "title": "ML OPS Ideas",
+    "section": "Level 1:",
+    "text": "Level 1:\nA simple feature registry could be maintained using a relational database design by adding the feature to track the time."
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#level-2",
+    "href": "core/blogs/mlops/mlops.html#level-2",
+    "title": "ML OPS Ideas",
+    "section": "Level 2:",
+    "text": "Level 2:\nAs the data moves from stuctured to unstructured, it is good idea to save the data as objecs. Save the snapshot of feautures in backend(AWS S3, shared network locations)"
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#level-3",
+    "href": "core/blogs/mlops/mlops.html#level-3",
+    "title": "ML OPS Ideas",
+    "section": "Level 3:",
+    "text": "Level 3:\nUse data lake data versioning tool like Data Version Control(DVC). Is there existing DVC used in the datalake?"
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#feature-extraction",
+    "href": "core/blogs/mlops/mlops.html#feature-extraction",
+    "title": "ML OPS Ideas",
+    "section": "Feature Extraction",
+    "text": "Feature Extraction"
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#feature-preprocess",
+    "href": "core/blogs/mlops/mlops.html#feature-preprocess",
+    "title": "ML OPS Ideas",
+    "section": "Feature Preprocess",
+    "text": "Feature Preprocess\nfeature transformation, splitting data to training, testing and validation sets. ## Model Training ## Model Testing ## Model Evaluation"
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#level1-batch-processig-jobs",
+    "href": "core/blogs/mlops/mlops.html#level1-batch-processig-jobs",
+    "title": "ML OPS Ideas",
+    "section": "Level1: Batch processig jobs",
+    "text": "Level1: Batch processig jobs\nBatch processing python scripts can be scheduled to checkout the model from model registry and make predictions by feeding the data to the models. For, Tabaleu reporting , the python scripts can be scheduled to connect to Tabaleu server and write predictions. The structure of the batch scripts looks like below: - Extract the data to make predictions - Transform the data using feature engineering pipeline script - Checkout the serving model from model registery - Make predictions - Transform the prediction to make it ready for datbase. - Update the database with pediction value - Provide the feedback and store the new features to feature registry"
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#level2-api",
+    "href": "core/blogs/mlops/mlops.html#level2-api",
+    "title": "ML OPS Ideas",
+    "section": "Level2: API",
+    "text": "Level2: API\nThe model can be packaged and served as API(Model as a Service). User can call API for and post their data for prediction. The API end point will trigger the pipeline make predictions. The batch processing job could still call the API to make predictions. API could be integrated to databases, API, microservices, tabaleu, excel. APIs can be served as server side templating(JinJa, HTML, markdowns) or whole fornt end(React, Anguler, Vue)\n\nOptions:\n\nFAST API: Rapid Development, Asyncronys design, auto documentation and data validation through pydantic data models, server side templating compatible.\nFLASK: Has more support community and is in market for longer time, server side templating compatible."
+  },
+  {
+    "objectID": "core/blogs/mlops/mlops.html#level-3-adding-message-queueing-system-to-the-api-backed.",
+    "href": "core/blogs/mlops/mlops.html#level-3-adding-message-queueing-system-to-the-api-backed.",
+    "title": "ML OPS Ideas",
+    "section": "Level 3: Adding message queueing system to the API backed.",
+    "text": "Level 3: Adding message queueing system to the API backed.\n\nOptions:\n\nKakfa:\nAmazon SQS:"
   },
   {
     "objectID": "core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
@@ -459,7 +515,7 @@
     "href": "core/blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nML OPS\n\n\n\n\n\nML ops idea and principles\n\n\n\n\n\nMar 4, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\n\n\n\n\n\n\nLinear Regression using DNN\n\n\n\n\n\n Linear regression of California housing dataset using deep neural networks\n\n\n\n\n\nMar 4, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\n\n\n\n\n\n\nImage classification\n\n\n\n\n\n image classification of Fashion MINST dataset\n\n\n\n\n\nFeb 19, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\n\n\n\n\n\n\nWebscraping Indeed Job Portal\n\n\n\n\n\nwebscraping with python \n\n\n\n\n\nFeb 3, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nML OPS Ideas\n\n\n\n\n\nML ops idea and principles\n\n\n\n\n\nMar 4, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\n\n\n\n\n\n\nLinear Regression using DNN\n\n\n\n\n\n Linear regression of California housing dataset using deep neural networks\n\n\n\n\n\nMar 4, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\n\n\n\n\n\n\nImage classification\n\n\n\n\n\n image classification of Fashion MINST dataset\n\n\n\n\n\nFeb 19, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\n\n\n\n\n\n\nWebscraping Indeed Job Portal\n\n\n\n\n\nwebscraping with python \n\n\n\n\n\nFeb 3, 2024\n\n\nAakash Basnet\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "core/testimonials/2_Sarun_Luitel/sarun_luitel.html",
