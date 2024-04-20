@@ -256,70 +256,28 @@
     "href": "core/blogs/mlops/mlops.html",
     "title": "ML OPS Ideas",
     "section": "",
-    "text": "The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets.\n\n\nExtract data from datbases, API, message queuing systems, web or network locations. ## Data Validation Validate data range, data schemas ## Data Preprocessing Clean, transform data, ## Feature Engineering Extract the feature from the datasets.\nIt is best practice to version conteo the the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed."
-  },
-  {
-    "objectID": "core/blogs/mlops/mlops.html#data-extraction",
-    "href": "core/blogs/mlops/mlops.html#data-extraction",
-    "title": "ML OPS Ideas",
-    "section": "",
-    "text": "Extract data from datbases, API, message queuing systems, web or network locations. ## Data Validation Validate data range, data schemas ## Data Preprocessing Clean, transform data, ## Feature Engineering Extract the feature from the datasets.\nIt is best practice to version conteo the the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed."
-  },
-  {
-    "objectID": "core/blogs/mlops/mlops.html#level-1",
-    "href": "core/blogs/mlops/mlops.html#level-1",
-    "title": "ML OPS Ideas",
-    "section": "Level 1:",
-    "text": "Level 1:\nA simple feature registry could be maintained using a relational database design by adding the feature to track the time."
-  },
-  {
-    "objectID": "core/blogs/mlops/mlops.html#level-2",
-    "href": "core/blogs/mlops/mlops.html#level-2",
-    "title": "ML OPS Ideas",
-    "section": "Level 2:",
-    "text": "Level 2:\nAs the data moves from stuctured to unstructured, it is good idea to save the data as objecs. Save the snapshot of feautures in backend(AWS S3, shared network locations)"
-  },
-  {
-    "objectID": "core/blogs/mlops/mlops.html#level-3",
-    "href": "core/blogs/mlops/mlops.html#level-3",
-    "title": "ML OPS Ideas",
-    "section": "Level 3:",
-    "text": "Level 3:\nUse data lake data versioning tool like Data Version Control(DVC). Is there existing DVC used in the datalake?"
-  },
-  {
-    "objectID": "core/blogs/mlops/mlops.html#feature-extraction",
-    "href": "core/blogs/mlops/mlops.html#feature-extraction",
-    "title": "ML OPS Ideas",
-    "section": "Feature Extraction",
-    "text": "Feature Extraction"
-  },
-  {
-    "objectID": "core/blogs/mlops/mlops.html#feature-preprocess",
-    "href": "core/blogs/mlops/mlops.html#feature-preprocess",
-    "title": "ML OPS Ideas",
-    "section": "Feature Preprocess",
-    "text": "Feature Preprocess\nfeature transformation, splitting data to training, testing and validation sets. ## Model Training ## Model Testing ## Model Evaluation"
+    "text": "The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets.\n\nData Extraction: Extract data from datbases, API, message queuing systems, web or network locations.\nData Validation: Validate data range, data schemas\nData Preprocessing:Clean, transform data,\nFeature Engineering: Extract the feature from the datasets.\n\nIt is best practice to version control the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed."
   },
   {
     "objectID": "core/blogs/mlops/mlops.html#level1-batch-processig-jobs",
     "href": "core/blogs/mlops/mlops.html#level1-batch-processig-jobs",
     "title": "ML OPS Ideas",
     "section": "Level1: Batch processig jobs",
-    "text": "Level1: Batch processig jobs\nBatch processing python scripts can be scheduled to checkout the model from model registry and make predictions by feeding the data to the models. For, Tabaleu reporting , the python scripts can be scheduled to connect to Tabaleu server and write predictions. The structure of the batch scripts looks like below: - Extract the data to make predictions - Transform the data using feature engineering pipeline script - Checkout the serving model from model registery - Make predictions - Transform the prediction to make it ready for datbase. - Update the database with pediction value - Provide the feedback and store the new features to feature registry"
+    "text": "Level1: Batch processig jobs\nBatch processing python scripts can be scheduled to checkout the model from model registry and make predictions by feeding the data to the models. For, Tabaleu reporting , the python scripts can be scheduled to connect to Tabaleu server and write predictions. The structure of the batch scripts looks like below:\n\nExtract the data to make predictions\nTransform the data using feature engineering pipeline script\nCheckout the serving model from model registery\nMake predictions\nTransform the prediction to make it ready for datbase.\nUpdate the database with pediction value\nProvide the feedback and store the new features to feature registry"
   },
   {
-    "objectID": "core/blogs/mlops/mlops.html#level2-api",
-    "href": "core/blogs/mlops/mlops.html#level2-api",
+    "objectID": "core/blogs/mlops/mlops.html#level-2-api",
+    "href": "core/blogs/mlops/mlops.html#level-2-api",
     "title": "ML OPS Ideas",
-    "section": "Level2: API",
-    "text": "Level2: API\nThe model can be packaged and served as API(Model as a Service). User can call API for and post their data for prediction. The API end point will trigger the pipeline make predictions. The batch processing job could still call the API to make predictions. API could be integrated to databases, API, microservices, tabaleu, excel. APIs can be served as server side templating(JinJa, HTML, markdowns) or whole fornt end(React, Anguler, Vue)\n\nOptions:\n\nFAST API: Rapid Development, Asyncronys design, auto documentation and data validation through pydantic data models, server side templating compatible.\nFLASK: Has more support community and is in market for longer time, server side templating compatible."
+    "section": "Level 2: API",
+    "text": "Level 2: API\nThe model can be packaged and served as API(Model as a Service). User can call API for and post their data for prediction. The API end point will trigger the pipeline make predictions. The batch processing job could still call the API to make predictions. API could be integrated to databases, API, microservices, tabaleu, excel. APIs can be served as server side templating(JinJa, HTML, markdowns) or whole fornt end(React, Anguler, Vue)\n\nOptions:\n\nFAST API: Rapid Development, Asyncronys design, auto documentation and data validation through pydantic data models, server side templating compatible.\nFLASK: Has more support community and is in market for longer time, server side templating compatible."
   },
   {
-    "objectID": "core/blogs/mlops/mlops.html#level-3-adding-message-queueing-system-to-the-api-backed.",
-    "href": "core/blogs/mlops/mlops.html#level-3-adding-message-queueing-system-to-the-api-backed.",
+    "objectID": "core/blogs/mlops/mlops.html#level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow.",
+    "href": "core/blogs/mlops/mlops.html#level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow.",
     "title": "ML OPS Ideas",
-    "section": "Level 3: Adding message queueing system to the API backed.",
-    "text": "Level 3: Adding message queueing system to the API backed.\n\nOptions:\n\nKakfa:\nAmazon SQS:"
+    "section": "Level 3: Adding message queueing system to the API backed or batch processing workflow.",
+    "text": "Level 3: Adding message queueing system to the API backed or batch processing workflow.\nAs vloume and velocity of the data grows, the API could not handle the incoming request. This problem could be solved by implementing Message Broker system, when the incoming requests api are published to message queues and the model will make prediction by consuming the data from message queues and publish the data to the Message queue. This way the large datasets can be consumed and published/stream.\n\nOptions:\n\nKakfa\nAmazon SQS"
   },
   {
     "objectID": "core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",

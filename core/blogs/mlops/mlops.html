@@ -175,35 +175,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-engineering-pipelines-data-pipelines" id="toc-data-engineering-pipelines-data-pipelines" class="nav-link active" data-scroll-target="#data-engineering-pipelines-data-pipelines">Data Engineering Pipelines / Data pipelines</a>
-  <ul class="collapse">
-  <li><a href="#data-extraction" id="toc-data-extraction" class="nav-link" data-scroll-target="#data-extraction">Data Extraction</a></li>
-  </ul></li>
-  <li><a href="#feature-registry" id="toc-feature-registry" class="nav-link" data-scroll-target="#feature-registry">Feature Registry:</a>
-  <ul class="collapse">
-  <li><a href="#level-1" id="toc-level-1" class="nav-link" data-scroll-target="#level-1">Level 1:</a></li>
-  <li><a href="#level-2" id="toc-level-2" class="nav-link" data-scroll-target="#level-2">Level 2:</a></li>
-  <li><a href="#level-3" id="toc-level-3" class="nav-link" data-scroll-target="#level-3">Level 3:</a></li>
-  </ul></li>
-  <li><a href="#machine-learning-ml-pipelines" id="toc-machine-learning-ml-pipelines" class="nav-link" data-scroll-target="#machine-learning-ml-pipelines">Machine Learning (ML) pipelines</a>
-  <ul class="collapse">
-  <li><a href="#feature-extraction" id="toc-feature-extraction" class="nav-link" data-scroll-target="#feature-extraction">Feature Extraction</a></li>
-  <li><a href="#feature-preprocess" id="toc-feature-preprocess" class="nav-link" data-scroll-target="#feature-preprocess">Feature Preprocess</a></li>
-  </ul></li>
+  <li><a href="#data-engineering-pipelines-data-pipelines" id="toc-data-engineering-pipelines-data-pipelines" class="nav-link active" data-scroll-target="#data-engineering-pipelines-data-pipelines">Data Engineering Pipelines / Data pipelines</a></li>
+  <li><a href="#feature-registry" id="toc-feature-registry" class="nav-link" data-scroll-target="#feature-registry">Feature Registry:</a></li>
+  <li><a href="#machine-learning-ml-pipelines" id="toc-machine-learning-ml-pipelines" class="nav-link" data-scroll-target="#machine-learning-ml-pipelines">Machine Learning (ML) pipelines</a></li>
   <li><a href="#model-registry" id="toc-model-registry" class="nav-link" data-scroll-target="#model-registry">Model Registry</a></li>
   <li><a href="#model-serving" id="toc-model-serving" class="nav-link" data-scroll-target="#model-serving">Model Serving</a>
   <ul class="collapse">
   <li><a href="#level1-batch-processig-jobs" id="toc-level1-batch-processig-jobs" class="nav-link" data-scroll-target="#level1-batch-processig-jobs">Level1: Batch processig jobs</a></li>
-  <li><a href="#level2-api" id="toc-level2-api" class="nav-link" data-scroll-target="#level2-api">Level2: API</a>
+  <li><a href="#level-2-api" id="toc-level-2-api" class="nav-link" data-scroll-target="#level-2-api">Level 2: API</a>
   <ul class="collapse">
   <li><a href="#options" id="toc-options" class="nav-link" data-scroll-target="#options">Options:</a></li>
   </ul></li>
-  <li><a href="#level-3-adding-message-queueing-system-to-the-api-backed." id="toc-level-3-adding-message-queueing-system-to-the-api-backed." class="nav-link" data-scroll-target="#level-3-adding-message-queueing-system-to-the-api-backed.">Level 3: Adding message queueing system to the API backed.</a>
+  <li><a href="#level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow." id="toc-level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow." class="nav-link" data-scroll-target="#level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow.">Level 3: Adding message queueing system to the API backed or batch processing workflow.</a>
   <ul class="collapse">
   <li><a href="#options-1" id="toc-options-1" class="nav-link" data-scroll-target="#options-1">Options:</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#model-monitoring" id="toc-model-monitoring" class="nav-link" data-scroll-target="#model-monitoring">Model monitoring</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources:</a></li>
   </ul>
 </nav>
     </div>
@@ -217,51 +206,139 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-engineering-pipelines-data-pipelines" class="level1">
 <h1>Data Engineering Pipelines / Data pipelines</h1>
 <p>The machine learning model is as good as the data. Hence, it is important to set up the data piplelines for data extraction, exploration, validation, wrangling/cleaning and splitting the raw data for making it machine learning ready. The objective of data pipelines are to perform operation to create training and testing datasets.</p>
-<section id="data-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="data-extraction">Data Extraction</h2>
-<p>Extract data from datbases, API, message queuing systems, web or network locations. ## Data Validation Validate data range, data schemas ## Data Preprocessing Clean, transform data, ## Feature Engineering Extract the feature from the datasets.</p>
-<p>It is best practice to version conteo the the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed.</p>
-</section>
+<ul>
+<li>Data Extraction: Extract data from datbases, API, message queuing systems, web or network locations.</li>
+<li>Data Validation: Validate data range, data schemas</li>
+<li>Data Preprocessing:Clean, transform data,</li>
+<li>Feature Engineering: Extract the feature from the datasets.</li>
+</ul>
+<p>It is best practice to version control the outupt of this pipeline for reproducability and governence(auditing).To version control Features, feature Registery is needed.</p>
 </section>
 <section id="feature-registry" class="level1">
 <h1>Feature Registry:</h1>
-<p>Features registry/store are backend where features are stored along with their timestap tracking every entries creation and uptades.</p>
-<section id="level-1" class="level2">
-<h2 class="anchored" data-anchor-id="level-1">Level 1:</h2>
-<p>A simple feature registry could be maintained using a relational database design by adding the feature to track the time.</p>
-</section>
-<section id="level-2" class="level2">
-<h2 class="anchored" data-anchor-id="level-2">Level 2:</h2>
-<p>As the data moves from stuctured to unstructured, it is good idea to save the data as objecs. Save the snapshot of feautures in backend(AWS S3, shared network locations)</p>
-</section>
-<section id="level-3" class="level2">
-<h2 class="anchored" data-anchor-id="level-3">Level 3:</h2>
-<p>Use data lake data versioning tool like Data Version Control(DVC). Is there existing DVC used in the datalake?</p>
-</section>
+<p>Features registry/store are backend where features are stored along with their timestap tracking every entries creation and uptades. Onces the feature registy backend is setup, the python scricpr can connect to the feature store to read and write features to it.</p>
+<ul>
+<li><p>Level 1: A simple feature registry could be maintained using a relational database design by adding the feature to track the time.</p></li>
+<li><p>Level 2: As the data moves from stuctured to unstructured, it is good idea to save the data as objecs. Save the snapshot of feautures in backend(AWS S3, shared network locations)</p></li>
+<li><p>Level 3: Use data lake data versioning tool like Data Version Control(DVC). Is there existing DVC used in the datalake?</p></li>
+</ul>
+<p>Like Datapipeline, other processes and piplelines could write to feature store as well.</p>
 </section>
 <section id="machine-learning-ml-pipelines" class="level1">
 <h1>Machine Learning (ML) pipelines</h1>
-<section id="feature-extraction" class="level2">
-<h2 class="anchored" data-anchor-id="feature-extraction">Feature Extraction</h2>
-</section>
-<section id="feature-preprocess" class="level2">
-<h2 class="anchored" data-anchor-id="feature-preprocess">Feature Preprocess</h2>
-<p>feature transformation, splitting data to training, testing and validation sets. ## Model Training ## Model Testing ## Model Evaluation</p>
-</section>
+<ul>
+<li>Feature Extraction: Extract the features from the feature stores.</li>
+<li>Feature Preprocess: feature transformation, splitting data to training, testing and validation sets.</li>
+<li>Model Training</li>
+<li>Model Testing</li>
+<li>Model Evaluation</li>
+</ul>
 </section>
 <section id="model-registry" class="level1">
 <h1>Model Registry</h1>
-<p>We can searilize the model files and use the same concept as feature registry to store and version control the model images and artifacts</p>
+<p>We can searilize the model files and use the same concept as feature registry to store and version control the model images and artifacts. The Machine learning pipeline will evaluate the model and write it to model registery. The model serving code will checkout the latest or tagged model from the model registery and make prediction using it.</p>
+<p><br> model table <br></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>model name</th>
+<th>serving version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>nlp</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>randomforest</td>
+<td>1.2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>RNN</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p><br>model artifact table <br></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>model_id</th>
+<th>version</th>
+<th>image</th>
+<th>metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a1</td>
+<td>1</td>
+<td>1.0</td>
+<td>01010</td>
+<td>——-</td>
+</tr>
+<tr class="even">
+<td>a2</td>
+<td>2</td>
+<td>1.0</td>
+<td>10111</td>
+<td>——-</td>
+</tr>
+<tr class="odd">
+<td>a3</td>
+<td>2</td>
+<td>1.1</td>
+<td>00001</td>
+<td>——-</td>
+</tr>
+<tr class="even">
+<td>a4</td>
+<td>2</td>
+<td>1.2</td>
+<td>00010</td>
+<td>——-</td>
+</tr>
+<tr class="odd">
+<td>a5</td>
+<td>3</td>
+<td>1.0</td>
+<td>00100</td>
+<td>——-</td>
+</tr>
+<tr class="even">
+<td>a6</td>
+<td>3</td>
+<td>1.1</td>
+<td>10011</td>
+<td>——-</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="model-serving" class="level1">
 <h1>Model Serving</h1>
 <p>Model serving could be the multiple combination based on the nature of model serving.</p>
 <section id="level1-batch-processig-jobs" class="level2">
 <h2 class="anchored" data-anchor-id="level1-batch-processig-jobs">Level1: Batch processig jobs</h2>
-<p>Batch processing python scripts can be scheduled to checkout the model from model registry and make predictions by feeding the data to the models. For, Tabaleu reporting , the python scripts can be scheduled to connect to Tabaleu server and write predictions. The structure of the batch scripts looks like below: - Extract the data to make predictions - Transform the data using feature engineering pipeline script - Checkout the serving model from model registery - Make predictions - Transform the prediction to make it ready for datbase. - Update the database with pediction value - Provide the feedback and store the new features to feature registry</p>
+<p>Batch processing python scripts can be scheduled to checkout the model from model registry and make predictions by feeding the data to the models. For, Tabaleu reporting , the python scripts can be scheduled to connect to Tabaleu server and write predictions. The structure of the batch scripts looks like below:</p>
+<ul>
+<li>Extract the data to make predictions</li>
+<li>Transform the data using feature engineering pipeline script</li>
+<li>Checkout the serving model from model registery</li>
+<li>Make predictions</li>
+<li>Transform the prediction to make it ready for datbase.</li>
+<li>Update the database with pediction value</li>
+<li>Provide the feedback and store the new features to feature registry</li>
+</ul>
 </section>
-<section id="level2-api" class="level2">
-<h2 class="anchored" data-anchor-id="level2-api">Level2: API</h2>
+<section id="level-2-api" class="level2">
+<h2 class="anchored" data-anchor-id="level-2-api">Level 2: API</h2>
 <p>The model can be packaged and served as API(Model as a Service). User can call API for and post their data for prediction. The API end point will trigger the pipeline make predictions. The batch processing job could still call the API to make predictions. API could be integrated to databases, API, microservices, tabaleu, excel. APIs can be served as server side templating(JinJa, HTML, markdowns) or whole fornt end(React, Anguler, Vue)</p>
 <section id="options" class="level3">
 <h3 class="anchored" data-anchor-id="options">Options:</h3>
@@ -271,19 +348,28 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="level-3-adding-message-queueing-system-to-the-api-backed." class="level2">
-<h2 class="anchored" data-anchor-id="level-3-adding-message-queueing-system-to-the-api-backed.">Level 3: Adding message queueing system to the API backed.</h2>
+<section id="level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow." class="level2">
+<h2 class="anchored" data-anchor-id="level-3-adding-message-queueing-system-to-the-api-backed-or-batch-processing-workflow.">Level 3: Adding message queueing system to the API backed or batch processing workflow.</h2>
+<p>As vloume and velocity of the data grows, the API could not handle the incoming request. This problem could be solved by implementing Message Broker system, when the incoming requests api are published to message queues and the model will make prediction by consuming the data from message queues and publish the data to the Message queue. This way the large datasets can be consumed and published/stream.</p>
 <section id="options-1" class="level3">
 <h3 class="anchored" data-anchor-id="options-1">Options:</h3>
 <ul>
-<li><p>Kakfa:</p></li>
-<li><p>Amazon SQS:</p></li>
+<li>Kakfa</li>
+<li>Amazon SQS</li>
 </ul>
 </section>
 </section>
 </section>
 <section id="model-monitoring" class="level1">
 <h1>Model monitoring</h1>
+</section>
+<section id="resources" class="level1">
+<h1>Resources:</h1>
+<ul>
+<li>https://ml-ops.org/</li>
+<li>https://github.com/visenger/awesome-mlops?tab=readme-ov-file</li>
+<li>https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning</li>
+</ul>
 
 
 </section>
