@@ -16,8 +16,8 @@
   {
     "listing": "/core/blog.html",
     "items": [
-      "/core/blogs/mlops/mlops.html",
       "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
+      "/core/blogs/mlops/mlops.html",
       "/core/blogs/image_classification/image_classification.html",
       "/core/blogs/indeed/indeed-job-scraper.html"
     ]
