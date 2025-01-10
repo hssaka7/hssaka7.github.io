@@ -1,7 +1,7 @@
 :root {
-    --background: #33373F;
+    --background: #d9d8aa;
     --background-2: #41454E;
-    --foreground: white;
+    --foreground: rgb(245, 241, 203);
     --foreground-2: #484d54;
     --content-width: 1000px;
   }
@@ -15,9 +15,7 @@
   }
   
   body {
-    /* background: var(--background); */
-    /* color: var(--foreground); */
-    text-align: center;
+    text-align: left;
   }
   
   
@@ -27,20 +25,8 @@
     overflow-x: hidden;
   }
   
-  @media(min-width: 900px) {
-    .content-block {
-      margin-left: 50px;
-      margin-right: 50px;
-    }
-  }
-  
-  @media(min-width: 1200px) {
-    .content-block {
-      max-width: var(--content-width);
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
+
+
   
   .hero-banner {
     padding-top: 20px;
@@ -48,11 +34,11 @@
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
   }
   
   .hero-banner h1 {
-    color: #0069ff;
+    color: #0f6b71;
     font-size: 56px;
     font-weight: bold;
     margin-top: 10px;
@@ -80,24 +66,22 @@
   .btn-action-primary {
       width: 200px;
       height: 50px;
-      background: #0069ff;
+      background: #6c757d;
       padding: auto;
       margin-left: 25px;
       border-radius: 30px;
   }
     
-  @media(min-width: 900px) {
-    .hero-banner h3 {
-      max-width: 60%;
-    }
-  }
+ 
   
-  @media(min-width: 1200px) {
-    .hero-banner h3 {
-      max-width: 75%;
-    }
-  }
-  
+  /* TITLE */
+.title{
+  color: #0f6b71;
+  font-size: 56px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
 
 
    /* Test */
@@ -117,9 +101,6 @@
   
   }
 
-  .card-text{
-    
-  } 
 
   /* For card inside service section */
 
@@ -137,7 +118,7 @@
   
   .card-grid  h5 {
     font-size: 32px;
-    color:#009AF1;
+    color:#0f6b71;
     font-weight: bold;
     padding: 0;
     margin: 0;
