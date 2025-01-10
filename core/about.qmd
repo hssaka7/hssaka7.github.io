@@ -2,7 +2,7 @@
 title: "Aakash Basnet"
 page-layout: full
 about:
-  template: jolla
+  template: solana
   image-width: 10em
   image-shape: round
   image: assets/images/profile.jpg

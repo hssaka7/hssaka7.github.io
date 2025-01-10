@@ -5,6 +5,7 @@ website:
   title: "aakash basnet"
   back-to-top-navigation: true
   reader-mode: false
+  
   navbar:
     title: false
     logo: "core/assets/images/profile.jpg"
@@ -33,7 +34,7 @@ website:
         href: https://github.com/hssaka7
       - icon: linkedin
         href: https://www.linkedin.com/in/aakash-basnet-a889a120a/
-    
+
 format:
   html:
     theme:

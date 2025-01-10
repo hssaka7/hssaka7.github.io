@@ -1,5 +1,7 @@
 ---
-title: ""
+title: "Freelancer , with 6 years of experiences"
+description: I specialize in Python automation, data engineering, and developing impactful web applications and dashboards. Let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.
+
 pagetitle: "Aakash Basnet"
 page-layout: full
 toc: false
@@ -22,23 +24,42 @@ listing:
       max-description-length: 400
       grid-columns: 3
 
-    
+title-block-banner: "#00000000"
+title-block-banner-color: "#ffffff"
+include-in-header:
+  - text: |
+      <style>
+      #title-block-header.quarto-title-block.default .quarto-title-meta {
+        color: #ffffff;
+      }
+      .quarto-title-block .quarto-title-banner {
+        height: 0;
+      }
+      #title-block-header {
+        background-image: url(core/assets/images/hero_banner.jpg);
+        background-size: cover;
+        background-position-y: center;
+        height: 400px;
+        margin: 0;
+      }
+      </style>
+ 
 ---
-::: {.hero-banner}
-# Freelancer , with 6 years of experiences
-### I specialize in Python automation, data engineering, and developing impactful web applications and dashboards. Let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.
-:::
+
+<div>
 <a href = 'core/contact.html'> 
-<button class="btn-action-primary"> Contact Me </button>
+<button class="btn btn-primary">Contact Me</button>
 </a>
 <a href = #services>
-<button class="btn-action-primary"> Learn More</button>
+<button class="btn btn-primary">Learn More</button>
 </a>
+
+</div>
+
 
 <br>
 
 # Services
-
 
 Embark on a transformative journey with my freelance services in IT and Finance Solutions. With over 6 years of experience, I specialize in Python automation, data engineering, and crafting impactful web applications and dashboards. As a seasoned freelancer, I bring a holistic approach to addressing complex challenges. My proficiency extends to designing robust ETL pipelines and implementing machine learning and AI tools to keep you at the forefront of technological innovation. Explore my portfolio for successful projects, and let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights. Contact me today to discuss how we can tailor these advanced solutions to meet your unique business needs
 <br>
