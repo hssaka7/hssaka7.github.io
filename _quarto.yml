@@ -14,7 +14,7 @@ website:
       - text: "Home"
         href: index.qmd
       - text: "Blog"
-        href: core//blog.qmd
+        href: core/blog.qmd
       - text: "About"
         href: core/about.qmd
       - text: "Contact"
@@ -40,7 +40,7 @@ format:
       dark: darkly
       light: flatly
       
-    css: core/assets/css/style.css
+    css: core/assets/css/index.css
     toc: true
 
 
