@@ -16,6 +16,7 @@
   {
     "listing": "/core/blog.html",
     "items": [
+      "/core/blogs/running_llm_locally/running_llm_locally.html",
       "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
       "/core/blogs/mlops/mlops.html",
       "/core/blogs/image_classification/image_classification.html",

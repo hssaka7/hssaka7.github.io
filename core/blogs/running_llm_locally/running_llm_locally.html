@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aakash Basnet">
+<meta name="dcterms.date" content="2025-01-12">
+<meta name="description" content="Setting up open soure llm locally and builing simple application on top of it">
 
-<title>Blog – aakash basnet</title>
+<title>Running LLM locally – aakash basnet</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +23,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-aa79b7b137e5031fd39e4a8697386316.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-f60e7b0085a29270c3d1f36f77b2f2ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-aa79b7b137e5031fd39e4a8697386316.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-f60e7b0085a29270c3d1f36f77b2f2ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,78 +105,20 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle','listing-author','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../core/assets/css/index.css">
+<link rel="stylesheet" href="../../../core/assets/css/index.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../core/assets/images/logo.png" alt="" class="navbar-logo">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../core/assets/images/logo.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -151,19 +128,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../core/blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../../core/blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../core/about.html"> 
+    <a class="nav-link" href="../../../core/about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../core/contact.html"> 
+    <a class="nav-link" href="../../../core/contact.html"> 
 <span class="menu-text">Contact</span></a>
   </li>  
   <li class="nav-item compact">
@@ -185,216 +162,265 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Running LLM locally</h1>
+                  <div>
+        <div class="description">
+          Setting up open soure llm locally and builing simple application on top of it
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">llm</div>
+                <div class="quarto-category">gemini</div>
+                <div class="quarto-category">AI</div>
+                <div class="quarto-category">python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Aakash Basnet </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 12, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(4)</span></div><div class="category" data-category="RVRM">ETL <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2VtaW5p">gemini <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a2VyYXM=">keras <span class="quarto-category-count">(3)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(5)</span></div><div class="category" data-category="dGVzZXJmbG93">teserflow <span class="quarto-category-count">(3)</span></div><div class="category" data-category="d2Vic2NyYXBpbmc=">webscraping <span class="quarto-category-count">(1)</span></div></div></div>
-<!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
-
-
-
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<!-- Calendly badge widget begin -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async=""></script>
-<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/basnetaakash17/30min', text: 'Schedule time with Aakash', color: '#0069ff', textColor: '#ffffff', branding: false }); }</script>
-<!-- Calendly badge widget end -->
-<p><br></p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-         <option value="listing-author" data-direction="asc">
-          Author
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import-the-fashion-mnist-dataset" id="toc-import-the-fashion-mnist-dataset" class="nav-link active" data-scroll-target="#import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</a></li>
+  <li><a href="#preprocessing-the-data" id="toc-preprocessing-the-data" class="nav-link" data-scroll-target="#preprocessing-the-data">Preprocessing the data</a></li>
+  <li><a href="#building-the-model-using-neural-network" id="toc-building-the-model-using-neural-network" class="nav-link" data-scroll-target="#building-the-model-using-neural-network">Building the model using neural network</a></li>
+  <li><a href="#training-the-model" id="toc-training-the-model" class="nav-link" data-scroll-target="#training-the-model">Training the model</a></li>
+  <li><a href="#testing-the-model" id="toc-testing-the-model" class="nav-link" data-scroll-target="#testing-the-model">Testing the model</a></li>
+  </ul>
+</nav>
     </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bGxtJTJDZ2VtaW5pJTJDQUklMkNweXRob24=" data-listing-date-sort="1736640000000" data-listing-file-modified-sort="1736744177805" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="123">
-<div class="thumbnail">
-<p><a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external"></a></p><a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external">
-<p class="card-img-top"><img src="blogs/running_llm_locally/running_llm_locally_files/figure-html/cell-5-output-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external">Running LLM locally</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external">Setting up open soure llm locally and builing simple application on top of it</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../core/blogs/running_llm_locally/running_llm_locally.html" class="no-external">
-<div class="listing-date">
-Jan 12, 2025
-</div>
-<div class="listing-author">
-Aakash Basnet
-</div>
-</a>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<section id="import-the-fashion-mnist-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</h2>
+<div id="cell-2" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tf.__version__)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fashion_data <span class="op">=</span> tf.keras.datasets.fashion_mnist</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>(train_data, train_label) , (test_data, test_label) <span class="op">=</span> fashion_data.load_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.15.0</code></pre>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="a2VyYXMlMkN0ZXNlcmZsb3clMkNBSSUyQ3B5dGhvbg==" data-listing-date-sort="1709510400000" data-listing-file-modified-sort="1736744177802" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="15">
-<div class="thumbnail">
-<p><a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external"></a></p><a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external">
-<p class="card-img-top"><img src="blogs/Linear-regression-using-DNN/Linear-regression-using-DNN_files/figure-html/cell-5-output-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external">Linear Regression using DNN</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external"> Linear regression of California housing dataset using deep neural networks</a>
+</section>
+<section id="preprocessing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="preprocessing-the-data">Preprocessing the data</h2>
+<div id="cell-4" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>train_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>(60000, 28, 28)</code></pre>
 </div>
 </div>
-<div class="metadata">
-<a href="../core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html" class="no-external">
-<div class="listing-date">
-Mar 4, 2024
-</div>
-<div class="listing-author">
-Aakash Basnet
-</div>
-</a>
+<div id="cell-5" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_label.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(10000,)</code></pre>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="a2VyYXMlMkN0ZXNlcmZsb3clMkNBSSUyQ3B5dGhvbg==" data-listing-date-sort="1709510400000" data-listing-file-modified-sort="1736744177804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="969">
-<div class="thumbnail">
-<p><a href="../core/blogs/mlops/mlops.html" class="no-external"></a></p><a href="../core/blogs/mlops/mlops.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../core/blogs/mlops/mlops.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../core/blogs/mlops/mlops.html" class="no-external">ML OPS Ideas</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../core/blogs/mlops/mlops.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../core/blogs/mlops/mlops.html" class="no-external">ML ops idea and principles</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../core/blogs/mlops/mlops.html" class="no-external">
-<div class="listing-date">
-Mar 4, 2024
-</div>
-<div class="listing-author">
-Aakash Basnet
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="a2VyYXMlMkN0ZXNlcmZsb3clMkNBSSUyQ3B5dGhvbg==" data-listing-date-sort="1708300800000" data-listing-file-modified-sort="1736744177804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="123">
-<div class="thumbnail">
-<p><a href="../core/blogs/image_classification/image_classification.html" class="no-external"></a></p><a href="../core/blogs/image_classification/image_classification.html" class="no-external">
-<p class="card-img-top"><img src="blogs/image_classification/image_classification_files/figure-html/cell-5-output-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="../core/blogs/image_classification/image_classification.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../core/blogs/image_classification/image_classification.html" class="no-external">Image classification</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../core/blogs/image_classification/image_classification.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../core/blogs/image_classification/image_classification.html" class="no-external"> image classification of Fashion MINST dataset</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../core/blogs/image_classification/image_classification.html" class="no-external">
-<div class="listing-date">
-Feb 19, 2024
-</div>
-<div class="listing-author">
-Aakash Basnet
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="d2Vic2NyYXBpbmclMkNjb2RlJTJDRVRMJTJDcHl0aG9u" data-listing-date-sort="1706918400000" data-listing-file-modified-sort="1736744177804" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="150">
-<div class="thumbnail">
-<p><a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external"></a></p><a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external">Webscraping Indeed Job Portal</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external">webscraping with python </a>
-</div>
-</div>
-<div class="metadata">
-<a href="../core/blogs/indeed/indeed-job-scraper.html" class="no-external">
-<div class="listing-date">
-Feb 3, 2024
-</div>
-<div class="listing-author">
-Aakash Basnet
-</div>
-</a>
+<div id="cell-6" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(train_data[<span class="dv">0</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">False</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="running_llm_locally_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
+<div id="cell-7" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x_valid, x_train <span class="op">=</span> train_data[:<span class="dv">5000</span>] <span class="op">/</span> <span class="fl">255.0</span>, train_data[<span class="dv">5000</span>:]<span class="op">/</span><span class="fl">255.0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_valid, y_train <span class="op">=</span> train_label[:<span class="dv">5000</span>], train_label[<span class="dv">5000</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<div id="cell-8" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>class_map <span class="op">=</span> [<span class="st">'T-shirt/top'</span>, <span class="st">'Trouser'</span>, <span class="st">'Pullover'</span>, <span class="st">'Dress'</span>, <span class="st">'Coat'</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>               <span class="st">'Sandal'</span>, <span class="st">'Shirt'</span>, <span class="st">'Sneaker'</span>, <span class="st">'Bag'</span>, <span class="st">'Ankle boot'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-9" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>):</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">5</span>,<span class="dv">5</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    plt.xticks([])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    plt.yticks([])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(class_map[train_label[i]])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    plt.imshow(train_data[i])</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="running_llm_locally_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="building-the-model-using-neural-network" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-model-using-neural-network">Building the model using neural network</h2>
+<p>Sequential Model is the simplest form of Model that keras library provides. It is composed of a single stack of layer connected sequentially. Also, known as sequential API. The first layer in the model is is Flatten model ,which simply flattens the 2D image array to 1D. Then, the Dense layer with 300 neurons which uses Relu as an activation function is stacked. Then, there is second Dense layer with 100 neurons , with same Relu as activation function. The final layer in the model stack is output layuer, which is also a Dense layer with 10 neurons (one per class) and it uses softmax function for multi-class classification.</p>
+<div id="cell-12" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>input_layer <span class="op">=</span> tf.keras.layers.Flatten(input_shape<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dense_layer1 <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">300</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dense_layer2 <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">100</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">10</span>, activation <span class="op">=</span> <span class="st">'softmax'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([input_layer,dense_layer1, dense_layer2 ,output_layer])</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> <span class="st">'adam'</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>loss_function <span class="op">=</span> tf.keras.losses.SparseCategoricalCrossentropy()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'accuracy'</span>]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ flatten (Flatten)           (None, 784)               0         
+                                                                 
+ dense (Dense)               (None, 300)               235500    
+                                                                 
+ dense_1 (Dense)             (None, 100)               30100     
+                                                                 
+ dense_2 (Dense)             (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 266610 (1.02 MB)
+Trainable params: 266610 (1.02 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________</code></pre>
+</div>
+</div>
+</section>
+<section id="training-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-model">Training the model</h2>
+<div id="cell-14" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>optimizer, loss<span class="op">=</span> loss_function, metrics<span class="op">=</span>metrics )</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(x_train,y_train, epochs<span class="op">=</span><span class="dv">10</span>, validation_data <span class="op">=</span> (x_valid, y_valid))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/10
+1719/1719 [==============================] - 2s 852us/step - loss: 0.4921 - accuracy: 0.8241 - val_loss: 0.3733 - val_accuracy: 0.8646
+Epoch 2/10
+1719/1719 [==============================] - 1s 788us/step - loss: 0.3670 - accuracy: 0.8647 - val_loss: 0.3491 - val_accuracy: 0.8706
+Epoch 3/10
+1719/1719 [==============================] - 2s 891us/step - loss: 0.3282 - accuracy: 0.8789 - val_loss: 0.3108 - val_accuracy: 0.8846
+Epoch 4/10
+1719/1719 [==============================] - 1s 775us/step - loss: 0.3058 - accuracy: 0.8853 - val_loss: 0.3005 - val_accuracy: 0.8934
+Epoch 5/10
+1719/1719 [==============================] - 1s 822us/step - loss: 0.2847 - accuracy: 0.8929 - val_loss: 0.3024 - val_accuracy: 0.8876
+Epoch 6/10
+1719/1719 [==============================] - 1s 769us/step - loss: 0.2725 - accuracy: 0.8971 - val_loss: 0.3025 - val_accuracy: 0.8932
+Epoch 7/10
+1719/1719 [==============================] - 1s 799us/step - loss: 0.2566 - accuracy: 0.9029 - val_loss: 0.2946 - val_accuracy: 0.8966
+Epoch 8/10
+1719/1719 [==============================] - 1s 776us/step - loss: 0.2473 - accuracy: 0.9064 - val_loss: 0.3052 - val_accuracy: 0.8944
+Epoch 9/10
+1719/1719 [==============================] - 1s 784us/step - loss: 0.2394 - accuracy: 0.9109 - val_loss: 0.3212 - val_accuracy: 0.8896
+Epoch 10/10
+1719/1719 [==============================] - 1s 818us/step - loss: 0.2280 - accuracy: 0.9131 - val_loss: 0.3100 - val_accuracy: 0.8936</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(history.history).plot()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.gca().set_ylim(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="running_llm_locally_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="testing-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-model">Testing the model</h2>
+<div id="cell-17" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model.evaluate(test_data, test_label)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>313/313 [==============================] - 0s 433us/step - loss: 55.4865 - accuracy: 0.8696</code></pre>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
