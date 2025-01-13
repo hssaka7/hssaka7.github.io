@@ -209,11 +209,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-the-fashion-mnist-dataset" id="toc-import-the-fashion-mnist-dataset" class="nav-link active" data-scroll-target="#import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</a></li>
-  <li><a href="#preprocessing-the-data" id="toc-preprocessing-the-data" class="nav-link" data-scroll-target="#preprocessing-the-data">Preprocessing the data</a></li>
-  <li><a href="#building-the-model-using-neural-network" id="toc-building-the-model-using-neural-network" class="nav-link" data-scroll-target="#building-the-model-using-neural-network">Building the model using neural network</a></li>
-  <li><a href="#training-the-model" id="toc-training-the-model" class="nav-link" data-scroll-target="#training-the-model">Training the model</a></li>
-  <li><a href="#testing-the-model" id="toc-testing-the-model" class="nav-link" data-scroll-target="#testing-the-model">Testing the model</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a>
+  <ul class="collapse">
+  <li><a href="#import-model" id="toc-import-model" class="nav-link" data-scroll-target="#import-model">Import Model</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -224,200 +223,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="import-the-fashion-mnist-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="import-the-fashion-mnist-dataset">Import the fashion MNIST dataset</h2>
-<div id="cell-2" class="cell" data-execution_count="1">
+<section id="installation" class="level1">
+<h1>Installation</h1>
+<p>On your terminal run the following command to install ollama module.</p>
+<pre><code>pip install ollama
+</code></pre>
+<p>Pull and run the model of you choice. For this tutorial we are running Gemma2 2B model, since it is small and powerful</p>
+<pre><code>ollama pull gemma2:2b</code></pre>
+<p>Install Langchain community module</p>
+<pre><code>pip install langchain-ollama</code></pre>
+<section id="import-model" class="level2">
+<h2 class="anchored" data-anchor-id="import-model">Import Model</h2>
+<p>For this experiment we will loading gemma2:2b using ollama and langchain model.</p>
+<div id="cell-3" class="cell" data-execution_count="93">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tf.__version__)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fashion_data <span class="op">=</span> tf.keras.datasets.fashion_mnist</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>(train_data, train_label) , (test_data, test_label) <span class="op">=</span> fashion_data.load_data()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_ollama.llms <span class="im">import</span> OllamaLLM</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.prompts <span class="im">import</span> ChatPromptTemplate</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> OllamaLLM(model<span class="op">=</span><span class="st">"gemma2:2b"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                temperature <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Lets build LLM agent to translate one language to another.</p>
+<div id="cell-5" class="cell" data-execution_count="95">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> ChatPromptTemplate.from_messages(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        (</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"system"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"""</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">            You are a helpful assistant that translates </span><span class="sc">{input_language}</span><span class="st"> to </span><span class="sc">{output_language}</span><span class="st">. </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">            Provides output in json format as language as key and outpus as value</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">            """</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"human"</span>, <span class="st">"</span><span class="sc">{input}</span><span class="st">"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>chain <span class="op">=</span> prompt <span class="op">|</span> llm</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> chain.invoke(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"input_language"</span>: <span class="st">"English"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"output_language"</span>: <span class="st">"Spanish, German, Korean"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"input"</span>: <span class="st">"I love grilled chicken"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>pprint(ai_message)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>2.15.0</code></pre>
+<pre><code>('```json\n'
+ '{\n'
+ '  "English": "I love grilled chicken",\n'
+ '  "Spanish": "¡Me encanta el pollo a la parrilla!",\n'
+ '  "German": "Ich liebe gegrillte Hähnchen!",\n'
+ '  "Korean": "닭갈비를 좋아해요!" \n'
+ '}\n'
+ '```')</code></pre>
 </div>
 </div>
-</section>
-<section id="preprocessing-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing-the-data">Preprocessing the data</h2>
-<div id="cell-4" class="cell" data-execution_count="2">
+<p>The llm model response is in string format. Now, lets load the string response as json object.</p>
+<div id="cell-7" class="cell" data-execution_count="96">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>train_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>(60000, 28, 28)</code></pre>
-</div>
-</div>
-<div id="cell-5" class="cell" data-editable="true" data-slideshow="{&quot;slide_type&quot;:&quot;&quot;}" data-tags="[]" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_label.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>(10000,)</code></pre>
-</div>
-</div>
-<div id="cell-6" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(train_data[<span class="dv">0</span>])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">False</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="running_llm_locally_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="cell-7" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x_valid, x_train <span class="op">=</span> train_data[:<span class="dv">5000</span>] <span class="op">/</span> <span class="fl">255.0</span>, train_data[<span class="dv">5000</span>:]<span class="op">/</span><span class="fl">255.0</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_valid, y_train <span class="op">=</span> train_label[:<span class="dv">5000</span>], train_label[<span class="dv">5000</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-8" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>class_map <span class="op">=</span> [<span class="st">'T-shirt/top'</span>, <span class="st">'Trouser'</span>, <span class="st">'Pullover'</span>, <span class="st">'Dress'</span>, <span class="st">'Coat'</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>               <span class="st">'Sandal'</span>, <span class="st">'Shirt'</span>, <span class="st">'Sneaker'</span>, <span class="st">'Bag'</span>, <span class="st">'Ankle boot'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-9" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">25</span>):</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">5</span>,<span class="dv">5</span>, i<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    plt.xticks([])</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    plt.yticks([])</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(class_map[train_label[i]])</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    plt.imshow(train_data[i])</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="running_llm_locally_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="building-the-model-using-neural-network" class="level2">
-<h2 class="anchored" data-anchor-id="building-the-model-using-neural-network">Building the model using neural network</h2>
-<p>Sequential Model is the simplest form of Model that keras library provides. It is composed of a single stack of layer connected sequentially. Also, known as sequential API. The first layer in the model is is Flatten model ,which simply flattens the 2D image array to 1D. Then, the Dense layer with 300 neurons which uses Relu as an activation function is stacked. Then, there is second Dense layer with 100 neurons , with same Relu as activation function. The final layer in the model stack is output layuer, which is also a Dense layer with 10 neurons (one per class) and it uses softmax function for multi-class classification.</p>
-<div id="cell-12" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>input_layer <span class="op">=</span> tf.keras.layers.Flatten(input_shape<span class="op">=</span>(<span class="dv">28</span>,<span class="dv">28</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dense_layer1 <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">300</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dense_layer2 <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">100</span>, activation<span class="op">=</span><span class="st">'relu'</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> tf.keras.layers.Dense(<span class="dv">10</span>, activation <span class="op">=</span> <span class="st">'softmax'</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.Sequential([input_layer,dense_layer1, dense_layer2 ,output_layer])</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> <span class="st">'adam'</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>loss_function <span class="op">=</span> tf.keras.losses.SparseCategoricalCrossentropy()</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'accuracy'</span>]</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace and assign back to original content</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```json"</span>, <span class="st">""</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```"</span>, <span class="st">""</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Don't forget to convert to JSON as it is a string right now:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>json_result <span class="op">=</span> json.loads(ai_message)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pprint(json_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Model: "sequential"
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- flatten (Flatten)           (None, 784)               0         
-                                                                 
- dense (Dense)               (None, 300)               235500    
-                                                                 
- dense_1 (Dense)             (None, 100)               30100     
-                                                                 
- dense_2 (Dense)             (None, 10)                1010      
-                                                                 
-=================================================================
-Total params: 266610 (1.02 MB)
-Trainable params: 266610 (1.02 MB)
-Non-trainable params: 0 (0.00 Byte)
-_________________________________________________________________</code></pre>
-</div>
-</div>
-</section>
-<section id="training-the-model" class="level2">
-<h2 class="anchored" data-anchor-id="training-the-model">Training the model</h2>
-<div id="cell-14" class="cell" data-execution_count="9">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span>optimizer, loss<span class="op">=</span> loss_function, metrics<span class="op">=</span>metrics )</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(x_train,y_train, epochs<span class="op">=</span><span class="dv">10</span>, validation_data <span class="op">=</span> (x_valid, y_valid))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Epoch 1/10
-1719/1719 [==============================] - 2s 852us/step - loss: 0.4921 - accuracy: 0.8241 - val_loss: 0.3733 - val_accuracy: 0.8646
-Epoch 2/10
-1719/1719 [==============================] - 1s 788us/step - loss: 0.3670 - accuracy: 0.8647 - val_loss: 0.3491 - val_accuracy: 0.8706
-Epoch 3/10
-1719/1719 [==============================] - 2s 891us/step - loss: 0.3282 - accuracy: 0.8789 - val_loss: 0.3108 - val_accuracy: 0.8846
-Epoch 4/10
-1719/1719 [==============================] - 1s 775us/step - loss: 0.3058 - accuracy: 0.8853 - val_loss: 0.3005 - val_accuracy: 0.8934
-Epoch 5/10
-1719/1719 [==============================] - 1s 822us/step - loss: 0.2847 - accuracy: 0.8929 - val_loss: 0.3024 - val_accuracy: 0.8876
-Epoch 6/10
-1719/1719 [==============================] - 1s 769us/step - loss: 0.2725 - accuracy: 0.8971 - val_loss: 0.3025 - val_accuracy: 0.8932
-Epoch 7/10
-1719/1719 [==============================] - 1s 799us/step - loss: 0.2566 - accuracy: 0.9029 - val_loss: 0.2946 - val_accuracy: 0.8966
-Epoch 8/10
-1719/1719 [==============================] - 1s 776us/step - loss: 0.2473 - accuracy: 0.9064 - val_loss: 0.3052 - val_accuracy: 0.8944
-Epoch 9/10
-1719/1719 [==============================] - 1s 784us/step - loss: 0.2394 - accuracy: 0.9109 - val_loss: 0.3212 - val_accuracy: 0.8896
-Epoch 10/10
-1719/1719 [==============================] - 1s 818us/step - loss: 0.2280 - accuracy: 0.9131 - val_loss: 0.3100 - val_accuracy: 0.8936</code></pre>
-</div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(history.history).plot()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.gca().set_ylim(<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="running_llm_locally_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="testing-the-model" class="level2">
-<h2 class="anchored" data-anchor-id="testing-the-model">Testing the model</h2>
-<div id="cell-17" class="cell" data-execution_count="11">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model.evaluate(test_data, test_label)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>313/313 [==============================] - 0s 433us/step - loss: 55.4865 - accuracy: 0.8696</code></pre>
+<pre><code>{'English': 'I love grilled chicken',
+ 'German': 'Ich liebe gegrillte Hähnchen!',
+ 'Korean': '닭갈비를 좋아해요!',
+ 'Spanish': '¡Me encanta el pollo a la parrilla!'}</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
