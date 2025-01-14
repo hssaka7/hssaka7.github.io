@@ -16,12 +16,12 @@
   {
     "listing": "/core/blog.html",
     "items": [
+      "/core/blogs/building_ai_agent/building_ai_agent.html",
       "/core/blogs/running_llm_locally/running_llm_locally.html",
       "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",
       "/core/blogs/mlops/mlops.html",
       "/core/blogs/image_classification/image_classification.html",
-      "/core/blogs/indeed/indeed-job-scraper.html",
-      "/core/blogs/building_ai_agent/building_ai_agent.html"
+      "/core/blogs/indeed/indeed-job-scraper.html"
     ]
   }
 ]
