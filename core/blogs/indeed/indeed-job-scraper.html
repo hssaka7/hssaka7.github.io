@@ -228,19 +228,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="building-url" class="level2">
 <h2 class="anchored" data-anchor-id="building-url">Building URL</h2>
 <p>After navigating the developer toolbar for Indeed job listing, I found the pattern in the url query for each job title search and location. We can use this info to build the url. The link printed from the code below will take you to the Indeed page having listing for python developer in Dalla, TX</p>
-<div id="cell-2" class="cell" data-execution_count="12">
+<div id="cell-2" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> url_builder(job_title, location, page_number<span class="op">=</span><span class="dv">10</span> ):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    job_title <span class="op">=</span> <span class="st">"+"</span>.join(job_title.split(<span class="st">" "</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    location <span class="op">=</span> <span class="st">"+"</span>.join(location.split(<span class="st">" "</span>))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="st">"https://www.indeed.com/jobs"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    query_str <span class="op">=</span> <span class="ss">f"?q=</span><span class="sc">{</span>job_title<span class="sc">}</span><span class="ss">&amp;l=</span><span class="sc">{</span>location<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_url<span class="sc">}{</span>query_str<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> url</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(url_builder(job_title<span class="op">=</span><span class="st">"python developer"</span>, location<span class="op">=</span><span class="st">"Dallas, TX"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> url_builder(job_title, location, page_number<span class="op">=</span><span class="dv">10</span> ):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    job_title <span class="op">=</span> <span class="st">"+"</span>.join(job_title.split(<span class="st">" "</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    location <span class="op">=</span> <span class="st">"+"</span>.join(location.split(<span class="st">" "</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    base_url <span class="op">=</span> <span class="st">"https://www.indeed.com/jobs"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    query_str <span class="op">=</span> <span class="ss">f"?q=</span><span class="sc">{</span>job_title<span class="sc">}</span><span class="ss">&amp;l=</span><span class="sc">{</span>location<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>base_url<span class="sc">}{</span>query_str<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> url</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(url_builder(job_title<span class="op">=</span><span class="st">"python developer"</span>, location<span class="op">=</span><span class="st">"Dallas, TX"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>https://www.indeed.com/jobs?q=python+developer&amp;l=Dallas,+TX</code></pre>
@@ -250,82 +259,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="scraping-the-indeep-page-with-selenium" class="level2">
 <h2 class="anchored" data-anchor-id="scraping-the-indeep-page-with-selenium">Scraping the indeep page with selenium</h2>
 <p>The script below scrapes the data for the given job title and location. It uses selenium web driver to automate the data scraping. The web driver clicks ‘next’ button on pagination until the end of the page.</p>
-<div id="cell-4" class="cell" data-execution_count="9">
+<div id="cell-4" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_data(job_title, location):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_data(job_title, location):</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> url_builder(job_title<span class="op">=</span>job_title, location<span class="op">=</span>location)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    driver <span class="op">=</span> webdriver.Chrome()</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    driver.get(url)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    jobs <span class="op">=</span> []</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    has_next <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> has_next:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="dv">2</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        cards <span class="op">=</span> driver.find_elements(By.CLASS_NAME,<span class="st">'cardOutline'</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> card <span class="kw">in</span> cards:</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            job_title <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'jobTitle'</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            job_title_text <span class="op">=</span> job_title.text</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            job_id <span class="op">=</span> job_title.find_element(By.TAG_NAME, <span class="st">'a'</span>).get_attribute(<span class="st">'data-jk'</span>)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            location <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'company_location'</span>).text</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            job_description <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'underShelfFooter'</span>).text</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                pay,<span class="op">*</span>_metadata <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'heading6'</span>).text.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                pay <span class="op">=</span> <span class="st">'NA'</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                _metadata <span class="op">=</span> []</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>            jobs.append({</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">'job_title'</span>:job_title_text,</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">'location'</span>: location,</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">'description'</span>: job_description,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">'pay rate'</span>: pay,</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">'metadata'</span>: _metadata,</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">'job_id'</span>:job_id,</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                <span class="st">'job_url'</span>: <span class="ss">f"https://www.indeed.com/viewjob?jk=</span><span class="sc">{</span>job_id<span class="sc">}</span><span class="ss">"</span>,</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>            })</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            driver.find_element(By.CSS_SELECTOR,<span class="st">"[data-testid='pagination-page-next']"</span>).click()</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Ending at page </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>            has_next <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    driver.close()</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jobs</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> url_builder(job_title<span class="op">=</span>job_title, location<span class="op">=</span>location)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    driver <span class="op">=</span> webdriver.Chrome()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    driver.get(url)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="dv">5</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    jobs <span class="op">=</span> []</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    has_next <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> has_next:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="dv">10</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        cards <span class="op">=</span> driver.find_elements(By.CLASS_NAME,<span class="st">'cardOutline'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> card <span class="kw">in</span> cards:</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            job_title <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'jobTitle'</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            job_title_text <span class="op">=</span> job_title.text</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            job_id <span class="op">=</span> job_title.find_element(By.TAG_NAME, <span class="st">'a'</span>).get_attribute(<span class="st">'data-jk'</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            location <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'company_location'</span>).text</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            job_description <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'underShelfFooter'</span>).text</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                pay,<span class="op">*</span>_metadata <span class="op">=</span> card.find_element(By.CLASS_NAME,<span class="st">'heading6'</span>).text.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                pay <span class="op">=</span> <span class="st">'NA'</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                _metadata <span class="op">=</span> []</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            jobs.append({</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">'job_title'</span>:job_title_text,</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                <span class="st">'location'</span>: location,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                <span class="st">'description'</span>: job_description,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="st">'pay rate'</span>: pay,</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                <span class="st">'metadata'</span>: _metadata,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                <span class="st">'job_id'</span>:job_id,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                <span class="st">'job_url'</span>: <span class="ss">f"https://www.indeed.com/viewjob?jk=</span><span class="sc">{</span>job_id<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>            driver.find_element(By.CSS_SELECTOR,<span class="st">"[data-testid='pagination-page-next']"</span>).click()</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Ending at page </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>            has_next <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    driver.close()</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jobs</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-5" class="cell" data-execution_count="10">
+<div id="cell-5" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>job_data <span class="op">=</span> get_data(job_title<span class="op">=</span><span class="st">'python developer'</span>, location<span class="op">=</span><span class="st">'Fort Worth,TX'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Ending at page 40</code></pre>
+<pre><code>Ending at page 2</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="11">
+<div id="cell-6" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(job_data)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -345,86 +353,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>Software Developer - AI Trainer (Contract)</td>
-<td>DataAnnotation\n4.6\nRemote in Dallas, TX</td>
-<td>You will work with the chatbots that we are bu...</td>
-<td>$40 an hour</td>
-<td>[Contract, 1 to 40 hours per week, Choose your...</td>
-<td>cd937da8c0f30efd</td>
-<td>https://www.indeed.com/viewjob?jk=cd937da8c0f3...</td>
+<td>Python Programmer who enjoys helping people sm...</td>
+<td>Lifecorp\nArlington, TX</td>
+<td>Python Programmer who enjoys helping people sm...</td>
+<td>$70,000 - $100,000 a year</td>
+<td>[Full-time, Choose your own hours]</td>
+<td>ff1fe7ff0d3d04ad</td>
+<td>https://www.indeed.com/viewjob?jk=ff1fe7ff0d3d...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>Python Developer</td>
-<td>Robert Half\n3.9\nPlano, TX 75024</td>
-<td>Periodically exercise code-review and band tog...</td>
-<td>$76 - $88 an hour</td>
-<td>[Temp-to-hire]</td>
-<td>aeb409d79f39f2e1</td>
-<td>https://www.indeed.com/viewjob?jk=aeb409d79f39...</td>
+<td>Software Developer</td>
+<td>lead4ward\nTexas</td>
+<td>As part of a small, focused team, you’ll provi...</td>
+<td>$100,000 - $120,000 a year</td>
+<td>[Full-time, Monday to Friday, +1]</td>
+<td>6c7f467bada6cc22</td>
+<td>https://www.indeed.com/viewjob?jk=6c7f467bada6...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>Back End Developer</td>
-<td>IWP Services, LLC\nHybrid remote in Fort Worth...</td>
-<td>Integration of user-facing elements developed ...</td>
-<td>$100,000 - $110,000 a year</td>
-<td>[Full-time, +1, Monday to Friday, Employee sto...</td>
-<td>dc3e79c2af261bbe</td>
-<td>https://www.indeed.com/viewjob?jk=dc3e79c2af26...</td>
+<td>Software Developer</td>
+<td>Dream Entertainment Labs\nDallas, TX 75252</td>
+<td>Projects will center around family entertainme...</td>
+<td>$60,000 - $75,000 a year</td>
+<td>[Full-time]</td>
+<td>c32a429e080a48f0</td>
+<td>https://www.indeed.com/viewjob?jk=c32a429e080a...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>DevOps Engineer (309801)</td>
-<td>Internal Data Resources\n3.7\nRemote in Coppel...</td>
-<td>Our client is looking for a DevOps Engineer to...</td>
-<td>$55 - $63 an hour</td>
-<td>[Full-time, 40 hours per week, 8 hour shift]</td>
-<td>1ebb8e02e8eb7b07</td>
-<td>https://www.indeed.com/viewjob?jk=1ebb8e02e8eb...</td>
+<td>Python Developer || Dallas, TX (Local only) ||...</td>
+<td>ANB Sourcing LLC\nDallas, TX 75201</td>
+<td>Mid-level (5 or more years) in Python Developm...</td>
+<td></td>
+<td>[]</td>
+<td>d5dfbda8e8a781b1</td>
+<td>https://www.indeed.com/viewjob?jk=d5dfbda8e8a7...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>Python Developer</td>
-<td>Emonics LLC\nFort Worth, TX 76107 \n(Arlington...</td>
-<td>8.Coordinating with front-end developers..\nTo...</td>
-<td>$70,000 - $130,000 a year</td>
-<td>[Full-time, +1]</td>
-<td>8d0dfc501ff3fb89</td>
-<td>https://www.indeed.com/viewjob?jk=8d0dfc501ff3...</td>
+<td>E-Business International Inc\nPlano, TX 75024</td>
+<td>Create Golang based microservices and librarie...</td>
+<td></td>
+<td>[]</td>
+<td>a0caa2b4d714913d</td>
+<td>https://www.indeed.com/viewjob?jk=a0caa2b4d714...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>Software Engineer III (API / Scripting / Python)</td>
-<td>JPMorgan Chase &amp; Co\n3.9\nPlano, TX 75024</td>
-<td>Your collaboration will be crucial in advancin...</td>
-<td>Pay information not provided</td>
-<td>[Full-time]</td>
-<td>b7109d2b1ce04d16</td>
-<td>https://www.indeed.com/viewjob?jk=b7109d2b1ce0...</td>
+<td>Python FullStack Developer with Node</td>
+<td>Inclusion Cloud\nDallas, TX</td>
+<td>Provide technical guidance and support to juni...</td>
+<td></td>
+<td>[]</td>
+<td>ec46c96556d4c31d</td>
+<td>https://www.indeed.com/viewjob?jk=ec46c96556d4...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>Software Developer</td>
-<td>Boston Enterprises Investment Group LLC\nDeSot...</td>
-<td>The ideal candidate will be passionate about d...</td>
-<td>$68,000 - $77,000 a year</td>
-<td>[Full-time, +1, 8 hour shift]</td>
-<td>8e5cb88d329ff384</td>
-<td>https://www.indeed.com/viewjob?jk=8e5cb88d329f...</td>
+<td>Python Developer _ (Local to Dallas, TX)- Onsi...</td>
+<td>ANB Sourcing LLC\nDallas, TX 75201</td>
+<td>Dallas, TX (Onsite job)-- Local only.\nEmploye...</td>
+<td></td>
+<td>[]</td>
+<td>fbe285b925e08a10</td>
+<td>https://www.indeed.com/viewjob?jk=fbe285b925e0...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>Principal Artificial Intelligence / Machine Le...</td>
-<td>Raytheon\n3.9\nRichardson, TX 75082</td>
-<td>In this role, you will work with data scientis...</td>
-<td>$96,000 - $200,000 a year</td>
-<td>[Full-time]</td>
-<td>ab702435728c8649</td>
-<td>https://www.indeed.com/viewjob?jk=ab702435728c...</td>
+<td>Python Developer</td>
+<td>InfoQuest Consulting Group Inc.\nFort Worth, TX</td>
+<td>Duration &amp; Type: 6 months Contract with a majo...</td>
+<td></td>
+<td>[]</td>
+<td>e3232c051e279108</td>
+<td>https://www.indeed.com/viewjob?jk=e3232c051e27...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
+<td>Python Developer</td>
+<td>Tek Ninjas\nFort Worth, TX 76120</td>
+<td>Position: Python Developer Location: Fort Wort...</td>
+<td></td>
+<td>[]</td>
+<td>a002a17ed558d9a8</td>
+<td>https://www.indeed.com/viewjob?jk=a002a17ed558...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
 <td>Python Developer</td>
 <td>Qatalys Software Technologies\nIrving, TX</td>
 <td>Analyzes business and technical requirements t...</td>
@@ -433,315 +451,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>a2a8cbd917cbf446</td>
 <td>https://www.indeed.com/viewjob?jk=a2a8cbd917cb...</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>Software Engineer - Mid-Career (HYBRID TELEWORK)</td>
-<td>Lockheed Martin Corporation\nFort Worth, TX</td>
-<td>Design, modify, develop, write, and implement ...</td>
-<td>Pay information not provided</td>
-<td>[Full-time, 4x10]</td>
-<td>91cdaee932850a17</td>
-<td>https://www.indeed.com/viewjob?jk=91cdaee93285...</td>
-</tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>Full Stack Software Engineer (hybrid)</td>
-<td>Raytheon\n3.9\nRichardson, TX 75082</td>
-<td>Experience with the Linux shell scripting, pyt...</td>
-<td>$77,000 - $163,000 a year</td>
+<td>Lead Software Engineer</td>
+<td>Capital One\n3.9\nPlano, TX 75023</td>
+<td>These advancements will then allow high-qualit...</td>
+<td>Pay information not provided</td>
 <td>[Full-time]</td>
-<td>536f5c4b6cd40276</td>
-<td>https://www.indeed.com/viewjob?jk=536f5c4b6cd4...</td>
+<td>92491b6cd1e2158f</td>
+<td>https://www.indeed.com/viewjob?jk=92491b6cd1e2...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>Lead Software Developer</td>
-<td>McKesson\nIrving, TX 75039 \n(Freeport/Hackber...</td>
-<td>Java, Python, VB Scripts, Linux, SQL developer...</td>
-<td>$140,000 - $221,900 a year</td>
+<td>Python Developer- $100-110K</td>
+<td>Fults &amp; Associates\nGrapevine, TX 76051</td>
+<td>Need someone who works a lot with Software.\nM...</td>
+<td></td>
 <td>[]</td>
-<td>ec178dacdbfc1516</td>
-<td>https://www.indeed.com/viewjob?jk=ec178dacdbfc...</td>
+<td>b308d7d83046bef9</td>
+<td>https://www.indeed.com/viewjob?jk=b308d7d83046...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>Java AWS Full Stack Developer</td>
-<td>CGI Group, Inc.\n3.6\nTexas</td>
-<td>We are seeking an AWS/JAVA Full Stack Develope...</td>
-<td>Pay information not provided</td>
-<td>[Full-time]</td>
-<td>2e5a7704804e0172</td>
-<td>https://www.indeed.com/viewjob?jk=2e5a7704804e...</td>
+<td>Sr. Python Developer</td>
+<td>Amazee Global Ventures Inc\nPlano, TX</td>
+<td>Experience in leading development teams and me...</td>
+<td>$55 - $60 an hour</td>
+<td>[Full-time, +1, Monday to Friday]</td>
+<td>85e34afe849476f4</td>
+<td>https://www.indeed.com/viewjob?jk=85e34afe8494...</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
-<td>Python Developer</td>
-<td>NLB Technology Services\nFort Worth, TX 76102</td>
-<td>Minimum 5 Years of relevant experience in Pyth...</td>
-<td></td>
+<td>Java Python Developer</td>
+<td>Infosys\nRichardson, TX</td>
+<td>Experience in python development and libraries...</td>
+<td>Pay information not provided</td>
 <td>[]</td>
-<td>ad783a919af67c7f</td>
-<td>https://www.indeed.com/viewjob?jk=ad783a919af6...</td>
+<td>fbf2ba53d3fc0f3e</td>
+<td>https://www.indeed.com/viewjob?jk=fbf2ba53d3fc...</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>Python Developer (AWS)</td>
-<td>Integrated Technology Strategies, Inc.\nDallas...</td>
-<td>You will participate and effectively contribut...</td>
+<td>Python Sr Developer</td>
+<td>Inclusion Cloud\nDallas, TX</td>
+<td>Active participation in agile (scrum) developm...</td>
 <td>Pay information not provided</td>
 <td>[]</td>
-<td>cb1fe8a6b26f986f</td>
-<td>https://www.indeed.com/viewjob?jk=cb1fe8a6b26f...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>Experienced Software Engineer Java / Python (F...</td>
-<td>JPMorgan Chase &amp; Co\n3.9\nPlano, TX 75024</td>
-<td>Depending on the team that you join, you could...</td>
-<td>Pay information not provided</td>
-<td>[Full-time]</td>
-<td>d2b8758d3e73f691</td>
-<td>https://www.indeed.com/viewjob?jk=d2b8758d3e73...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>Front End Web Developer</td>
-<td>PCI Enterprises\n4.3\nDallas, TX</td>
-<td>2+ years experience with Javascript, HTML5 &amp; C...</td>
-<td>$65,000 - $75,000 a year</td>
-<td>[Full-time, Monday to Friday, +1, Bonus opport...</td>
-<td>8f182ee73fc19368</td>
-<td>https://www.indeed.com/viewjob?jk=8f182ee73fc1...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>Application Developer- Java /Python</td>
-<td>HCL Tech\nIrving, TX</td>
-<td>US Citizen or GC Holder required due to ITAR R...</td>
-<td>$50.20 - $60.46 an hour</td>
-<td>[Full-time, Monday to Friday, +1]</td>
-<td>a1434f80b52b2d66</td>
-<td>https://www.indeed.com/viewjob?jk=a1434f80b52b...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>Engineering Aide - Programmer</td>
-<td>Lockheed Martin Corporation\nFort Worth, TX</td>
-<td>Description:• Perform code analysis of existin...</td>
-<td>Pay information not provided</td>
-<td>[Full-time, 4x10]</td>
-<td>b5c3dac533e8837f</td>
-<td>https://www.indeed.com/viewjob?jk=b5c3dac533e8...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>Web Developer</td>
-<td>Topgolf\nDallas, TX 75231 \n(Northeast Dallas ...</td>
-<td>Design, develop, test, debug, and implement hi...</td>
-<td></td>
-<td>[]</td>
-<td>7b274886df7b33e0</td>
-<td>https://www.indeed.com/viewjob?jk=7b274886df7b...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>Python Developer</td>
-<td>Kinetix Trading Solutions Inc\nIrving, TX 75039</td>
-<td>Organize with end users, business analysts, an...</td>
-<td></td>
-<td>[]</td>
-<td>026deb02c0cf998d</td>
-<td>https://www.indeed.com/viewjob?jk=026deb02c0cf...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>Embedded Firmware Developer - IoT Apps</td>
-<td>WAC Lighting\nCedar Hill, TX 75104</td>
-<td>Develop well-tested, efficient, and maintainab...</td>
-<td>Pay information not provided</td>
-<td>[]</td>
-<td>aa2f1edfd956689a</td>
-<td>https://www.indeed.com/viewjob?jk=aa2f1edfd956...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>Middle/Senior Python Developer</td>
-<td>ScienceSoft USA Corporation\nRemote in Dallas, TX</td>
-<td>Write high-quality, reusable and documented co...</td>
-<td></td>
-<td>[]</td>
-<td>792d6bcda6668825</td>
-<td>https://www.indeed.com/viewjob?jk=792d6bcda666...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>Python Developer</td>
-<td>The Beneficient Company Group USA LLC\nDallas,...</td>
-<td>Strong collaboration skills to work effectivel...</td>
-<td></td>
-<td>[]</td>
-<td>4a341dd2109d5e28</td>
-<td>https://www.indeed.com/viewjob?jk=4a341dd2109d...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>Junior Developer</td>
-<td>CALL BOX\nDallas, TX 75231 \n(Northeast Dallas...</td>
-<td>Create and shape new products from the ground ...</td>
-<td></td>
-<td>[]</td>
-<td>8ee9d97e2585c552</td>
-<td>https://www.indeed.com/viewjob?jk=8ee9d97e2585...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>Python Developer</td>
-<td>MRoads\nDallas, TX</td>
-<td>JOB TYPE: Contract(12+ months).\nTeam is respo...</td>
-<td></td>
-<td>[]</td>
-<td>018d5de40ecce815</td>
-<td>https://www.indeed.com/viewjob?jk=018d5de40ecc...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>Sr. PYTHON DEVELOPER</td>
-<td>AGILEWIT SOLUTIONS\nLewisville, TX 75067</td>
-<td>Experience with project management and deliver...</td>
-<td>Pay information not provided</td>
-<td>[]</td>
-<td>46c798ebcda00d7d</td>
-<td>https://www.indeed.com/viewjob?jk=46c798ebcda0...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>FullStack Software Python/Node/React JS Developer</td>
-<td>Elm Street Technology LLC\nFrisco, TX 75033</td>
-<td>As a FullStack Developer, you will develop and...</td>
-<td></td>
-<td>[]</td>
-<td>1b46309123b68e9e</td>
-<td>https://www.indeed.com/viewjob?jk=1b46309123b6...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>Software Developer</td>
-<td>Minol M T R Lp\nAddison, TX 75001</td>
-<td>The developer would leverage technical experti...</td>
-<td>Pay information not provided</td>
-<td>[Full-time]</td>
-<td>3a0a3c9b2ac3af15</td>
-<td>https://www.indeed.com/viewjob?jk=3a0a3c9b2ac3...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
-<td>Software Web Developer</td>
-<td>Lockheed Martin Corporation\nFort Worth, TX</td>
-<td>The candidate should be a well-rounded softwar...</td>
-<td>Pay information not provided</td>
-<td>[Full-time, 4x10]</td>
-<td>d282a472f4692ed2</td>
-<td>https://www.indeed.com/viewjob?jk=d282a472f469...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
-<td>Python Developer</td>
-<td>Robert Half\n3.9\nPlano, TX 75024</td>
-<td>Frequently complete code-review and join force...</td>
-<td>$76 - $88 an hour</td>
-<td>[Temp-to-hire]</td>
-<td>9485e1c7aca04dda</td>
-<td>https://www.indeed.com/viewjob?jk=9485e1c7aca0...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>DevOps Automation Engineer I</td>
-<td>GM Financial\n3.6\nHybrid remote in Arlington,...</td>
-<td>Finally, the engineer will be responsible for ...</td>
-<td>$76,400 - $141,300 a year</td>
-<td>[Full-time, On call, Bonus opportunities]</td>
-<td>73216f1f3f181f05</td>
-<td>https://www.indeed.com/viewjob?jk=73216f1f3f18...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>Principal Artificial Intelligence / Machine Le...</td>
-<td>Raytheon\n3.9\nRichardson, TX 75082</td>
-<td>In this role, you will work with data scientis...</td>
-<td>$96,000 - $200,000 a year</td>
-<td>[Full-time]</td>
-<td>ab702435728c8649</td>
-<td>https://www.indeed.com/viewjob?jk=ab702435728c...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
-<td>Full Stack Engineer</td>
-<td>PCI Enterprises\n4.3\nDallas, TX</td>
-<td>2+ years experience using any major backend pr...</td>
-<td>$65,000 - $80,000 a year</td>
-<td>[Full-time, Monday to Friday, +1, Bonus opport...</td>
-<td>693494f2bd167ac3</td>
-<td>https://www.indeed.com/viewjob?jk=693494f2bd16...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
-<td>Hadoop Developer</td>
-<td>Matlen Silver\n3.3\nPlano, TX</td>
-<td>Mid Level Hadoop Developer (4-6 years of exper...</td>
-<td>$55 - $60 an hour</td>
-<td>[Contract, Hourly pay]</td>
-<td>48784392d6893ec6</td>
-<td>https://www.indeed.com/viewjob?jk=48784392d689...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
-<td>Quantitative Risk, Model Developer- Market Ris...</td>
-<td>Citi\n3.9\nIrving, TX 75061</td>
-<td>Developed communication and diplomacy skills a...</td>
-<td>$125,760 - $188,640 a year</td>
-<td>[Full-time]</td>
-<td>0b51d40d49ef8a0a</td>
-<td>https://www.indeed.com/viewjob?jk=0b51d40d49ef...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
-<td>Software Developer</td>
-<td>Seerist, Inc\nHybrid remote in Dallas, TX</td>
-<td>Coding knowledge and experience with several l...</td>
-<td>Pay information not provided</td>
-<td>[Full-time]</td>
-<td>251f54f954e7dead</td>
-<td>https://www.indeed.com/viewjob?jk=251f54f954e7...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">37</td>
-<td>Python Engineer</td>
-<td>CybeCys\nPlano, TX</td>
-<td>Reqs Master’s degree* in Information Systems o...</td>
-<td>Pay information not provided</td>
-<td>[]</td>
-<td>feb351ab034b044c</td>
-<td>https://www.indeed.com/viewjob?jk=feb351ab034b...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">38</td>
-<td>Cloud Engineer</td>
-<td>CVS Health\nIrving, TX</td>
-<td>Cloud Engineer of Data Engineering will own th...</td>
-<td>$72,100 - $175,100 a year</td>
-<td>[Full-time]</td>
-<td>350b76a3bad7fff1</td>
-<td>https://www.indeed.com/viewjob?jk=350b76a3bad7...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">39</td>
-<td>Azure .NET Lead Developer</td>
-<td>Vichara\nDallas, TX 75211 \n(Oak Cliff area)</td>
-<td>Work with development teams to provide estimat...</td>
-<td>$150,000 - $180,000 a year</td>
-<td>[]</td>
-<td>f74e65eb35fc2a33</td>
-<td>https://www.indeed.com/viewjob?jk=f74e65eb35fc...</td>
+<td>b4fe0b9fcc1b77d5</td>
+<td>https://www.indeed.com/viewjob?jk=b4fe0b9fcc1b...</td>
 </tr>
 </tbody>
 </table>
@@ -749,13 +507,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-7" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>(518, 7)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>(15, 7)</code></pre>
 </div>
 </div>
 </section>
@@ -765,21 +523,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="cell-9" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_proxies():</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Extracting proxies..."</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    proxy_url  <span class="op">=</span> <span class="st">"https://www.us-proxy.org/"</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(proxy_url)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    dfs  <span class="op">=</span> pd.read_html(r.text)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> dfs[<span class="dv">0</span>]</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df.shape)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>proxies_df <span class="op">=</span> extract_proxies()</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>proxies_df.head(<span class="dv">20</span>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_proxies():</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Extracting proxies..."</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    proxy_url  <span class="op">=</span> <span class="st">"https://www.us-proxy.org/"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(proxy_url)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    dfs  <span class="op">=</span> pd.read_html(r.text)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> dfs[<span class="dv">0</span>]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df.shape)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>proxies_df <span class="op">=</span> extract_proxies()</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>proxies_df.head(<span class="dv">20</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/var/folders/22/2rvpv_m90c30mhtk77k1jd440000gn/T/ipykernel_39218/3797928275.py:1: DeprecationWarning: 
