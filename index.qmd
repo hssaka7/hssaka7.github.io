@@ -39,11 +39,10 @@ include-in-header:
         background-image: url(core/assets/images/hero_banner.jpg);
         background-size: cover;
         background-position-y: center;
-        height: 400px;
+        height: 600px;
         margin: 0;
       }
       </style>
- 
 ---
 
 <div>
@@ -70,8 +69,9 @@ Embark on a transformative journey with my freelance services in IT and Finance 
 :::
 :::
 
-
 <br>
+
+
 
 # Testimonials 
 These are the testimonials from the awesome peoples that i have worked in the past.
