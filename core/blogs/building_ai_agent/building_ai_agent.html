@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Aakash Basnet">
-<meta name="dcterms.date" content="2025-01-12">
-<meta name="description" content="Setting up open soure llm locally and builing simple application on top of it">
+<meta name="description" content="Building AI agent using llm">
 
 <title>Running LLM locally – aakash basnet</title>
 <style>
@@ -168,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Running LLM locally</h1>
                   <div>
         <div class="description">
-          Setting up open soure llm locally and builing simple application on top of it
+          Building AI agent using llm
         </div>
       </div>
                           <div class="quarto-categories">
@@ -176,6 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div class="quarto-category">gemini</div>
                 <div class="quarto-category">AI</div>
                 <div class="quarto-category">python</div>
+                <div class="quarto-category">agent</div>
               </div>
                   </div>
   </div>
@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 12, 2025</p>
+        <p class="date">Invalid Date</p>
       </div>
     </div>
     
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#import-model" id="toc-import-model" class="nav-link" data-scroll-target="#import-model">Import Model</a></li>
+  <li><a href="#loading-model" id="toc-loading-model" class="nav-link" data-scroll-target="#loading-model">Loading Model</a></li>
   </ul>
 </nav>
     </div>
@@ -231,10 +231,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Install Langchain community module</p>
 <pre><code>pip install langchain-ollama</code></pre>
 </section>
-<section id="import-model" class="level1">
-<h1>Import Model</h1>
-<p>For this experiment we will loading gemma2:2b using ollama and langchain model. The temperature is set to 0. Temperature near to 0 makes llm output more deterministic. For application executing certain task the temperature should be set near to 0. But for task like generating poem or movie scricpt the temperature should be set near to 1. The temperature near to 1 makes llm more creative and add ramdomness element to the process.</p>
-<div id="cell-3" class="cell" data-execution_count="6">
+<section id="loading-model" class="level1">
+<h1>Loading Model</h1>
+<p>Gemma2:2b is used to build the agent, as it is small is size and powerful too.</p>
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_ollama.llms <span class="im">import</span> OllamaLLM</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.prompts <span class="im">import</span> ChatPromptTemplate</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -246,56 +246,294 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lets build LLM agent to translate one language to another.</p>
-<div id="cell-5" class="cell" data-execution_count="7">
+<div id="cell-5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> ChatPromptTemplate.from_messages(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        (</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"system"</span>,</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"""</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">            You are a helpful assistant that translates </span><span class="sc">{input_language}</span><span class="st"> to </span><span class="sc">{output_language}</span><span class="st">. </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">            Provides output in json format as language as key and outpus as value</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">            """</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"human"</span>, <span class="st">"</span><span class="sc">{input}</span><span class="st">"</span>),</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>chain <span class="op">=</span> prompt <span class="op">|</span> llm</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> chain.invoke(</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"input_language"</span>: <span class="st">"English"</span>,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"output_language"</span>: <span class="st">"Spanish, German, Korean"</span>,</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"input"</span>: <span class="st">"I love grilled chicken"</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>pprint(ai_message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">            You are a resume generator.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">            You will generate the resume for a given user name and the job title.</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">            You will print out the final resume that will be submitted to a job portal.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">            Make a four sections: Summary, Skills, Work Experience and Education.</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">            Summary value is a strig.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">            Skill value is a dictionary object with section and list of skill. </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">            Work experience value is a dictionary with work title and list of responsibilities.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">            There should be 10 responsibilities foe each work title.</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">            Education value is a dictionary with degree level and information like graduated year and university name, location.</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">            Provide all the output as json object only</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">            """</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        (</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"human"</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">""" </span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="st">            user name: </span><span class="sc">{user_name}</span><span class="st">,</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="st">            job title: </span><span class="sc">{job_title}</span><span class="st">,</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="st">            bachelors: </span><span class="sc">{bachelor_education}</span><span class="st">,</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="st">            masters: </span><span class="sc">{master_education}</span><span class="st">,</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="st">            work experiences: </span><span class="sc">{work_experiences}</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="st">            """</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>chain <span class="op">=</span> prompt <span class="op">|</span> llm</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>user_data <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"user_name"</span>: <span class="st">"Jhon Doe"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"job_title"</span>: <span class="st">"Machine Learning Engineer"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bachelor_education"</span>: <span class="st">"University of New Mexico,2018, Bsc in Computer Science and Information System"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"master_education"</span>: <span class="st">"Cumberlands University, 2023, Msc in Information Technology and System"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"work_experiences"</span>: <span class="st">""" Fidelity, Machine learning Engineer|</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">                            Bank of America, BigData/Machine learning Engineer|</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">                            Penny Mac, Data Engineer|</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">                            Vitol, Data Engineer|</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">                            Bank of America, Backend Engineer|</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">                            UNM BBER, Fullstack Developer"""</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">for</span> chunk <span class="kw">in</span> chain.astream(user_data):</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> result <span class="op">+</span> chunk</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(chunk, end<span class="op">=</span><span class="st">""</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>('```json\n'
- '{\n'
- '  "English": "I love grilled chicken",\n'
- '  "Spanish": "¡Me encanta el pollo a la parrilla!",\n'
- '  "German": "Ich liebe gegrillte Hähnchen!",\n'
- '  "Korean": "닭갈비를 좋아해요!" \n'
- '}\n'
- '```')</code></pre>
+<pre><code>```json
+{
+  "Summary": "Highly motivated and results-oriented Machine Learning Engineer with a proven track record of developing innovative solutions using advanced algorithms. Expertise in data analysis, machine learning model development, and implementation across diverse industries.",
+  "Skills": {
+    "Technical Skills": [
+      "Machine Learning",
+      "Deep Learning",
+      "Python",
+      "TensorFlow",
+      "Scikit-learn",
+      "Data Visualization",
+      "Cloud Computing (AWS)",
+      "Big Data Analytics",
+      "SQL",
+      "R"
+    ],
+    "Soft Skills": [
+      "Communication",
+      "Problem Solving",
+      "Teamwork",
+      "Adaptability",
+      "Critical Thinking",
+      "Time Management"
+    ]
+  },
+  "Work Experience": {
+    "Fidelity": [
+      "Developed and implemented machine learning models to predict customer churn, resulting in a 10% reduction in churn rate.",
+      "Designed and built data pipelines for real-time data analysis, improving operational efficiency by 20%.",
+      "Collaborated with cross-functional teams to develop and deploy AI-powered solutions for fraud detection.",
+      "Utilized Python libraries like Pandas and NumPy for data manipulation and statistical analysis.",
+      "Conducted A/B testing on machine learning models to optimize model performance and accuracy.",
+      "Presented findings and recommendations to stakeholders, effectively communicating complex technical concepts.",
+      "Mentored junior engineers on best practices in machine learning development.",
+      "Participated in code reviews and provided constructive feedback to improve team code quality."
+    ],
+    "Bank of America": [
+      "Developed and implemented machine learning models for credit risk assessment, leading to a 5% improvement in loan approval rates.",
+      "Designed and built data pipelines for real-time fraud detection, reducing fraudulent transactions by 15%.",
+      "Collaborated with data scientists to develop predictive models for customer segmentation and targeting.",
+      "Utilized SQL and Python libraries like Pandas and NumPy for data analysis and model development.",
+      "Conducted A/B testing on machine learning models to optimize model performance and accuracy.",
+      "Presented findings and recommendations to stakeholders, effectively communicating complex technical concepts.",
+      "Mentored junior engineers on best practices in machine learning development.",
+      "Participated in code reviews and provided constructive feedback to improve team code quality."
+    ],
+    "Penny Mac": [
+      "Designed and implemented data pipelines for real-time data analysis, improving operational efficiency by 20%.",
+      "Developed and deployed machine learning models for predictive maintenance, reducing equipment downtime by 10%.",
+      "Collaborated with engineers to develop and implement data visualization dashboards.",
+      "Utilized Python libraries like Pandas and NumPy for data manipulation and statistical analysis.",
+      "Conducted A/B testing on machine learning models to optimize model performance and accuracy.",
+      "Presented findings and recommendations to stakeholders, effectively communicating complex technical concepts.",
+      "Mentored junior engineers on best practices in data engineering.",
+      "Participated in code reviews and provided constructive feedback to improve team code quality."
+    ],
+    "Vitol": [
+      "Developed and implemented machine learning models for demand forecasting, improving inventory management by 15%.",
+      "Designed and built data pipelines for real-time market analysis, enabling faster decision making.",
+      "Collaborated with engineers to develop and implement data visualization dashboards.",
+      "Utilized Python libraries like Pandas and NumPy for data manipulation and statistical analysis.",
+      "Conducted A/B testing on machine learning models to optimize model performance and accuracy.",
+      "Presented findings and recommendations to stakeholders, effectively communicating complex technical concepts.",
+      "Mentored junior engineers on best practices in machine learning development.",
+      "Participated in code reviews and provided constructive feedback to improve team code quality."
+    ],
+    "Bank of America": [
+      "Developed and implemented backend systems for financial applications using Java and Spring Boot.",
+      "Designed and built RESTful APIs for data integration and communication.",
+      "Collaborated with developers to implement new features and functionalities.",
+      "Utilized SQL and NoSQL databases for data storage and retrieval.",
+      "Conducted code reviews and provided constructive feedback to improve team code quality.",
+      "Participated in technical design discussions and contributed to architectural decisions."
+    ],
+    "UNM BBER": [
+      "Developed full-stack web applications using React, Node.js, and Express.js.",
+      "Designed and implemented user interfaces for various functionalities.",
+      "Collaborated with team members to develop and deploy new features.",
+      "Utilized version control systems like Git for code management.",
+      "Conducted unit testing and integration testing to ensure application functionality.",
+      "Participated in technical design discussions and contributed to architectural decisions."
+    ]
+  },
+  "Education": {
+    "Bachelor's Degree": {
+      "University": "University of New Mexico",
+      "Degree": "Bsc in Computer Science and Information System",
+      "Graduation Year": 2018
+    },
+    "Master's Degree": {
+      "University": "Cumberlands University",
+      "Degree": "Msc in Information Technology and System",
+      "Graduation Year": 2023
+    }
+  }
+}
+```</code></pre>
 </div>
 </div>
-<p>The llm model response is in string format. Now, lets load the string response as json object.</p>
-<div id="cell-7" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace and assign back to original content</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```json"</span>, <span class="st">""</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```"</span>, <span class="st">""</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Don't forget to convert to JSON as it is a string right now:</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>json_result <span class="op">=</span> json.loads(ai_message)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pprint(json_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-7" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace and assign back to original content</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> result.replace(<span class="st">"```json"</span>, <span class="st">""</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> result.replace(<span class="st">"```"</span>, <span class="st">""</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># load the string output as json output</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>json_result <span class="op">=</span> json.loads(result)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>pprint(json_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'English': 'I love grilled chicken',
- 'German': 'Ich liebe gegrillte Hähnchen!',
- 'Korean': '닭갈비를 좋아해요!',
- 'Spanish': '¡Me encanta el pollo a la parrilla!'}</code></pre>
+<pre><code>{'Education': {"Bachelor's Degree": {'Degree': 'Bsc in Computer Science and '
+                                               'Information System',
+                                     'Graduation Year': 2018,
+                                     'University': 'University of New Mexico'},
+               "Master's Degree": {'Degree': 'Msc in Information Technology '
+                                             'and System',
+                                   'Graduation Year': 2023,
+                                   'University': 'Cumberlands University'}},
+ 'Skills': {'Soft Skills': ['Communication',
+                            'Problem Solving',
+                            'Teamwork',
+                            'Adaptability',
+                            'Critical Thinking',
+                            'Time Management'],
+            'Technical Skills': ['Machine Learning',
+                                 'Deep Learning',
+                                 'Python',
+                                 'TensorFlow',
+                                 'Scikit-learn',
+                                 'Data Visualization',
+                                 'Cloud Computing (AWS)',
+                                 'Big Data Analytics',
+                                 'SQL',
+                                 'R']},
+ 'Summary': 'Highly motivated and results-oriented Machine Learning Engineer '
+            'with a proven track record of developing innovative solutions '
+            'using advanced algorithms. Expertise in data analysis, machine '
+            'learning model development, and implementation across diverse '
+            'industries.',
+ 'Work Experience': {'Bank of America': ['Developed and implemented backend '
+                                         'systems for financial applications '
+                                         'using Java and Spring Boot.',
+                                         'Designed and built RESTful APIs for '
+                                         'data integration and communication.',
+                                         'Collaborated with developers to '
+                                         'implement new features and '
+                                         'functionalities.',
+                                         'Utilized SQL and NoSQL databases for '
+                                         'data storage and retrieval.',
+                                         'Conducted code reviews and provided '
+                                         'constructive feedback to improve '
+                                         'team code quality.',
+                                         'Participated in technical design '
+                                         'discussions and contributed to '
+                                         'architectural decisions.'],
+                     'Fidelity': ['Developed and implemented machine learning '
+                                  'models to predict customer churn, resulting '
+                                  'in a 10% reduction in churn rate.',
+                                  'Designed and built data pipelines for '
+                                  'real-time data analysis, improving '
+                                  'operational efficiency by 20%.',
+                                  'Collaborated with cross-functional teams to '
+                                  'develop and deploy AI-powered solutions for '
+                                  'fraud detection.',
+                                  'Utilized Python libraries like Pandas and '
+                                  'NumPy for data manipulation and statistical '
+                                  'analysis.',
+                                  'Conducted A/B testing on machine learning '
+                                  'models to optimize model performance and '
+                                  'accuracy.',
+                                  'Presented findings and recommendations to '
+                                  'stakeholders, effectively communicating '
+                                  'complex technical concepts.',
+                                  'Mentored junior engineers on best practices '
+                                  'in machine learning development.',
+                                  'Participated in code reviews and provided '
+                                  'constructive feedback to improve team code '
+                                  'quality.'],
+                     'Penny Mac': ['Designed and implemented data pipelines '
+                                   'for real-time data analysis, improving '
+                                   'operational efficiency by 20%.',
+                                   'Developed and deployed machine learning '
+                                   'models for predictive maintenance, '
+                                   'reducing equipment downtime by 10%.',
+                                   'Collaborated with engineers to develop and '
+                                   'implement data visualization dashboards.',
+                                   'Utilized Python libraries like Pandas and '
+                                   'NumPy for data manipulation and '
+                                   'statistical analysis.',
+                                   'Conducted A/B testing on machine learning '
+                                   'models to optimize model performance and '
+                                   'accuracy.',
+                                   'Presented findings and recommendations to '
+                                   'stakeholders, effectively communicating '
+                                   'complex technical concepts.',
+                                   'Mentored junior engineers on best '
+                                   'practices in data engineering.',
+                                   'Participated in code reviews and provided '
+                                   'constructive feedback to improve team code '
+                                   'quality.'],
+                     'UNM BBER': ['Developed full-stack web applications using '
+                                  'React, Node.js, and Express.js.',
+                                  'Designed and implemented user interfaces '
+                                  'for various functionalities.',
+                                  'Collaborated with team members to develop '
+                                  'and deploy new features.',
+                                  'Utilized version control systems like Git '
+                                  'for code management.',
+                                  'Conducted unit testing and integration '
+                                  'testing to ensure application '
+                                  'functionality.',
+                                  'Participated in technical design '
+                                  'discussions and contributed to '
+                                  'architectural decisions.'],
+                     'Vitol': ['Developed and implemented machine learning '
+                               'models for demand forecasting, improving '
+                               'inventory management by 15%.',
+                               'Designed and built data pipelines for '
+                               'real-time market analysis, enabling faster '
+                               'decision making.',
+                               'Collaborated with engineers to develop and '
+                               'implement data visualization dashboards.',
+                               'Utilized Python libraries like Pandas and '
+                               'NumPy for data manipulation and statistical '
+                               'analysis.',
+                               'Conducted A/B testing on machine learning '
+                               'models to optimize model performance and '
+                               'accuracy.',
+                               'Presented findings and recommendations to '
+                               'stakeholders, effectively communicating '
+                               'complex technical concepts.',
+                               'Mentored junior engineers on best practices in '
+                               'machine learning development.',
+                               'Participated in code reviews and provided '
+                               'constructive feedback to improve team code '
+                               'quality.']}}</code></pre>
 </div>
 </div>
 
