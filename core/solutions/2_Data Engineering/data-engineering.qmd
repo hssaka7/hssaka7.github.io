@@ -3,7 +3,7 @@ title: "Data Engineering"
 subtitle: "\"I provide data engineering solution to business and clients.\""
 description: "Boost your data capabilities with our streamlined data engineering services, featuring efficient ETL pipeline development, Apache Airflow orchestration, and scalable AWS solutions for actionable insights."
 
-image: /core/assets/images/solutions/dataengineering.jpg
+image: /core/assets/images/solutions/data_engineering.png
 toc: false
 categories:
   - news

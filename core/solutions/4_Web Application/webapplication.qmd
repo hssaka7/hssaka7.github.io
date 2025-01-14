@@ -2,7 +2,7 @@
 title: "Web Application"
 subtitle: "\"I provide Web application service to business and client\" "
 description: "Step into the future of online interaction with our Web Application services. We create user-friendly websites to make your business stand out."
-image: /core/assets/images/solutions/webscraping.jpg
+image: /core/assets/images/solutions/web_application.png
 toc: false
 categories:
   - news

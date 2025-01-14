@@ -3,7 +3,7 @@ title: "Artificial Intelligence"
 subtitle: "\"I provide artificial intelligence service to business and client\" "
 description: "Uncover the future of business innovation through our cutting-edge Artificial Intelligence services, meticulously designed to transform operations and inspire insightful advancements."
 
-image: /core/assets/images/solutions/webscraping.jpg
+image: /core/assets/images/solutions/artificial_intelligence.png
 toc: false
 categories:
   - news

@@ -3,7 +3,7 @@ title: "Consulting"
 subtitle: "\"I provide consulting service to business and client\" "
 description: "Enhance your business with tailored consulting services covering software engineering, data engineering, data pipeline design, AI solutions, web scraping, and lead generation. Our expertise is here to guide you towards effective solutions."
 
-image: /core/assets/images/solutions/webscraping.jpg
+image: /core/assets/images/solutions/consulting.png
 toc: false
 categories:
   - news

@@ -2,7 +2,7 @@
 title: "Tutoring"
 subtitle: "\"I provide tutoring / mentoring service to business and client\" "
 description: "Enhance your proficiency in Python, programming, software engineering, and AI through our tutoring and mentoring service. We offer tailored guidance to individuals and foster collaborative learning in group sessions, ensuring a well-rounded educational experience."
-image: /core/assets/images/solutions/webscraping.jpg
+image: /core/assets/images/solutions/tutoring.png
 toc: false
 categories:
   - news
