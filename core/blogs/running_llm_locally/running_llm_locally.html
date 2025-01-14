@@ -221,6 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p><img src="llm.png" class="img-fluid"></p>
 <section id="installation" class="level1">
 <h1>Installation</h1>
 <p>On your terminal run the following command to install ollama module.</p>
@@ -234,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="import-model" class="level1">
 <h1>Import Model</h1>
 <p>For this experiment we will loading gemma2:2b using ollama and langchain model. The temperature is set to 0. Temperature near to 0 makes llm output more deterministic. For application executing certain task the temperature should be set near to 0. But for task like generating poem or movie scricpt the temperature should be set near to 1. The temperature near to 1 makes llm more creative and add ramdomness element to the process.</p>
-<div id="cell-3" class="cell" data-execution_count="6">
+<div id="cell-4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_ollama.llms <span class="im">import</span> OllamaLLM</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.prompts <span class="im">import</span> ChatPromptTemplate</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -246,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lets build LLM agent to translate one language to another.</p>
-<div id="cell-5" class="cell" data-execution_count="7">
+<div id="cell-6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> ChatPromptTemplate.from_messages(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        (</span>
@@ -283,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The llm model response is in string format. Now, lets load the string response as json object.</p>
-<div id="cell-7" class="cell" data-execution_count="8">
+<div id="cell-8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace and assign back to original content</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```json"</span>, <span class="st">""</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```"</span>, <span class="st">""</span>)</span>
