@@ -1,6 +1,6 @@
 ---
-title: "Freelancer , with 6 years of experiences"
-description: I specialize in Python automation, data engineering, and developing impactful web applications and dashboards. Let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.
+title: "ML Engineer , with 7+ years of experiences"
+description: I specialize in AI, Machine learning, Deep Neural Networks, NLP, LLM, automation, data engineering, web applications and dashboards. Let's collaborate to enhance your operational efficiency and unlock the potential of data-driven insights.
 
 pagetitle: "Aakash Basnet"
 page-layout: full
