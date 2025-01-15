@@ -213,7 +213,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#extract-company-in-sp500" id="toc-extract-company-in-sp500" class="nav-link" data-scroll-target="#extract-company-in-sp500">Extract Company in SP500</a></li>
   <li><a href="#download-history-data-for-sp500-companies" id="toc-download-history-data-for-sp500-companies" class="nav-link" data-scroll-target="#download-history-data-for-sp500-companies">Download history data for SP500 companies</a></li>
-  <li><a href="#calculate-rolling-average" id="toc-calculate-rolling-average" class="nav-link" data-scroll-target="#calculate-rolling-average">Calculate Rolling Average</a></li>
+  <li><a href="#calculate-rolling-average" id="toc-calculate-rolling-average" class="nav-link" data-scroll-target="#calculate-rolling-average">Calculate Rolling Average</a>
+  <ul class="collapse">
+  <li><a href="#ticker-where-rolling-average-is-less-than-closing-price" id="toc-ticker-where-rolling-average-is-less-than-closing-price" class="nav-link" data-scroll-target="#ticker-where-rolling-average-is-less-than-closing-price">Ticker where rolling average is less than closing price</a></li>
+  </ul></li>
   <li><a href="#top-holding-in-sp500" id="toc-top-holding-in-sp500" class="nav-link" data-scroll-target="#top-holding-in-sp500">Top holding in SP500</a></li>
   </ul>
 </nav>
@@ -664,7 +667,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="176">
+<section id="ticker-where-rolling-average-is-less-than-closing-price" class="level2">
+<h2 class="anchored" data-anchor-id="ticker-where-rolling-average-is-less-than-closing-price">Ticker where rolling average is less than closing price</h2>
+<div id="cell-10" class="cell" data-execution_count="176">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> rolling_avg_df[rolling_avg_df[<span class="st">'Close'</span>] <span class="op">&lt;</span> rolling_avg_df[<span class="st">'100_MA_Close'</span>]]</span>
@@ -836,9 +841,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+</section>
 <section id="top-holding-in-sp500" class="level1">
 <h1>Top holding in SP500</h1>
-<div id="cell-11" class="cell" data-execution_count="174">
+<div id="cell-12" class="cell" data-execution_count="174">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>spy <span class="op">=</span> yf.Ticker(<span class="st">'SPY'</span>).funds_data</span>
