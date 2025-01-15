@@ -8,7 +8,7 @@
 
 <meta name="author" content="Aakash Basnet">
 <meta name="dcterms.date" content="2024-01-15">
-<meta name="description" content="Extracting, Analysing and Predicting">
+<meta name="description" content="Extract SP500 tickers data and analyze it for finding signals to trade">
 
 <title>Stock Market Analysis – aakash basnet</title>
 <style>
@@ -171,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Stock Market Analysis</h1>
                   <div>
         <div class="description">
-          Extracting, Analysing and Predicting
+          Extract SP500 tickers data and analyze it for finding signals to trade
         </div>
       </div>
                           <div class="quarto-categories">
@@ -246,17 +246,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">'2020-01-01'</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> <span class="st">'2025-01-15'</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>tickers <span class="op">=</span> pd.read_html(<span class="st">'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'</span>)[<span class="dv">0</span>]</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>tickers[<span class="st">'Symbol'</span>] <span class="op">=</span> tickers[<span class="st">'Symbol'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip())</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>tickers.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">'2020-01-01'</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> <span class="st">'2025-01-15'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>tickers <span class="op">=</span> pd.read_html(<span class="st">'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'</span>)[<span class="dv">0</span>]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>tickers[<span class="st">'Symbol'</span>] <span class="op">=</span> tickers[<span class="st">'Symbol'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip())</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>tickers.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="169">
 <div>
@@ -554,29 +553,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="calculate-rolling-average" class="level1">
 <h1>Calculate Rolling Average</h1>
 <p>Now, The 100 day rolling average is calculated and compared with latest closing price. Then, the data where the 100 days rolling average is less than latest closing price is filtered</p>
-<div id="cell-8" class="cell" data-execution_count="175">
+<div id="cell-8" class="cell" data-execution_count="185">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>window_size <span class="op">=</span> <span class="dv">100</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>window_sizes <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">200</span>] <span class="co"># indays</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ticker <span class="kw">in</span> data.columns.get_level_values(<span class="dv">1</span>).unique():</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ticker_data <span class="op">=</span> data[<span class="st">'Close'</span>][ticker]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    results.append((ticker,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                    ticker_data.index[<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                    ticker_data.iloc[<span class="op">-</span><span class="dv">1</span>].<span class="bu">round</span>(<span class="dv">2</span>),</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                   (ticker_data.tail(window_size).<span class="bu">sum</span>()<span class="op">/</span>window_size).<span class="bu">round</span>(<span class="dv">2</span>))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>rolling_avg_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span>[<span class="st">'Ticker'</span>,<span class="st">'Date'</span>,<span class="st">'Close'</span>, <span class="ss">f'</span><span class="sc">{</span>window_size<span class="sc">}</span><span class="ss">_MA_Close'</span>])</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rolling_avg_df.shape)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [ticker,ticker_data.index[<span class="op">-</span><span class="dv">1</span>],ticker_data.iloc[<span class="op">-</span><span class="dv">1</span>].<span class="bu">round</span>(<span class="dv">2</span>)]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> [<span class="st">'Ticker'</span>,<span class="st">'Date'</span>,<span class="st">'Close'</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> row <span class="op">+</span> [(ticker_data.tail(window_size).<span class="bu">sum</span>()<span class="op">/</span>window_size).<span class="bu">round</span>(<span class="dv">2</span>) <span class="cf">for</span> window_size <span class="kw">in</span> window_sizes]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> columns <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>window_size<span class="sc">}</span><span class="ss">D_MA_Close'</span> <span class="cf">for</span> window_size <span class="kw">in</span> window_sizes]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    results.append(row)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>rolling_avg_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span> columns)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rolling_avg_df.shape)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>(501, 4)</code></pre>
+<pre><code>(501, 9)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="175">
+<div class="cell-output cell-output-display" data-execution_count="185">
 <div>
 
 
@@ -587,7 +587,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Ticker</th>
 <th data-quarto-table-cell-role="th">Date</th>
 <th data-quarto-table-cell-role="th">Close</th>
-<th data-quarto-table-cell-role="th">100_MA_Close</th>
+<th data-quarto-table-cell-role="th">5D_MA_Close</th>
+<th data-quarto-table-cell-role="th">10D_MA_Close</th>
+<th data-quarto-table-cell-role="th">30D_MA_Close</th>
+<th data-quarto-table-cell-role="th">60D_MA_Close</th>
+<th data-quarto-table-cell-role="th">100D_MA_Close</th>
+<th data-quarto-table-cell-role="th">200D_MA_Close</th>
 </tr>
 </thead>
 <tbody>
@@ -596,70 +601,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>A</td>
 <td>2025-01-14</td>
 <td>143.43</td>
+<td>139.45</td>
+<td>137.13</td>
+<td>137.52</td>
+<td>135.46</td>
 <td>137.74</td>
+<td>137.47</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>AAPL</td>
 <td>2025-01-14</td>
 <td>233.28</td>
+<td>237.89</td>
+<td>242.43</td>
+<td>246.49</td>
+<td>237.75</td>
 <td>232.84</td>
+<td>215.77</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>ABBV</td>
 <td>2025-01-14</td>
 <td>175.55</td>
+<td>177.10</td>
+<td>178.02</td>
+<td>177.04</td>
+<td>181.03</td>
 <td>185.97</td>
+<td>177.18</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>ABNB</td>
 <td>2025-01-14</td>
 <td>127.60</td>
+<td>129.63</td>
+<td>131.38</td>
+<td>133.79</td>
+<td>134.93</td>
 <td>130.46</td>
+<td>138.81</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>ABT</td>
 <td>2025-01-14</td>
 <td>113.02</td>
+<td>113.23</td>
+<td>113.24</td>
+<td>114.23</td>
+<td>115.39</td>
 <td>114.81</td>
+<td>110.00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
 <td>ACGL</td>
 <td>2025-01-14</td>
 <td>91.99</td>
+<td>91.58</td>
+<td>91.57</td>
+<td>93.38</td>
+<td>95.67</td>
 <td>99.87</td>
+<td>96.29</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
 <td>ACN</td>
 <td>2025-01-14</td>
 <td>348.99</td>
+<td>352.41</td>
+<td>352.03</td>
+<td>357.34</td>
+<td>358.54</td>
 <td>353.79</td>
+<td>331.33</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
 <td>ADBE</td>
 <td>2025-01-14</td>
 <td>412.71</td>
+<td>413.87</td>
+<td>426.26</td>
+<td>468.59</td>
+<td>484.06</td>
 <td>504.11</td>
+<td>505.86</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
 <td>ADI</td>
 <td>2025-01-14</td>
 <td>214.65</td>
+<td>215.26</td>
+<td>214.60</td>
+<td>215.53</td>
+<td>218.12</td>
 <td>221.07</td>
+<td>218.18</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
 <td>ADM</td>
 <td>2025-01-14</td>
 <td>51.19</td>
+<td>50.73</td>
+<td>50.42</td>
+<td>51.31</td>
+<td>52.58</td>
 <td>55.17</td>
+<td>57.66</td>
 </tr>
 </tbody>
 </table>
@@ -669,17 +724,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="ticker-where-rolling-average-is-less-than-closing-price" class="level2">
 <h2 class="anchored" data-anchor-id="ticker-where-rolling-average-is-less-than-closing-price">Ticker where rolling average is less than closing price</h2>
-<div id="cell-10" class="cell" data-execution_count="176">
+<div id="cell-10" class="cell" data-execution_count="186">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> rolling_avg_df[rolling_avg_df[<span class="st">'Close'</span>] <span class="op">&lt;</span> rolling_avg_df[<span class="st">'100_MA_Close'</span>]]</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> rolling_avg_df[rolling_avg_df[<span class="st">'Close'</span>] <span class="op">&lt;</span> rolling_avg_df[<span class="st">'100D_MA_Close'</span>]]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_df.shape)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>filtered_df.head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>filtered_df.tail(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>(301, 4)</code></pre>
+<pre><code>(301, 9)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="176">
+<div class="cell-output cell-output-display" data-execution_count="186">
 <div>
 
 
@@ -690,149 +745,254 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th">Ticker</th>
 <th data-quarto-table-cell-role="th">Date</th>
 <th data-quarto-table-cell-role="th">Close</th>
-<th data-quarto-table-cell-role="th">100_MA_Close</th>
+<th data-quarto-table-cell-role="th">5D_MA_Close</th>
+<th data-quarto-table-cell-role="th">10D_MA_Close</th>
+<th data-quarto-table-cell-role="th">30D_MA_Close</th>
+<th data-quarto-table-cell-role="th">60D_MA_Close</th>
+<th data-quarto-table-cell-role="th">100D_MA_Close</th>
+<th data-quarto-table-cell-role="th">200D_MA_Close</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>ABBV</td>
+<td data-quarto-table-cell-role="th">471</td>
+<td>VMC</td>
 <td>2025-01-14</td>
-<td>175.55</td>
-<td>185.97</td>
+<td>260.07</td>
+<td>255.01</td>
+<td>256.05</td>
+<td>268.87</td>
+<td>271.83</td>
+<td>260.46</td>
+<td>257.85</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>ABNB</td>
+<td data-quarto-table-cell-role="th">472</td>
+<td>VRSK</td>
 <td>2025-01-14</td>
-<td>127.60</td>
-<td>130.46</td>
+<td>273.49</td>
+<td>274.31</td>
+<td>274.54</td>
+<td>280.36</td>
+<td>279.25</td>
+<td>275.03</td>
+<td>264.28</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>ABT</td>
+<td data-quarto-table-cell-role="th">474</td>
+<td>VRTX</td>
 <td>2025-01-14</td>
-<td>113.02</td>
-<td>114.81</td>
+<td>411.66</td>
+<td>411.00</td>
+<td>407.24</td>
+<td>433.34</td>
+<td>455.10</td>
+<td>462.61</td>
+<td>457.21</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>ACGL</td>
+<td data-quarto-table-cell-role="th">476</td>
+<td>VTR</td>
 <td>2025-01-14</td>
-<td>91.99</td>
-<td>99.87</td>
+<td>58.10</td>
+<td>57.77</td>
+<td>57.90</td>
+<td>59.30</td>
+<td>61.70</td>
+<td>61.87</td>
+<td>55.30</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>ACN</td>
+<td data-quarto-table-cell-role="th">477</td>
+<td>VTRS</td>
 <td>2025-01-14</td>
-<td>348.99</td>
-<td>353.79</td>
+<td>11.72</td>
+<td>11.83</td>
+<td>12.06</td>
+<td>12.47</td>
+<td>12.36</td>
+<td>12.01</td>
+<td>11.48</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>ADBE</td>
+<td data-quarto-table-cell-role="th">478</td>
+<td>VZ</td>
 <td>2025-01-14</td>
-<td>412.71</td>
-<td>504.11</td>
+<td>38.28</td>
+<td>38.14</td>
+<td>38.69</td>
+<td>40.14</td>
+<td>40.72</td>
+<td>41.23</td>
+<td>39.95</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>ADI</td>
+<td data-quarto-table-cell-role="th">483</td>
+<td>WDAY</td>
 <td>2025-01-14</td>
-<td>214.65</td>
-<td>221.07</td>
+<td>246.03</td>
+<td>249.22</td>
+<td>252.50</td>
+<td>262.94</td>
+<td>257.74</td>
+<td>253.96</td>
+<td>244.55</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>ADM</td>
+<td data-quarto-table-cell-role="th">484</td>
+<td>WDC</td>
 <td>2025-01-14</td>
-<td>51.19</td>
-<td>55.17</td>
+<td>62.74</td>
+<td>63.30</td>
+<td>62.74</td>
+<td>65.35</td>
+<td>66.18</td>
+<td>65.75</td>
+<td>68.67</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">15</td>
-<td>AEP</td>
+<td data-quarto-table-cell-role="th">485</td>
+<td>WEC</td>
 <td>2025-01-14</td>
-<td>94.50</td>
-<td>97.22</td>
+<td>94.58</td>
+<td>93.96</td>
+<td>93.80</td>
+<td>95.38</td>
+<td>96.48</td>
+<td>95.46</td>
+<td>88.05</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">16</td>
-<td>AES</td>
+<td data-quarto-table-cell-role="th">486</td>
+<td>WELL</td>
 <td>2025-01-14</td>
-<td>11.85</td>
-<td>15.54</td>
+<td>126.87</td>
+<td>125.62</td>
+<td>125.36</td>
+<td>127.89</td>
+<td>131.26</td>
+<td>128.62</td>
+<td>114.90</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">17</td>
-<td>AFL</td>
+<td data-quarto-table-cell-role="th">488</td>
+<td>WM</td>
 <td>2025-01-14</td>
-<td>103.65</td>
-<td>108.17</td>
+<td>207.17</td>
+<td>206.38</td>
+<td>203.99</td>
+<td>210.58</td>
+<td>213.90</td>
+<td>211.30</td>
+<td>208.98</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">18</td>
-<td>AIG</td>
+<td data-quarto-table-cell-role="th">491</td>
+<td>WRB</td>
 <td>2025-01-14</td>
-<td>72.59</td>
-<td>74.20</td>
+<td>58.59</td>
+<td>57.64</td>
+<td>57.84</td>
+<td>59.58</td>
+<td>59.57</td>
+<td>58.70</td>
+<td>55.81</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>AJG</td>
+<td data-quarto-table-cell-role="th">494</td>
+<td>WY</td>
 <td>2025-01-14</td>
-<td>289.11</td>
-<td>289.50</td>
+<td>28.96</td>
+<td>28.12</td>
+<td>28.15</td>
+<td>29.30</td>
+<td>30.33</td>
+<td>30.96</td>
+<td>30.55</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>AKAM</td>
+<td data-quarto-table-cell-role="th">495</td>
+<td>WYNN</td>
 <td>2025-01-14</td>
-<td>90.58</td>
-<td>98.02</td>
+<td>81.80</td>
+<td>81.58</td>
+<td>83.16</td>
+<td>89.20</td>
+<td>91.02</td>
+<td>89.21</td>
+<td>89.60</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>ALB</td>
+<td data-quarto-table-cell-role="th">496</td>
+<td>XEL</td>
 <td>2025-01-14</td>
-<td>92.63</td>
-<td>95.06</td>
+<td>64.08</td>
+<td>64.62</td>
+<td>65.47</td>
+<td>67.37</td>
+<td>67.04</td>
+<td>65.20</td>
+<td>59.55</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>ALGN</td>
+<td data-quarto-table-cell-role="th">497</td>
+<td>XOM</td>
 <td>2025-01-14</td>
-<td>210.46</td>
-<td>226.82</td>
+<td>109.72</td>
+<td>108.25</td>
+<td>107.75</td>
+<td>109.79</td>
+<td>114.35</td>
+<td>115.08</td>
+<td>114.62</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>ALL</td>
+<td data-quarto-table-cell-role="th">498</td>
+<td>XYL</td>
 <td>2025-01-14</td>
-<td>186.81</td>
-<td>191.05</td>
+<td>115.42</td>
+<td>115.35</td>
+<td>115.90</td>
+<td>120.24</td>
+<td>123.10</td>
+<td>127.20</td>
+<td>130.83</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>ALLE</td>
+<td data-quarto-table-cell-role="th">499</td>
+<td>YUM</td>
 <td>2025-01-14</td>
-<td>129.75</td>
-<td>139.76</td>
+<td>124.71</td>
+<td>125.60</td>
+<td>129.28</td>
+<td>133.91</td>
+<td>133.93</td>
+<td>133.96</td>
+<td>133.96</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>AMAT</td>
+<td data-quarto-table-cell-role="th">500</td>
+<td>ZBH</td>
 <td>2025-01-14</td>
-<td>173.65</td>
-<td>183.29</td>
+<td>104.71</td>
+<td>103.88</td>
+<td>104.29</td>
+<td>106.65</td>
+<td>107.27</td>
+<td>107.30</td>
+<td>110.73</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>AMCR</td>
+<td data-quarto-table-cell-role="th">502</td>
+<td>ZTS</td>
 <td>2025-01-14</td>
-<td>9.52</td>
-<td>10.46</td>
+<td>164.41</td>
+<td>164.51</td>
+<td>163.96</td>
+<td>169.51</td>
+<td>174.39</td>
+<td>180.35</td>
+<td>175.53</td>
 </tr>
 </tbody>
 </table>
@@ -844,13 +1004,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="top-holding-in-sp500" class="level1">
 <h1>Top holding in SP500</h1>
-<div id="cell-12" class="cell" data-execution_count="174">
+<div id="cell-12" class="cell" data-execution_count="182">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>spy <span class="op">=</span> yf.Ticker(<span class="st">'SPY'</span>).funds_data</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>spy.top_holdings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="174">
+<div class="cell-output cell-output-display" data-execution_count="182">
 <div>
 
 
