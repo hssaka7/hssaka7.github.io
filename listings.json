@@ -16,6 +16,7 @@
   {
     "listing": "/core/blog.html",
     "items": [
+      "/core/blogs/backtesting/backtesting.html",
       "/core/blogs/building_ai_agent/building_ai_agent.html",
       "/core/blogs/running_llm_locally/running_llm_locally.html",
       "/core/blogs/Linear-regression-using-DNN/Linear-regression-using-DNN.html",

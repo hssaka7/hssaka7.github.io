@@ -76,8 +76,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-aa79b7b137e5031fd39e4a8697386316.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-f60e7b0085a29270c3d1f36f77b2f2ef.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-b9061c46a643868a709fc43822ec1d85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-bf44439888cd2a5526dac52dc92e49f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,22 +108,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script type="text/javascript">
-window.PlotlyConfig = {MathJaxConfig: 'local'};
-if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-if (typeof require !== 'undefined') {
-require.undef("plotly");
-requirejs.config({
-    paths: {
-        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
-    }
-});
-require(['plotly'], function(Plotly) {
-    window._Plotly = Plotly;
-});
-}
-</script>
-
 
 
 <link rel="stylesheet" href="../../../core/assets/css/index.css">
@@ -258,7 +242,7 @@ require(['plotly'], function(Plotly) {
 <section id="extract-company-in-sp500" class="level1">
 <h1>Extract Company in SP500</h1>
 <p>Firstly, lets extract the SP500 tickers from wikipedia table.</p>
-<div id="cell-4" class="cell" data-execution_count="169">
+<div id="cell-4" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -273,7 +257,7 @@ require(['plotly'], function(Plotly) {
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>tickers[<span class="st">'Symbol'</span>] <span class="op">=</span> tickers[<span class="st">'Symbol'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.strip())</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>tickers.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="169">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -353,20 +337,193 @@ require(['plotly'], function(Plotly) {
 </div>
 </div>
 </div>
+<div id="cell-5" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sp500 <span class="op">=</span> pd.read_html(<span class="st">'https://www.schwabassetmanagement.com/allholdings/SWPPX'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sp500.shape)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sp500.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">HTTPError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[9], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> sp500 <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">read_html</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">https://www.schwabassetmanagement.com/allholdings/SWPPX</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">      2</span> <span style="color:rgb(0,135,0)">print</span>(sp500<span style="color:rgb(98,98,98)">.</span>shape)
+<span class="ansi-green-fg ansi-bold">      3</span> sp500<span style="color:rgb(98,98,98)">.</span>head()
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/html.py:1240</span>, in <span class="ansi-cyan-fg">read_html</span><span class="ansi-blue-fg">(io, match, flavor, header, index_col, skiprows, attrs, parse_dates, thousands, encoding, decimal, converters, na_values, keep_default_na, displayed_only, extract_links, dtype_backend, storage_options)</span>
+<span class="ansi-green-fg ansi-bold">   1224</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(io, <span style="color:rgb(0,135,0)">str</span>) <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">any</span>(
+<span class="ansi-green-fg ansi-bold">   1225</span>     [
+<span class="ansi-green-fg ansi-bold">   1226</span>         is_file_like(io),
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   1230</span>     ]
+<span class="ansi-green-fg ansi-bold">   1231</span> ):
+<span class="ansi-green-fg ansi-bold">   1232</span>     warnings<span style="color:rgb(98,98,98)">.</span>warn(
+<span class="ansi-green-fg ansi-bold">   1233</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Passing literal html to </span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">read_html</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)"> is deprecated and </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">   1234</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">will be removed in a future version. To read from a </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   1237</span>         stacklevel<span style="color:rgb(98,98,98)">=</span>find_stack_level(),
+<span class="ansi-green-fg ansi-bold">   1238</span>     )
+<span class="ansi-green-fg">-&gt; 1240</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_parse</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">   1241</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">flavor</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">flavor</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1242</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">io</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1243</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">match</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">match</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1244</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">header</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">header</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1245</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">index_col</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">index_col</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1246</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">skiprows</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">skiprows</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1247</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">parse_dates</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">parse_dates</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1248</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">thousands</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">thousands</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1249</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">attrs</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">attrs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1250</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1251</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">decimal</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">decimal</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1252</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">converters</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">converters</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1253</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">na_values</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">na_values</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1254</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">keep_default_na</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">keep_default_na</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1255</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">displayed_only</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">displayed_only</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1256</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">extract_links</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">extract_links</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1257</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">dtype_backend</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dtype_backend</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1258</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   1259</span> <span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/html.py:983</span>, in <span class="ansi-cyan-fg">_parse</span><span class="ansi-blue-fg">(flavor, io, match, attrs, encoding, displayed_only, extract_links, storage_options, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    972</span> p <span style="color:rgb(98,98,98)">=</span> parser(
+<span class="ansi-green-fg ansi-bold">    973</span>     io,
+<span class="ansi-green-fg ansi-bold">    974</span>     compiled_match,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    979</span>     storage_options,
+<span class="ansi-green-fg ansi-bold">    980</span> )
+<span class="ansi-green-fg ansi-bold">    982</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 983</span>     tables <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">p</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parse_tables</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    984</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> caught:
+<span class="ansi-green-fg ansi-bold">    985</span>     <span style="font-style:italic;color:rgb(95,135,135)"># if `io` is an io-like object, check if it's seekable</span>
+<span class="ansi-green-fg ansi-bold">    986</span>     <span style="font-style:italic;color:rgb(95,135,135)"># and try to rewind it before trying the next parser</span>
+<span class="ansi-green-fg ansi-bold">    987</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">hasattr</span>(io, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">seekable</span><span style="color:rgb(175,0,0)">"</span>) <span style="font-weight:bold;color:rgb(175,0,255)">and</span> io<span style="color:rgb(98,98,98)">.</span>seekable():
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/html.py:249</span>, in <span class="ansi-cyan-fg">_HtmlFrameParser.parse_tables</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    241</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span style="color:rgb(0,0,255)">parse_tables</span>(<span style="color:rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg ansi-bold">    242</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    243</span> <span style="font-style:italic;color:rgb(175,0,0)">    Parse and return all tables from the DOM.</span>
+<span class="ansi-green-fg ansi-bold">    244</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    247</span> <span style="font-style:italic;color:rgb(175,0,0)">    list of parsed (header, body, footer) tuples from tables.</span>
+<span class="ansi-green-fg ansi-bold">    248</span> <span style="font-style:italic;color:rgb(175,0,0)">    """</span>
+<span class="ansi-green-fg">--&gt; 249</span>     tables <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_parse_tables(<span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_build_doc</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>match, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>attrs)
+<span class="ansi-green-fg ansi-bold">    250</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> (<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_parse_thead_tbody_tfoot(table) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> table <span style="font-weight:bold;color:rgb(175,0,255)">in</span> tables)
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/html.py:806</span>, in <span class="ansi-cyan-fg">_LxmlFrameParser._build_doc</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    804</span>             <span style="font-weight:bold;color:rgb(0,135,0)">pass</span>
+<span class="ansi-green-fg ansi-bold">    805</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">--&gt; 806</span>         <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> e
+<span class="ansi-green-fg ansi-bold">    807</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    808</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">hasattr</span>(r, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">text_content</span><span style="color:rgb(175,0,0)">"</span>):
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/html.py:785</span>, in <span class="ansi-cyan-fg">_LxmlFrameParser._build_doc</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg ansi-bold">    783</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">    784</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_url(<span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>io):
+<span class="ansi-green-fg">--&gt; 785</span>         <span style="font-weight:bold;color:rgb(0,135,0)">with</span> <span class="ansi-yellow-bg">get_handle</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    786</span> <span class="ansi-yellow-bg">            </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">r</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">storage_options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">storage_options</span>
+<span class="ansi-green-fg ansi-bold">    787</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> f:
+<span class="ansi-green-fg ansi-bold">    788</span>             r <span style="color:rgb(98,98,98)">=</span> parse(f<span style="color:rgb(98,98,98)">.</span>handle, parser<span style="color:rgb(98,98,98)">=</span>parser)
+<span class="ansi-green-fg ansi-bold">    789</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    790</span>         <span style="font-style:italic;color:rgb(95,135,135)"># try to parse the input in the simplest way</span>
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/common.py:728</span>, in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="ansi-green-fg ansi-bold">    725</span>     codecs<span style="color:rgb(98,98,98)">.</span>lookup_error(errors)
+<span class="ansi-green-fg ansi-bold">    727</span> <span style="font-style:italic;color:rgb(95,135,135)"># open URLs</span>
+<span class="ansi-green-fg">--&gt; 728</span> ioargs <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_get_filepath_or_buffer</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    729</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">path_or_buf</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    730</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    731</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    732</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">mode</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    733</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    734</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    736</span> handle <span style="color:rgb(98,98,98)">=</span> ioargs<span style="color:rgb(98,98,98)">.</span>filepath_or_buffer
+<span class="ansi-green-fg ansi-bold">    737</span> handles: <span style="color:rgb(0,135,0)">list</span>[BaseBuffer]
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/common.py:384</span>, in <span class="ansi-cyan-fg">_get_filepath_or_buffer</span><span class="ansi-blue-fg">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="ansi-green-fg ansi-bold">    382</span> <span style="font-style:italic;color:rgb(95,135,135)"># assuming storage_options is to be interpreted as headers</span>
+<span class="ansi-green-fg ansi-bold">    383</span> req_info <span style="color:rgb(98,98,98)">=</span> urllib<span style="color:rgb(98,98,98)">.</span>request<span style="color:rgb(98,98,98)">.</span>Request(filepath_or_buffer, headers<span style="color:rgb(98,98,98)">=</span>storage_options)
+<span class="ansi-green-fg">--&gt; 384</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> <span class="ansi-yellow-bg">urlopen</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">req_info</span><span class="ansi-yellow-bg">)</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> req:
+<span class="ansi-green-fg ansi-bold">    385</span>     content_encoding <span style="color:rgb(98,98,98)">=</span> req<span style="color:rgb(98,98,98)">.</span>headers<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Content-Encoding</span><span style="color:rgb(175,0,0)">"</span>, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>)
+<span class="ansi-green-fg ansi-bold">    386</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> content_encoding <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">gzip</span><span style="color:rgb(175,0,0)">"</span>:
+<span class="ansi-green-fg ansi-bold">    387</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Override compression based on Content-Encoding header</span>
+
+File <span class="ansi-green-fg">~/dev/projects/hssaka7.github.io/.venv/lib/python3.12/site-packages/pandas/io/common.py:289</span>, in <span class="ansi-cyan-fg">urlopen</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    283</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    284</span> <span style="font-style:italic;color:rgb(175,0,0)">Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="ansi-green-fg ansi-bold">    285</span> <span style="font-style:italic;color:rgb(175,0,0)">the stdlib.</span>
+<span class="ansi-green-fg ansi-bold">    286</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">    287</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,0,255)">urllib</span><span style="font-weight:bold;color:rgb(0,0,255)">.</span><span style="font-weight:bold;color:rgb(0,0,255)">request</span>
+<span class="ansi-green-fg">--&gt; 289</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">urllib</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">request</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">urlopen</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/usr/lib/python3.12/urllib/request.py:215</span>, in <span class="ansi-cyan-fg">urlopen</span><span class="ansi-blue-fg">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="ansi-green-fg ansi-bold">    213</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">    214</span>     opener <span style="color:rgb(98,98,98)">=</span> _opener
+<span class="ansi-green-fg">--&gt; 215</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">opener</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">url</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">timeout</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/usr/lib/python3.12/urllib/request.py:521</span>, in <span class="ansi-cyan-fg">OpenerDirector.open</span><span class="ansi-blue-fg">(self, fullurl, data, timeout)</span>
+<span class="ansi-green-fg ansi-bold">    519</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> processor <span style="font-weight:bold;color:rgb(175,0,255)">in</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>process_response<span style="color:rgb(98,98,98)">.</span>get(protocol, []):
+<span class="ansi-green-fg ansi-bold">    520</span>     meth <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">getattr</span>(processor, meth_name)
+<span class="ansi-green-fg">--&gt; 521</span>     response <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">meth</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">req</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">response</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    523</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> response
+
+File <span class="ansi-green-fg">/usr/lib/python3.12/urllib/request.py:630</span>, in <span class="ansi-cyan-fg">HTTPErrorProcessor.http_response</span><span class="ansi-blue-fg">(self, request, response)</span>
+<span class="ansi-green-fg ansi-bold">    627</span> <span style="font-style:italic;color:rgb(95,135,135)"># According to RFC 2616, "2xx" code indicates that the client's</span>
+<span class="ansi-green-fg ansi-bold">    628</span> <span style="font-style:italic;color:rgb(95,135,135)"># request was successfully received, understood, and accepted.</span>
+<span class="ansi-green-fg ansi-bold">    629</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> (<span style="color:rgb(98,98,98)">200</span> <span style="color:rgb(98,98,98)">&lt;</span><span style="color:rgb(98,98,98)">=</span> code <span style="color:rgb(98,98,98)">&lt;</span> <span style="color:rgb(98,98,98)">300</span>):
+<span class="ansi-green-fg">--&gt; 630</span>     response <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">parent</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">error</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    631</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">http</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">request</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">response</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">code</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">msg</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">hdrs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    633</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> response
+
+File <span class="ansi-green-fg">/usr/lib/python3.12/urllib/request.py:559</span>, in <span class="ansi-cyan-fg">OpenerDirector.error</span><span class="ansi-blue-fg">(self, proto, *args)</span>
+<span class="ansi-green-fg ansi-bold">    557</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> http_err:
+<span class="ansi-green-fg ansi-bold">    558</span>     args <span style="color:rgb(98,98,98)">=</span> (<span style="color:rgb(0,135,0)">dict</span>, <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">default</span><span style="color:rgb(175,0,0)">'</span>, <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">http_error_default</span><span style="color:rgb(175,0,0)">'</span>) <span style="color:rgb(98,98,98)">+</span> orig_args
+<span class="ansi-green-fg">--&gt; 559</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_call_chain</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">/usr/lib/python3.12/urllib/request.py:492</span>, in <span class="ansi-cyan-fg">OpenerDirector._call_chain</span><span class="ansi-blue-fg">(self, chain, kind, meth_name, *args)</span>
+<span class="ansi-green-fg ansi-bold">    490</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> handler <span style="font-weight:bold;color:rgb(175,0,255)">in</span> handlers:
+<span class="ansi-green-fg ansi-bold">    491</span>     func <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">getattr</span>(handler, meth_name)
+<span class="ansi-green-fg">--&gt; 492</span>     result <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    493</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> result <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg ansi-bold">    494</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> result
+
+File <span class="ansi-green-fg">/usr/lib/python3.12/urllib/request.py:639</span>, in <span class="ansi-cyan-fg">HTTPDefaultErrorHandler.http_error_default</span><span class="ansi-blue-fg">(self, req, fp, code, msg, hdrs)</span>
+<span class="ansi-green-fg ansi-bold">    638</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span style="color:rgb(0,0,255)">http_error_default</span>(<span style="color:rgb(0,135,0)">self</span>, req, fp, code, msg, hdrs):
+<span class="ansi-green-fg">--&gt; 639</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> HTTPError(req<span style="color:rgb(98,98,98)">.</span>full_url, code, msg, hdrs, fp)
+
+<span class="ansi-red-fg">HTTPError</span>: HTTP Error 403: Forbidden</pre>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co"> extract holding percent</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tickers[<span class="st">"GICS Sector"</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>array(['Industrials', 'Health Care', 'Information Technology',
+       'Utilities', 'Financials', 'Materials', 'Consumer Discretionary',
+       'Real Estate', 'Communication Services', 'Consumer Staples',
+       'Energy'], dtype=object)</code></pre>
+</div>
+</div>
 </section>
 <section id="download-history-data-for-sp500-companies" class="level1">
 <h1>Download history data for SP500 companies</h1>
 <p>For each symbol in SP500, lets download daily historical data.</p>
-<div id="cell-6" class="cell" data-execution_count="170">
+<div id="cell-8" class="cell" data-execution_count="170">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(tickers.Symbol.to_list(),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span>start_date,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span>end_date,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                   interval<span class="op">=</span><span class="st">'1D'</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                   auto_adjust<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(tickers.Symbol.to_list(),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span>start_date,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span>end_date,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   interval<span class="op">=</span><span class="st">'1D'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                   auto_adjust<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>data.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%***********************]  503 of 503 completed
@@ -569,25 +726,25 @@ require(['plotly'], function(Plotly) {
 <section id="calculate-rolling-average" class="level1">
 <h1>Calculate Rolling Average</h1>
 <p>Now, The 100 day rolling average is calculated and compared with latest closing price. Then, the data where the 100 days rolling average is less than latest closing price is filtered</p>
-<div id="cell-8" class="cell" data-execution_count="185">
+<div id="cell-10" class="cell" data-execution_count="185">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>window_sizes <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">200</span>] <span class="co"># indays</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ticker <span class="kw">in</span> data.columns.get_level_values(<span class="dv">1</span>).unique():</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    ticker_data <span class="op">=</span> data[<span class="st">'Close'</span>][ticker]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [ticker,ticker_data.index[<span class="op">-</span><span class="dv">1</span>],ticker_data.iloc[<span class="op">-</span><span class="dv">1</span>].<span class="bu">round</span>(<span class="dv">2</span>)]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> [<span class="st">'Ticker'</span>,<span class="st">'Date'</span>,<span class="st">'Close'</span>]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> row <span class="op">+</span> [(ticker_data.tail(window_size).<span class="bu">sum</span>()<span class="op">/</span>window_size).<span class="bu">round</span>(<span class="dv">2</span>) <span class="cf">for</span> window_size <span class="kw">in</span> window_sizes]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> columns <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>window_size<span class="sc">}</span><span class="ss">D_MA_Close'</span> <span class="cf">for</span> window_size <span class="kw">in</span> window_sizes]</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    results.append(row)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>rolling_avg_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span> columns)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rolling_avg_df.shape)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>window_sizes <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">100</span>, <span class="dv">200</span>] <span class="co"># indays</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ticker <span class="kw">in</span> data.columns.get_level_values(<span class="dv">1</span>).unique():</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    ticker_data <span class="op">=</span> data[<span class="st">'Close'</span>][ticker]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> [ticker,ticker_data.index[<span class="op">-</span><span class="dv">1</span>],ticker_data.iloc[<span class="op">-</span><span class="dv">1</span>].<span class="bu">round</span>(<span class="dv">2</span>)]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> [<span class="st">'Ticker'</span>,<span class="st">'Date'</span>,<span class="st">'Close'</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    row <span class="op">=</span> row <span class="op">+</span> [(ticker_data.tail(window_size).<span class="bu">sum</span>()<span class="op">/</span>window_size).<span class="bu">round</span>(<span class="dv">2</span>) <span class="cf">for</span> window_size <span class="kw">in</span> window_sizes]</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    columns <span class="op">=</span> columns <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>window_size<span class="sc">}</span><span class="ss">D_MA_Close'</span> <span class="cf">for</span> window_size <span class="kw">in</span> window_sizes]</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    results.append(row)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>rolling_avg_df <span class="op">=</span> pd.DataFrame(results, columns<span class="op">=</span> columns)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rolling_avg_df.shape)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>rolling_avg_df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>(501, 9)</code></pre>
@@ -740,12 +897,12 @@ require(['plotly'], function(Plotly) {
 </div>
 <section id="ticker-where-rolling-average-is-less-than-closing-price" class="level2">
 <h2 class="anchored" data-anchor-id="ticker-where-rolling-average-is-less-than-closing-price">Ticker where rolling average is less than closing price</h2>
-<div id="cell-10" class="cell" data-execution_count="186">
+<div id="cell-12" class="cell" data-execution_count="186">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> rolling_avg_df[rolling_avg_df[<span class="st">'Close'</span>] <span class="op">&lt;</span> rolling_avg_df[<span class="st">'100D_MA_Close'</span>]]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_df.shape)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>filtered_df.tail(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> rolling_avg_df[rolling_avg_df[<span class="st">'Close'</span>] <span class="op">&lt;</span> rolling_avg_df[<span class="st">'100D_MA_Close'</span>]]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_df.shape)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>filtered_df.tail(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>(301, 9)</code></pre>
@@ -1020,11 +1177,11 @@ require(['plotly'], function(Plotly) {
 </section>
 <section id="top-holding-in-sp500" class="level1">
 <h1>Top holding in SP500</h1>
-<div id="cell-12" class="cell" data-execution_count="182">
+<div id="cell-14" class="cell" data-execution_count="182">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>spy <span class="op">=</span> yf.Ticker(<span class="st">'SPY'</span>).funds_data</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>spy.top_holdings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>spy <span class="op">=</span> yf.Ticker(<span class="st">'SPY'</span>).funds_data</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>spy.top_holdings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="182">
 <div>
@@ -1100,55 +1257,114 @@ require(['plotly'], function(Plotly) {
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="3">
+<div id="cell-15" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"plotly_mimetype+notebook_connected"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-14" class="cell" data-execution_count="4">
+<div id="cell-16" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> px.data.iris()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">"sepal_width"</span>, y<span class="op">=</span><span class="st">"sepal_length"</span>, </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                 color<span class="op">=</span><span class="st">"species"</span>, </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                 marginal_y<span class="op">=</span><span class="st">"violin"</span>, marginal_x<span class="op">=</span><span class="st">"box"</span>, </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                 trendline<span class="op">=</span><span class="st">"ols"</span>, template<span class="op">=</span><span class="st">"simple_white"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> px.data.gapminder()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">"gdpPercap"</span>, y<span class="op">=</span><span class="st">"lifeExp"</span>, animation_frame<span class="op">=</span><span class="st">"year"</span>, animation_group<span class="op">=</span><span class="st">"country"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>           size<span class="op">=</span><span class="st">"pop"</span>, color<span class="op">=</span><span class="st">"continent"</span>, hover_name<span class="op">=</span><span class="st">"country"</span>, facet_col<span class="op">=</span><span class="st">"continent"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>           log_x<span class="op">=</span><span class="va">True</span>, size_max<span class="op">=</span><span class="dv">45</span>, range_x<span class="op">=</span>[<span class="dv">100</span>,<span class="dv">100000</span>], range_y<span class="op">=</span>[<span class="dv">25</span>,<span class="dv">90</span>])</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div>                            <div id="62f2b977-14e9-4f1c-a7b4-23cadf7ec754" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("62f2b977-14e9-4f1c-a7b4-23cadf7ec754")) {                    Plotly.newPlot(                        "62f2b977-14e9-4f1c-a7b4-23cadf7ec754",                        [{"hovertemplate":"species=setosa\u003cbr\u003esepal_width=%{x}\u003cbr\u003esepal_length=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"setosa","marker":{"color":"#1F77B4","symbol":"circle"},"mode":"markers","name":"setosa","orientation":"v","showlegend":true,"x":[3.5,3.0,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3.0,3.0,4.0,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3.0,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.1,3.0,3.4,3.5,2.3,3.2,3.5,3.8,3.0,3.8,3.2,3.7,3.3],"xaxis":"x","y":[5.1,4.9,4.7,4.6,5.0,5.4,4.6,5.0,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5.0,5.0,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5.0,5.5,4.9,4.4,5.1,5.0,4.5,4.4,5.0,5.1,4.8,5.1,4.6,5.3,5.0],"yaxis":"y","type":"scatter"},{"alignmentgroup":"True","hovertemplate":"species=setosa\u003cbr\u003esepal_width=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"setosa","marker":{"color":"#1F77B4","symbol":"circle"},"name":"setosa","notched":true,"offsetgroup":"setosa","showlegend":false,"x":[3.5,3.0,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3.0,3.0,4.0,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3.0,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.1,3.0,3.4,3.5,2.3,3.2,3.5,3.8,3.0,3.8,3.2,3.7,3.3],"xaxis":"x3","yaxis":"y3","type":"box"},{"alignmentgroup":"True","hovertemplate":"species=setosa\u003cbr\u003esepal_length=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"setosa","marker":{"color":"#1F77B4","symbol":"circle"},"name":"setosa","offsetgroup":"setosa","scalegroup":"y","showlegend":false,"xaxis":"x2","y":[5.1,4.9,4.7,4.6,5.0,5.4,4.6,5.0,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5.0,5.0,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5.0,5.5,4.9,4.4,5.1,5.0,4.5,4.4,5.0,5.1,4.8,5.1,4.6,5.3,5.0],"yaxis":"y2","type":"violin"},{"hovertemplate":"\u003cb\u003eOLS trendline\u003c\u002fb\u003e\u003cbr\u003esepal_length = 0.690854 * sepal_width + 2.64466\u003cbr\u003eR\u003csup\u003e2\u003c\u002fsup\u003e=0.557681\u003cbr\u003e\u003cbr\u003especies=setosa\u003cbr\u003esepal_width=%{x}\u003cbr\u003esepal_length=%{y} \u003cb\u003e(trend)\u003c\u002fb\u003e\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"setosa","marker":{"color":"#1F77B4","symbol":"circle"},"mode":"lines","name":"setosa","showlegend":false,"x":[2.3,2.9,3.0,3.0,3.0,3.0,3.0,3.0,3.1,3.1,3.1,3.1,3.1,3.2,3.2,3.2,3.2,3.2,3.3,3.3,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.5,3.5,3.5,3.5,3.5,3.5,3.6,3.6,3.7,3.7,3.7,3.8,3.8,3.8,3.8,3.9,3.9,4.0,4.1,4.2,4.4],"xaxis":"x","y":[4.233624785627934,4.648137423036914,4.717222862605078,4.717222862605078,4.717222862605078,4.717222862605078,4.717222862605078,4.717222862605078,4.786308302173241,4.786308302173241,4.786308302173241,4.786308302173241,4.786308302173241,4.855393741741404,4.855393741741404,4.855393741741404,4.855393741741404,4.855393741741404,4.924479181309568,4.924479181309568,4.993564620877731,4.993564620877731,4.993564620877731,4.993564620877731,4.993564620877731,4.993564620877731,4.993564620877731,4.993564620877731,4.993564620877731,5.062650060445894,5.062650060445894,5.062650060445894,5.062650060445894,5.062650060445894,5.062650060445894,5.131735500014058,5.131735500014058,5.20082093958222,5.20082093958222,5.20082093958222,5.269906379150385,5.269906379150385,5.269906379150385,5.269906379150385,5.338991818718547,5.338991818718547,5.408077258286711,5.477162697854874,5.546248137423037,5.684419016559364],"yaxis":"y","type":"scatter"},{"hovertemplate":"species=versicolor\u003cbr\u003esepal_width=%{x}\u003cbr\u003esepal_length=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"versicolor","marker":{"color":"#FF7F0E","symbol":"circle"},"mode":"markers","name":"versicolor","orientation":"v","showlegend":true,"x":[3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2.0,3.0,2.2,2.9,2.9,3.1,3.0,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3.0,2.8,3.0,2.9,2.6,2.4,2.4,2.7,2.7,3.0,3.4,3.1,2.3,3.0,2.5,2.6,3.0,2.6,2.3,2.7,3.0,2.9,2.9,2.5,2.8],"xaxis":"x","y":[7.0,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5.0,5.9,6.0,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6.0,5.7,5.5,5.5,5.8,6.0,5.4,6.0,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5.0,5.6,5.7,5.7,6.2,5.1,5.7],"yaxis":"y","type":"scatter"},{"alignmentgroup":"True","hovertemplate":"species=versicolor\u003cbr\u003esepal_width=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"versicolor","marker":{"color":"#FF7F0E","symbol":"circle"},"name":"versicolor","notched":true,"offsetgroup":"versicolor","showlegend":false,"x":[3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2.0,3.0,2.2,2.9,2.9,3.1,3.0,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3.0,2.8,3.0,2.9,2.6,2.4,2.4,2.7,2.7,3.0,3.4,3.1,2.3,3.0,2.5,2.6,3.0,2.6,2.3,2.7,3.0,2.9,2.9,2.5,2.8],"xaxis":"x3","yaxis":"y3","type":"box"},{"alignmentgroup":"True","hovertemplate":"species=versicolor\u003cbr\u003esepal_length=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"versicolor","marker":{"color":"#FF7F0E","symbol":"circle"},"name":"versicolor","offsetgroup":"versicolor","scalegroup":"y","showlegend":false,"xaxis":"x2","y":[7.0,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5.0,5.9,6.0,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6.0,5.7,5.5,5.5,5.8,6.0,5.4,6.0,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5.0,5.6,5.7,5.7,6.2,5.1,5.7],"yaxis":"y2","type":"violin"},{"hovertemplate":"\u003cb\u003eOLS trendline\u003c\u002fb\u003e\u003cbr\u003esepal_length = 0.865078 * sepal_width + 3.53973\u003cbr\u003eR\u003csup\u003e2\u003c\u002fsup\u003e=0.276582\u003cbr\u003e\u003cbr\u003especies=versicolor\u003cbr\u003esepal_width=%{x}\u003cbr\u003esepal_length=%{y} \u003cb\u003e(trend)\u003c\u002fb\u003e\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"versicolor","marker":{"color":"#FF7F0E","symbol":"circle"},"mode":"lines","name":"versicolor","showlegend":false,"x":[2.0,2.2,2.2,2.3,2.3,2.3,2.4,2.4,2.4,2.5,2.5,2.5,2.5,2.6,2.6,2.6,2.7,2.7,2.7,2.7,2.7,2.8,2.8,2.8,2.8,2.8,2.8,2.9,2.9,2.9,2.9,2.9,2.9,2.9,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.1,3.1,3.1,3.2,3.2,3.2,3.3,3.4],"xaxis":"x","y":[5.2698901554404145,5.442905699481865,5.442905699481865,5.52941347150259,5.52941347150259,5.52941347150259,5.6159212435233155,5.6159212435233155,5.6159212435233155,5.702429015544041,5.702429015544041,5.702429015544041,5.702429015544041,5.788936787564766,5.788936787564766,5.788936787564766,5.875444559585492,5.875444559585492,5.875444559585492,5.875444559585492,5.875444559585492,5.961952331606216,5.961952331606216,5.961952331606216,5.961952331606216,5.961952331606216,5.961952331606216,6.048460103626942,6.048460103626942,6.048460103626942,6.048460103626942,6.048460103626942,6.048460103626942,6.048460103626942,6.134967875647668,6.134967875647668,6.134967875647668,6.134967875647668,6.134967875647668,6.134967875647668,6.134967875647668,6.134967875647668,6.221475647668393,6.221475647668393,6.221475647668393,6.307983419689118,6.307983419689118,6.307983419689118,6.394491191709843,6.480998963730569],"yaxis":"y","type":"scatter"},{"hovertemplate":"species=virginica\u003cbr\u003esepal_width=%{x}\u003cbr\u003esepal_length=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"virginica","marker":{"color":"#2CA02C","symbol":"circle"},"mode":"markers","name":"virginica","orientation":"v","showlegend":true,"x":[3.3,2.7,3.0,2.9,3.0,3.0,2.5,2.9,2.5,3.6,3.2,2.7,3.0,2.5,2.8,3.2,3.0,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3.0,2.8,3.0,2.8,3.8,2.8,2.8,2.6,3.0,3.4,3.1,3.0,3.1,3.1,3.1,2.7,3.2,3.3,3.0,2.5,3.0,3.4,3.0],"xaxis":"x","y":[6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6.0,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6.0,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],"yaxis":"y","type":"scatter"},{"alignmentgroup":"True","hovertemplate":"species=virginica\u003cbr\u003esepal_width=%{x}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"virginica","marker":{"color":"#2CA02C","symbol":"circle"},"name":"virginica","notched":true,"offsetgroup":"virginica","showlegend":false,"x":[3.3,2.7,3.0,2.9,3.0,3.0,2.5,2.9,2.5,3.6,3.2,2.7,3.0,2.5,2.8,3.2,3.0,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3.0,2.8,3.0,2.8,3.8,2.8,2.8,2.6,3.0,3.4,3.1,3.0,3.1,3.1,3.1,2.7,3.2,3.3,3.0,2.5,3.0,3.4,3.0],"xaxis":"x3","yaxis":"y3","type":"box"},{"alignmentgroup":"True","hovertemplate":"species=virginica\u003cbr\u003esepal_length=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"virginica","marker":{"color":"#2CA02C","symbol":"circle"},"name":"virginica","offsetgroup":"virginica","scalegroup":"y","showlegend":false,"xaxis":"x2","y":[6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6.0,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6.0,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],"yaxis":"y2","type":"violin"},{"hovertemplate":"\u003cb\u003eOLS trendline\u003c\u002fb\u003e\u003cbr\u003esepal_length = 0.901534 * sepal_width + 3.90684\u003cbr\u003eR\u003csup\u003e2\u003c\u002fsup\u003e=0.209057\u003cbr\u003e\u003cbr\u003especies=virginica\u003cbr\u003esepal_width=%{x}\u003cbr\u003esepal_length=%{y} \u003cb\u003e(trend)\u003c\u002fb\u003e\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"virginica","marker":{"color":"#2CA02C","symbol":"circle"},"mode":"lines","name":"virginica","showlegend":false,"x":[2.2,2.5,2.5,2.5,2.5,2.6,2.6,2.7,2.7,2.7,2.7,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.9,2.9,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.1,3.1,3.1,3.1,3.2,3.2,3.2,3.2,3.2,3.3,3.3,3.3,3.4,3.4,3.6,3.8,3.8],"xaxis":"x","y":[5.890212315058279,6.160672658058946,6.160672658058946,6.160672658058946,6.160672658058946,6.250826105725835,6.250826105725835,6.3409795533927245,6.3409795533927245,6.3409795533927245,6.3409795533927245,6.431133001059614,6.431133001059614,6.431133001059614,6.431133001059614,6.431133001059614,6.431133001059614,6.431133001059614,6.431133001059614,6.521286448726503,6.521286448726503,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.611439896393392,6.7015933440602815,6.7015933440602815,6.7015933440602815,6.7015933440602815,6.791746791727171,6.791746791727171,6.791746791727171,6.791746791727171,6.791746791727171,6.88190023939406,6.88190023939406,6.88190023939406,6.972053687060949,6.972053687060949,7.152360582394728,7.332667477728506,7.332667477728506],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"rgb(36,36,36)"},"error_y":{"color":"rgb(36,36,36)"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"baxis":{"endlinecolor":"rgb(36,36,36)","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"rgb(36,36,36)"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"histogram2d"}],"histogram":[{"marker":{"line":{"color":"white","width":0.6}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"},"colorscale":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"rgb(237,237,237)"},"line":{"color":"white"}},"header":{"fill":{"color":"rgb(217,217,217)"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":1,"tickcolor":"rgb(36,36,36)","ticks":"outside"}},"colorscale":{"diverging":[[0.0,"rgb(103,0,31)"],[0.1,"rgb(178,24,43)"],[0.2,"rgb(214,96,77)"],[0.3,"rgb(244,165,130)"],[0.4,"rgb(253,219,199)"],[0.5,"rgb(247,247,247)"],[0.6,"rgb(209,229,240)"],[0.7,"rgb(146,197,222)"],[0.8,"rgb(67,147,195)"],[0.9,"rgb(33,102,172)"],[1.0,"rgb(5,48,97)"]],"sequential":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]],"sequentialminus":[[0.0,"#440154"],[0.1111111111111111,"#482878"],[0.2222222222222222,"#3e4989"],[0.3333333333333333,"#31688e"],[0.4444444444444444,"#26828e"],[0.5555555555555556,"#1f9e89"],[0.6666666666666666,"#35b779"],[0.7777777777777778,"#6ece58"],[0.8888888888888888,"#b5de2b"],[1.0,"#fde725"]]},"colorway":["#1F77B4","#FF7F0E","#2CA02C","#D62728","#9467BD","#8C564B","#E377C2","#7F7F7F","#BCBD22","#17BECF"],"font":{"color":"rgb(36,36,36)"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","radialaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"zaxis":{"backgroundcolor":"white","gridcolor":"rgb(232,232,232)","gridwidth":2,"linecolor":"rgb(36,36,36)","showbackground":true,"showgrid":false,"showline":true,"ticks":"outside","zeroline":false,"zerolinecolor":"rgb(36,36,36)"}},"shapedefaults":{"fillcolor":"black","line":{"width":0},"opacity":0.3},"ternary":{"aaxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"baxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"},"bgcolor":"white","caxis":{"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside"}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"},"yaxis":{"automargin":true,"gridcolor":"rgb(232,232,232)","linecolor":"rgb(36,36,36)","showgrid":false,"showline":true,"ticks":"outside","title":{"standoff":15},"zeroline":false,"zerolinecolor":"rgb(36,36,36)"}}},"xaxis":{"anchor":"y","domain":[0.0,0.7363],"title":{"text":"sepal_width"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"sepal_length"}},"xaxis2":{"anchor":"y2","domain":[0.7413,1.0],"matches":"x2","showticklabels":false,"showline":false,"ticks":""},"yaxis2":{"anchor":"x2","domain":[0.0,0.7326],"matches":"y","showticklabels":false},"xaxis3":{"anchor":"y3","domain":[0.0,0.7363],"matches":"x","showticklabels":false},"yaxis3":{"anchor":"x3","domain":[0.7426,1.0],"matches":"y3","showticklabels":false,"showline":false,"ticks":""},"xaxis4":{"anchor":"y4","domain":[0.7413,1.0],"matches":"x2","showticklabels":false,"showline":false,"ticks":""},"yaxis4":{"anchor":"x4","domain":[0.7426,1.0],"matches":"y3","showticklabels":false,"showline":false,"ticks":""},"legend":{"title":{"text":"species"},"tracegroupgap":0},"margin":{"t":60}},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('62f2b977-14e9-4f1c-a7b4-23cadf7ec754');
-var x = new MutationObserver(function (mutations, observer) {{
-        var display = window.getComputedStyle(gd).display;
-        if (!display || display === 'none') {{
-            console.log([gd, 'removed!']);
-            Plotly.purge(gd);
-            observer.disconnect();
-        }}
-}});
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
 
-// Listen for the removal of the full notebook cells
-var notebookContainer = gd.closest('#notebook-container');
-if (notebookContainer) {{
-    x.observe(notebookContainer, {childList: true});
-}}
 
-// Listen for the clearing of the current output cell
-var outputEl = gd.closest('.output');
-if (outputEl) {{
-    x.observe(outputEl, {childList: true});
-}}
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">continent</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">lifeExp</th>
+<th data-quarto-table-cell-role="th">pop</th>
+<th data-quarto-table-cell-role="th">gdpPercap</th>
+<th data-quarto-table-cell-role="th">iso_alpha</th>
+<th data-quarto-table-cell-role="th">iso_num</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1952</td>
+<td>28.801</td>
+<td>8425333</td>
+<td>779.445314</td>
+<td>AFG</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1957</td>
+<td>30.332</td>
+<td>9240934</td>
+<td>820.853030</td>
+<td>AFG</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1962</td>
+<td>31.997</td>
+<td>10267083</td>
+<td>853.100710</td>
+<td>AFG</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1967</td>
+<td>34.020</td>
+<td>11537966</td>
+<td>836.197138</td>
+<td>AFG</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Afghanistan</td>
+<td>Asia</td>
+<td>1972</td>
+<td>36.088</td>
+<td>13079460</td>
+<td>739.981106</td>
+<td>AFG</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
 
-                        })                };                });            </script>        </div>
+</div>
 </div>
 </div>
 
