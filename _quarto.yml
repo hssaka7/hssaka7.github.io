@@ -44,4 +44,7 @@ format:
     css: core/assets/css/index.css
     toc: true
 
-
+include-in-header:
+  - text: |
+      <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.6.2.min.js"></script>
+   
