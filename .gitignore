@@ -1,5 +1,5 @@
 
-venv
+.venv
 .DS_Store
 
 # quarto
@@ -8,3 +8,4 @@ _site
 
 # python
 .ipynb_checkpoints
+**/*.quarto_ipynb
