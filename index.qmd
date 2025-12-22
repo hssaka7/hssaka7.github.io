@@ -15,14 +15,6 @@ listing:
       image-height: 200px 
       max-description-length: 400
       grid-columns: 3
-    - id: testimonial-listing
-      contents: core/testimonials
-      type: grid
-      sort: title
-      fields: [image,title, subtitle, description]
-      image-height: 50px 
-      max-description-length: 400
-      grid-columns: 3
 
 title-block-banner: "#00000000"
 title-block-banner-color: "#ffffff"
@@ -71,18 +63,6 @@ Embark on a transformative journey with my freelance services in IT and Finance 
 
 <br>
 
-
-
-# Testimonials 
-These are the testimonials from the awesome peoples that i have worked in the past.
-
-<br>
-<br>
-
-::: {.testimonials-grid}
-::: {#testimonial-listing}
-:::
-:::
 
 <!-- C.alendly badge widget begin -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
