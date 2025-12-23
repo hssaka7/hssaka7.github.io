@@ -1,6 +1,7 @@
 
 backtesting>=0.5.0
 beautifulsoup4>=4.12.3
+bokeh
 bs4>=0.0.2
 
 langchain
