@@ -377,6 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#import-model" id="toc-import-model" class="nav-link" data-scroll-target="#import-model">Import Model</a>
   <ul class="collapse">
+  <li><a href="#advantages-of-running-llm-locally" id="toc-advantages-of-running-llm-locally" class="nav-link" data-scroll-target="#advantages-of-running-llm-locally">Advantages of Running LLM Locally</a></li>
   <li><a href="#building-a-simple-llm-agent" id="toc-building-a-simple-llm-agent" class="nav-link" data-scroll-target="#building-a-simple-llm-agent">Building a Simple LLM Agent</a></li>
   <li><a href="#parsing-the-model-response" id="toc-parsing-the-model-response" class="nav-link" data-scroll-target="#parsing-the-model-response">Parsing the Model Response</a></li>
   </ul></li>
@@ -405,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ollama</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>2. Pull and run your chosen model</strong></p>
 <p>Ollama supports various models. For this tutorial, we’ll use the Gemma2 2B model, which is both small and powerful. Pull the model with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> pull gemma2:2b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> pull gemma3:1b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This command downloads the model weights to your machine so you can use them locally.</p>
 <p><strong>3. Install LangChain-Ollama integration</strong></p>
 <p>LangChain is a framework for developing applications powered by language models. The <code>langchain-ollama</code> module allows you to use Ollama models with LangChain:</p>
@@ -424,22 +425,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>In this experiment, we set the temperature to 0 for predictable outputs.</p>
-<div id="cell-4" class="cell" data-execution_count="6">
+<div id="cell-4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_ollama.llms <span class="im">import</span> OllamaLLM</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_core.prompts <span class="im">import</span> ChatPromptTemplate</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> OllamaLLM(model<span class="op">=</span><span class="st">"gemma2:2b"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> OllamaLLM(model<span class="op">=</span><span class="st">"gemma3:1b"</span>,</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                temperature <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<section id="advantages-of-running-llm-locally" class="level2">
+<h2 class="anchored" data-anchor-id="advantages-of-running-llm-locally">Advantages of Running LLM Locally</h2>
+<p>Running a Large Language Model (LLM) on your own machine offers several benefits compared to using cloud-based APIs:</p>
+<ul>
+<li><strong>Privacy:</strong> Your data never leaves your computer, ensuring sensitive information remains secure.</li>
+<li><strong>No API Costs:</strong> You avoid recurring charges or usage limits imposed by cloud providers.</li>
+<li><strong>Speed:</strong> Local inference can be faster, especially for small models and repeated queries.</li>
+<li><strong>Customization:</strong> You can experiment with different models, parameters, and workflows without restrictions.</li>
+<li><strong>Offline Access:</strong> You can use the model even without an internet connection.</li>
+<li><strong>No Vendor Lock-in:</strong> You are not tied to a specific provider or platform.</li>
+</ul>
+<p>These advantages make local LLMs ideal for prototyping, research, and privacy-sensitive applications.</p>
+</section>
 <section id="building-a-simple-llm-agent" class="level2">
 <h2 class="anchored" data-anchor-id="building-a-simple-llm-agent">Building a Simple LLM Agent</h2>
 <p>Let’s build a simple LLM-powered agent that translates text from one language to several others. We’ll use a prompt template to instruct the model and process the results programmatically.</p>
 <p><strong>Goal:</strong> - Translate a given sentence from English to Spanish, German, and Korean. - Receive the output in a structured JSON format for easy parsing.</p>
-<div id="cell-6" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> ChatPromptTemplate.from_messages(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        (</span>
@@ -467,12 +481,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>('```json\n'
  '{\n'
- '  "English": "I love grilled chicken",\n'
- '  "Spanish": "¡Me encanta el pollo a la parrilla!",\n'
- '  "German": "Ich liebe gegrillte Hähnchen!",\n'
- '  "Korean": "닭갈비를 좋아해요!" \n'
+ '  "language": "Spanish",\n'
+ '  "output": "Me encanta el pollo a la parrilla."\n'
  '}\n'
- '```')</code></pre>
+ '```\n')</code></pre>
 </div>
 </div>
 </section>
@@ -480,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="parsing-the-model-response">Parsing the Model Response</h2>
 <p>The response from the LLM is returned as a string, even if it looks like JSON. To work with the translations programmatically, we need to convert this string into a Python dictionary.</p>
 <p>Below, we clean up the response and parse it as JSON so we can easily access each translated sentence.</p>
-<div id="cell-8" class="cell" data-execution_count="8">
+<div id="cell-9" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace and assign back to original content</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```json"</span>, <span class="st">""</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ai_message <span class="op">=</span> ai_message.replace(<span class="st">"```"</span>, <span class="st">""</span>)</span>
@@ -489,10 +501,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>json_result <span class="op">=</span> json.loads(ai_message)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>pprint(json_result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'English': 'I love grilled chicken',
- 'German': 'Ich liebe gegrillte Hähnchen!',
- 'Korean': '닭갈비를 좋아해요!',
- 'Spanish': '¡Me encanta el pollo a la parrilla!'}</code></pre>
+<pre><code>{'language': 'Spanish', 'output': 'Me encanta el pollo a la parrilla.'}</code></pre>
 </div>
 </div>
 
